@@ -1,4 +1,4 @@
-module github.com/diamondburned/gotk4-sourceview
+module libdb.so/gotk4-sourceview
 
 go 1.18
 

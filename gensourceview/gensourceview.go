@@ -5,7 +5,7 @@ import (
 	"github.com/diamondburned/gotk4/gir/girgen/types"
 )
 
-const sourceviewModule = "github.com/diamondburned/gotk4-sourceview/pkg"
+const sourceviewModule = "libdb.so/gotk4-sourceview/pkg"
 
 var Data = genmain.Data{
 	Module: sourceviewModule,
