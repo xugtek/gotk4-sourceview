@@ -18,7 +18,6 @@ import "C"
 // The function returns the following values:
 //
 //   - sList: list of all SourceEncoding's. Free with g_slist_free().
-//
 func EncodingGetAll() []*Encoding {
 	var _cret *C.GSList // in
 
@@ -43,7 +42,6 @@ func EncodingGetAll() []*Encoding {
 // The function returns the following values:
 //
 //   - encoding: current locale encoding.
-//
 func EncodingGetCurrent() *Encoding {
 	var _cret *C.GtkSourceEncoding // in
 
@@ -66,7 +64,6 @@ func EncodingGetCurrent() *Encoding {
 // The function returns the following values:
 //
 //   - encoding (optional): corresponding SourceEncoding, or NULL if not found.
-//
 func EncodingGetFromCharset(charset string) *Encoding {
 	var _arg1 *C.gchar             // out
 	var _cret *C.GtkSourceEncoding // in
@@ -89,7 +86,6 @@ func EncodingGetFromCharset(charset string) *Encoding {
 // The function returns the following values:
 //
 //   - encoding: UTF-8 encoding.
-//
 func EncodingGetUTF8() *Encoding {
 	var _cret *C.GtkSourceEncoding // in
 

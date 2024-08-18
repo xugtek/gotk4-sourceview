@@ -46,7 +46,6 @@ func marshalEncoding(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - encoding: copy of enc.
-//
 func (enc *Encoding) Copy() *Encoding {
 	var _arg0 *C.GtkSourceEncoding // out
 	var _cret *C.GtkSourceEncoding // in
@@ -75,7 +74,6 @@ func (enc *Encoding) Copy() *Encoding {
 // The function returns the following values:
 //
 //   - utf8: character set of the SourceEncoding.
-//
 func (enc *Encoding) Charset() string {
 	var _arg0 *C.GtkSourceEncoding // out
 	var _cret *C.gchar             // in
@@ -97,7 +95,6 @@ func (enc *Encoding) Charset() string {
 // The function returns the following values:
 //
 //   - utf8: name of the SourceEncoding.
-//
 func (enc *Encoding) Name() string {
 	var _arg0 *C.GtkSourceEncoding // out
 	var _cret *C.gchar             // in
@@ -117,7 +114,6 @@ func (enc *Encoding) Name() string {
 // The function returns the following values:
 //
 //   - utf8: string representation. Free with g_free() when no longer needed.
-//
 func (enc *Encoding) String() string {
 	var _arg0 *C.GtkSourceEncoding // out
 	var _cret *C.gchar             // in

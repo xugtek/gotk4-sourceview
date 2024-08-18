@@ -103,7 +103,6 @@ func (context *CompletionContext) ConnectCancelled(f func()) coreglib.SignalHand
 //   - provider: SourceCompletionProvider.
 //   - proposals (optional): list of proposals to add.
 //   - finished: whether the provider is finished adding proposals.
-//
 func (context *CompletionContext) AddProposals(provider CompletionProviderer, proposals []CompletionProposaller, finished bool) {
 	var _arg0 *C.GtkSourceCompletionContext  // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -137,7 +136,6 @@ func (context *CompletionContext) AddProposals(provider CompletionProviderer, pr
 // The function returns the following values:
 //
 //   - completionActivation: context activation.
-//
 func (context *CompletionContext) Activation() CompletionActivation {
 	var _arg0 *C.GtkSourceCompletionContext   // out
 	var _cret C.GtkSourceCompletionActivation // in
@@ -161,7 +159,6 @@ func (context *CompletionContext) Activation() CompletionActivation {
 //
 //   - iter: TextIter.
 //   - ok: TRUE if iter is correctly set, FALSE otherwise.
-//
 func (context *CompletionContext) Iter() (*gtk.TextIter, bool) {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _arg1 C.GtkTextIter                 // in

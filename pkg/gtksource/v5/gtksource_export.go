@@ -184,7 +184,7 @@ func _gotk4_gtksource5_GutterRendererClass_snapshot_line(arg0 *C.GtkSourceGutter
 }
 
 //export _gotk4_gtksource5_GutterRenderer_ConnectQueryData
-func _gotk4_gtksource5_GutterRenderer_ConnectQueryData(arg0 C.gpointer, arg1 C.GObject, arg2 C.guint, arg3 C.guintptr) {
+func _gotk4_gtksource5_GutterRenderer_ConnectQueryData(arg0 C.gpointer, arg1 *C.GObject, arg2 C.guint, arg3 C.guintptr) {
 	var f func(object *coreglib.Object, p0 uint)
 	{
 		closure := coreglib.ConnectedGeneratedClosure(uintptr(arg3))
@@ -199,7 +199,7 @@ func _gotk4_gtksource5_GutterRenderer_ConnectQueryData(arg0 C.gpointer, arg1 C.G
 	var _object *coreglib.Object // out
 	var _p0 uint                 // out
 
-	_object = coreglib.Take(unsafe.Pointer(&arg1))
+	_object = coreglib.Take(unsafe.Pointer(arg1))
 	_p0 = uint(arg2)
 
 	f(_object, _p0)

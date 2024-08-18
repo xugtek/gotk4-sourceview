@@ -85,7 +85,6 @@ func marshalSnippetManager(p uintptr) (interface{}, error) {
 //
 //   - utf8s: NULL-terminated array containing a list of snippet files
 //     directories. The array is owned by lm and must not be modified.
-//
 func (self *SnippetManager) SearchPath() []string {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _cret **C.gchar                  // in
@@ -128,7 +127,6 @@ func (self *SnippetManager) SearchPath() []string {
 // The function returns the following values:
 //
 //   - snippet (optional) or NULL if no matching snippet was found.
-//
 func (self *SnippetManager) Snippet(group, languageId, trigger string) *Snippet {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _arg1 *C.gchar                   // out
@@ -171,7 +169,6 @@ func (self *SnippetManager) Snippet(group, languageId, trigger string) *Snippet 
 // The function returns the following values:
 //
 //   - listModel: gio.ListModel of gtksource.Snippet.
-//
 func (self *SnippetManager) ListAll() *gio.ListModel {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _cret *C.GListModel              // in
@@ -201,7 +198,6 @@ func (self *SnippetManager) ListAll() *gio.ListModel {
 // The function returns the following values:
 //
 //   - utf8s: An array of strings which should be freed with g_free().
-//
 func (self *SnippetManager) ListGroups() []string {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _cret **C.gchar                  // in
@@ -251,7 +247,6 @@ func (self *SnippetManager) ListGroups() []string {
 // The function returns the following values:
 //
 //   - listModel of SourceSnippet.
-//
 func (self *SnippetManager) ListMatching(group, languageId, triggerPrefix string) *gio.ListModel {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _arg1 *C.gchar                   // out
@@ -304,7 +299,6 @@ func (self *SnippetManager) ListMatching(group, languageId, triggerPrefix string
 // The function takes the following parameters:
 //
 //   - dirs (optional): NULL-terminated array of strings or NULL.
-//
 func (self *SnippetManager) SetSearchPath(dirs []string) {
 	var _arg0 *C.GtkSourceSnippetManager // out
 	var _arg1 **C.gchar                  // out
@@ -335,7 +329,6 @@ func (self *SnippetManager) SetSearchPath(dirs []string) {
 //
 //   - snippetManager which is owned by GtkSourceView library and must not be
 //     unref'd.
-//
 func SnippetManagerGetDefault() *SnippetManager {
 	var _cret *C.GtkSourceSnippetManager // in
 

@@ -91,7 +91,6 @@ func marshalCompletionInfo(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - completionInfo: new GtkSourceCompletionInfo.
-//
 func NewCompletionInfo() *CompletionInfo {
 	var _cret *C.GtkSourceCompletionInfo // in
 
@@ -112,7 +111,6 @@ func NewCompletionInfo() *CompletionInfo {
 //
 //   - view on which the info window should be positioned.
 //   - iter (optional): TextIter.
-//
 func (info *CompletionInfo) MoveToIter(view *gtk.TextView, iter *gtk.TextIter) {
 	var _arg0 *C.GtkSourceCompletionInfo // out
 	var _arg1 *C.GtkTextView             // out

@@ -130,7 +130,6 @@ func (manager *UndoManager) BeginNotUndoableAction() {
 // The function returns the following values:
 //
 //   - ok: TRUE if there are redo operations available, FALSE otherwise.
-//
 func (manager *UndoManager) CanRedo() bool {
 	var _arg0 *C.GtkSourceUndoManager // out
 	var _cret C.gboolean              // in
@@ -164,7 +163,6 @@ func (manager *UndoManager) CanRedoChanged() {
 // The function returns the following values:
 //
 //   - ok: TRUE if there are undo operations available, FALSE otherwise.
-//
 func (manager *UndoManager) CanUndo() bool {
 	var _arg0 *C.GtkSourceUndoManager // out
 	var _cret C.gboolean              // in
@@ -248,7 +246,6 @@ func (manager *UndoManager) beginNotUndoableAction() {
 // The function returns the following values:
 //
 //   - ok: TRUE if there are redo operations available, FALSE otherwise.
-//
 func (manager *UndoManager) canRedo() bool {
 	gclass := (*C.GtkSourceUndoManagerIface)(coreglib.PeekParentClass(manager))
 	fnarg := gclass.can_redo
@@ -288,7 +285,6 @@ func (manager *UndoManager) canRedoChanged() {
 // The function returns the following values:
 //
 //   - ok: TRUE if there are undo operations available, FALSE otherwise.
-//
 func (manager *UndoManager) canUndo() bool {
 	gclass := (*C.GtkSourceUndoManagerIface)(coreglib.PeekParentClass(manager))
 	fnarg := gclass.can_undo

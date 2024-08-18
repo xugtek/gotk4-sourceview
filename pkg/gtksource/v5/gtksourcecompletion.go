@@ -52,11 +52,6 @@ func defaultCompletionOverrides(v *Completion) CompletionOverrides {
 // for the completion of function names, etc. To add a provider, call
 // completion.AddProvider.
 //
-// When several providers match, they are all shown in the completion window,
-// but one can switch between providers: see the SourceCompletion::move-page
-// signal. It is also possible to activate the first proposals with key
-// bindings, see the SourceCompletion:accelerators property.
-//
 // The completionproposal interface represents a proposal.
 //
 // If a proposal contains extra information (see
@@ -134,7 +129,6 @@ func (self *Completion) ConnectShow(f func()) coreglib.SignalHandle {
 // The function takes the following parameters:
 //
 //   - provider: SourceCompletionProvider.
-//
 func (self *Completion) AddProvider(provider CompletionProviderer) {
 	var _arg0 *C.GtkSourceCompletion         // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -161,7 +155,6 @@ func (self *Completion) BlockInteractive() {
 // The function returns the following values:
 //
 //   - buffer: SourceBuffer.
-//
 func (self *Completion) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _cret *C.GtkSourceBuffer     // in
@@ -178,8 +171,6 @@ func (self *Completion) Buffer() *Buffer {
 	return _buffer
 }
 
-// The function returns the following values:
-//
 func (self *Completion) PageSize() uint {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _cret C.guint                // in
@@ -201,7 +192,6 @@ func (self *Completion) PageSize() uint {
 // The function returns the following values:
 //
 //   - view: SourceView.
-//
 func (self *Completion) View() *View {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _cret *C.GtkSourceView       // in
@@ -236,7 +226,6 @@ func (self *Completion) Hide() {
 // The function takes the following parameters:
 //
 //   - provider: SourceCompletionProvider.
-//
 func (self *Completion) RemoveProvider(provider CompletionProviderer) {
 	var _arg0 *C.GtkSourceCompletion         // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -249,8 +238,6 @@ func (self *Completion) RemoveProvider(provider CompletionProviderer) {
 	runtime.KeepAlive(provider)
 }
 
-// The function takes the following parameters:
-//
 func (self *Completion) SetPageSize(pageSize uint) {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _arg1 C.guint                // out
@@ -296,7 +283,6 @@ func (self *Completion) UnblockInteractive() {
 // The function returns the following values:
 //
 //   - attrList (optional) or NULL.
-//
 func CompletionFuZZYHighlight(haystack, casefoldQuery string) *pango.AttrList {
 	var _arg1 *C.char          // out
 	var _arg2 *C.char          // out
@@ -343,7 +329,6 @@ func CompletionFuZZYHighlight(haystack, casefoldQuery string) *pango.AttrList {
 //
 //   - priority (optional): optional location for the score of the match.
 //   - ok: TRUE if haystack matched casefold_needle, otherwise FALSE.
-//
 func CompletionFuZZYMatch(haystack, casefoldNeedle string) (uint, bool) {
 	var _arg1 *C.char    // out
 	var _arg2 *C.char    // out

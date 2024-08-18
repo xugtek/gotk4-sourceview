@@ -18,7 +18,6 @@ import "C"
 // The function returns the following values:
 //
 //   - completionItem: new SourceCompletionItem.
-//
 func NewCompletionItem2() *CompletionItem {
 	var _cret *C.GtkSourceCompletionItem // in
 

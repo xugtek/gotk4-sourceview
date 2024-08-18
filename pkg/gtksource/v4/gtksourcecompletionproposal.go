@@ -139,7 +139,6 @@ func (proposal *CompletionProposal) Changed() {
 // The function returns the following values:
 //
 //   - ok: TRUE if proposal and object are the same proposal.
-//
 func (proposal *CompletionProposal) Equal(other CompletionProposaller) bool {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _arg1 *C.GtkSourceCompletionProposal // out
@@ -166,7 +165,6 @@ func (proposal *CompletionProposal) Equal(other CompletionProposaller) bool {
 // The function returns the following values:
 //
 //   - icon (optional) with the icon of proposal.
-//
 func (proposal *CompletionProposal) GIcon() *gio.Icon {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.GIcon                       // in
@@ -195,7 +193,6 @@ func (proposal *CompletionProposal) GIcon() *gio.Icon {
 // The function returns the following values:
 //
 //   - pixbuf (optional) with the icon of proposal.
-//
 func (proposal *CompletionProposal) Icon() *gdkpixbuf.Pixbuf {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.GdkPixbuf                   // in
@@ -229,7 +226,6 @@ func (proposal *CompletionProposal) Icon() *gdkpixbuf.Pixbuf {
 // The function returns the following values:
 //
 //   - utf8 (optional): icon name of proposal.
-//
 func (proposal *CompletionProposal) IconName() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.gchar                       // in
@@ -256,7 +252,6 @@ func (proposal *CompletionProposal) IconName() string {
 //
 //   - utf8 (optional): newly-allocated string containing extra information of
 //     proposal or NULL if no extra information is associated to proposal.
-//
 func (proposal *CompletionProposal) Info() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.gchar                       // in
@@ -284,7 +279,6 @@ func (proposal *CompletionProposal) Info() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the label of proposal.
-//
 func (proposal *CompletionProposal) Label() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.gchar                       // in
@@ -310,7 +304,6 @@ func (proposal *CompletionProposal) Label() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the label of proposal with markup.
-//
 func (proposal *CompletionProposal) Markup() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.gchar                       // in
@@ -338,7 +331,6 @@ func (proposal *CompletionProposal) Markup() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the text of proposal.
-//
 func (proposal *CompletionProposal) Text() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.gchar                       // in
@@ -363,7 +355,6 @@ func (proposal *CompletionProposal) Text() string {
 // The function returns the following values:
 //
 //   - guint: hash value of proposal.
-//
 func (proposal *CompletionProposal) Hash() uint {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret C.guint                        // in
@@ -405,7 +396,6 @@ func (proposal *CompletionProposal) changed() {
 // The function returns the following values:
 //
 //   - ok: TRUE if proposal and object are the same proposal.
-//
 func (proposal *CompletionProposal) equal(other CompletionProposaller) bool {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.equal
@@ -435,7 +425,6 @@ func (proposal *CompletionProposal) equal(other CompletionProposaller) bool {
 // The function returns the following values:
 //
 //   - icon (optional) with the icon of proposal.
-//
 func (proposal *CompletionProposal) gIcon() *gio.Icon {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_gicon
@@ -467,7 +456,6 @@ func (proposal *CompletionProposal) gIcon() *gio.Icon {
 // The function returns the following values:
 //
 //   - pixbuf (optional) with the icon of proposal.
-//
 func (proposal *CompletionProposal) icon() *gdkpixbuf.Pixbuf {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_icon
@@ -504,7 +492,6 @@ func (proposal *CompletionProposal) icon() *gdkpixbuf.Pixbuf {
 // The function returns the following values:
 //
 //   - utf8 (optional): icon name of proposal.
-//
 func (proposal *CompletionProposal) iconName() string {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_icon_name
@@ -534,7 +521,6 @@ func (proposal *CompletionProposal) iconName() string {
 //
 //   - utf8 (optional): newly-allocated string containing extra information of
 //     proposal or NULL if no extra information is associated to proposal.
-//
 func (proposal *CompletionProposal) info() string {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_info
@@ -565,7 +551,6 @@ func (proposal *CompletionProposal) info() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the label of proposal.
-//
 func (proposal *CompletionProposal) label() string {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_label
@@ -594,7 +579,6 @@ func (proposal *CompletionProposal) label() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the label of proposal with markup.
-//
 func (proposal *CompletionProposal) markup() string {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_markup
@@ -625,7 +609,6 @@ func (proposal *CompletionProposal) markup() string {
 // The function returns the following values:
 //
 //   - utf8: new string containing the text of proposal.
-//
 func (proposal *CompletionProposal) text() string {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_text
@@ -653,7 +636,6 @@ func (proposal *CompletionProposal) text() string {
 // The function returns the following values:
 //
 //   - guint: hash value of proposal.
-//
 func (proposal *CompletionProposal) hash() uint {
 	gclass := (*C.GtkSourceCompletionProposalIface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.hash

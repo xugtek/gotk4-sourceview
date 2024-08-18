@@ -70,7 +70,6 @@ func marshalStyleSchemeChooser(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - styleScheme: currently-selected scheme.
-//
 func (chooser *StyleSchemeChooser) StyleScheme() *StyleScheme {
 	var _arg0 *C.GtkSourceStyleSchemeChooser // out
 	var _cret *C.GtkSourceStyleScheme        // in
@@ -92,7 +91,6 @@ func (chooser *StyleSchemeChooser) StyleScheme() *StyleScheme {
 // The function takes the following parameters:
 //
 //   - scheme: SourceStyleScheme.
-//
 func (chooser *StyleSchemeChooser) SetStyleScheme(scheme *StyleScheme) {
 	var _arg0 *C.GtkSourceStyleSchemeChooser // out
 	var _arg1 *C.GtkSourceStyleScheme        // out
@@ -110,7 +108,6 @@ func (chooser *StyleSchemeChooser) SetStyleScheme(scheme *StyleScheme) {
 // The function returns the following values:
 //
 //   - styleScheme: currently-selected scheme.
-//
 func (chooser *StyleSchemeChooser) styleScheme() *StyleScheme {
 	gclass := (*C.GtkSourceStyleSchemeChooserInterface)(coreglib.PeekParentClass(chooser))
 	fnarg := gclass.get_style_scheme
@@ -135,7 +132,6 @@ func (chooser *StyleSchemeChooser) styleScheme() *StyleScheme {
 // The function takes the following parameters:
 //
 //   - scheme: SourceStyleScheme.
-//
 func (chooser *StyleSchemeChooser) setStyleScheme(scheme *StyleScheme) {
 	gclass := (*C.GtkSourceStyleSchemeChooserInterface)(coreglib.PeekParentClass(chooser))
 	fnarg := gclass.set_style_scheme

@@ -50,7 +50,6 @@ type BufferOverrides struct {
 	//
 	//   - iter
 	//   - state
-	//
 	BracketMatched func(iter *gtk.TextIter, state BracketMatchType)
 	// Redo redoes the last undo operation. Use gtk_source_buffer_can_redo() to
 	// check whether a call to this function will have any effect.
@@ -169,7 +168,6 @@ func (buffer *Buffer) ConnectUndo(f func()) coreglib.SignalHandle {
 // The function returns the following values:
 //
 //   - buffer: new source buffer.
-//
 func NewBuffer(table *gtk.TextTagTable) *Buffer {
 	var _arg1 *C.GtkTextTagTable // out
 	var _cret *C.GtkSourceBuffer // in
@@ -200,7 +198,6 @@ func NewBuffer(table *gtk.TextTagTable) *Buffer {
 //
 //   - buffer: new source buffer which will highlight text according to the
 //     highlighting patterns in language.
-//
 func NewBufferWithLanguage(language *Language) *Buffer {
 	var _arg1 *C.GtkSourceLanguage // out
 	var _cret *C.GtkSourceBuffer   // in
@@ -229,7 +226,6 @@ func NewBufferWithLanguage(language *Language) *Buffer {
 // The function returns the following values:
 //
 //   - ok: whether iter was moved.
-//
 func (buffer *Buffer) BackwardIterToSourceMark(iter *gtk.TextIter, category string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -279,7 +275,6 @@ func (buffer *Buffer) BeginNotUndoableAction() {
 // The function returns the following values:
 //
 //   - ok: TRUE if a redo is possible.
-//
 func (buffer *Buffer) CanRedo() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -303,7 +298,6 @@ func (buffer *Buffer) CanRedo() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if it's possible to undo the last action.
-//
 func (buffer *Buffer) CanUndo() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -329,7 +323,6 @@ func (buffer *Buffer) CanUndo() bool {
 //   - caseType: how to change the case.
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (buffer *Buffer) ChangeCase(caseType ChangeCaseType, start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer        // out
 	var _arg1 C.GtkSourceChangeCaseType // out
@@ -371,7 +364,6 @@ func (buffer *Buffer) ChangeCase(caseType ChangeCaseType, start, end *gtk.TextIt
 // The function returns the following values:
 //
 //   - mark: new SourceMark, owned by the buffer.
-//
 func (buffer *Buffer) CreateSourceMark(name, category string, where *gtk.TextIter) *Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.gchar           // out
@@ -424,7 +416,6 @@ func (buffer *Buffer) EndNotUndoableAction() {
 //
 //   - start of the area to highlight.
 //   - end of the area to highlight.
-//
 func (buffer *Buffer) EnsureHighlight(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -452,7 +443,6 @@ func (buffer *Buffer) EnsureHighlight(start, end *gtk.TextIter) {
 // The function returns the following values:
 //
 //   - ok: whether iter was moved.
-//
 func (buffer *Buffer) ForwardIterToSourceMark(iter *gtk.TextIter, category string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -492,7 +482,6 @@ func (buffer *Buffer) ForwardIterToSourceMark(iter *gtk.TextIter, category strin
 //
 //   - utf8s: new NULL terminated array of context class names. Use g_strfreev()
 //     to free the array if it is no longer needed.
-//
 func (buffer *Buffer) ContextClassesAtIter(iter *gtk.TextIter) []string {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -532,7 +521,6 @@ func (buffer *Buffer) ContextClassesAtIter(iter *gtk.TextIter) []string {
 // The function returns the following values:
 //
 //   - ok: TRUE if the source buffer will highlight matching brackets.
-//
 func (buffer *Buffer) HighlightMatchingBrackets() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -557,7 +545,6 @@ func (buffer *Buffer) HighlightMatchingBrackets() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if syntax highlighting is enabled, FALSE otherwise.
-//
 func (buffer *Buffer) HighlightSyntax() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -579,7 +566,6 @@ func (buffer *Buffer) HighlightSyntax() bool {
 // The function returns the following values:
 //
 //   - ok: whether the buffer has an implicit trailing newline.
-//
 func (buffer *Buffer) ImplicitTrailingNewline() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -605,7 +591,6 @@ func (buffer *Buffer) ImplicitTrailingNewline() bool {
 // The function returns the following values:
 //
 //   - language (optional) associated with the buffer, or NULL.
-//
 func (buffer *Buffer) Language() *Language {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _cret *C.GtkSourceLanguage // in
@@ -630,7 +615,6 @@ func (buffer *Buffer) Language() *Language {
 // The function returns the following values:
 //
 //   - gint: maximum number of possible undo levels or -1 if no limit is set.
-//
 func (buffer *Buffer) MaxUndoLevels() int {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gint             // in
@@ -658,7 +642,6 @@ func (buffer *Buffer) MaxUndoLevels() int {
 // The function returns the following values:
 //
 //   - sList: a newly allocated List.
-//
 func (buffer *Buffer) SourceMarksAtIter(iter *gtk.TextIter, category string) []*Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -701,7 +684,6 @@ func (buffer *Buffer) SourceMarksAtIter(iter *gtk.TextIter, category string) []*
 // The function returns the following values:
 //
 //   - sList: a newly allocated List.
-//
 func (buffer *Buffer) SourceMarksAtLine(line int, category string) []*Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gint             // out
@@ -740,7 +722,6 @@ func (buffer *Buffer) SourceMarksAtLine(line int, category string) []*Mark {
 // The function returns the following values:
 //
 //   - styleScheme (optional) with the buffer, or NULL.
-//
 func (buffer *Buffer) StyleScheme() *StyleScheme {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _cret *C.GtkSourceStyleScheme // in
@@ -766,7 +747,6 @@ func (buffer *Buffer) StyleScheme() *StyleScheme {
 // The function returns the following values:
 //
 //   - undoManager (optional) associated with the buffer, or NULL.
-//
 func (buffer *Buffer) UndoManager() *UndoManager {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _cret *C.GtkSourceUndoManager // in
@@ -801,7 +781,6 @@ func (buffer *Buffer) UndoManager() *UndoManager {
 // The function returns the following values:
 //
 //   - ok: whether we found a context class toggle before iter.
-//
 func (buffer *Buffer) IterBackwardToContextClassToggle(iter *gtk.TextIter, contextClass string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -843,7 +822,6 @@ func (buffer *Buffer) IterBackwardToContextClassToggle(iter *gtk.TextIter, conte
 // The function returns the following values:
 //
 //   - ok: whether we found a context class toggle after iter.
-//
 func (buffer *Buffer) IterForwardToContextClassToggle(iter *gtk.TextIter, contextClass string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -881,7 +859,6 @@ func (buffer *Buffer) IterForwardToContextClassToggle(iter *gtk.TextIter, contex
 // The function returns the following values:
 //
 //   - ok: whether iter has the context class.
-//
 func (buffer *Buffer) IterHasContextClass(iter *gtk.TextIter, contextClass string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -913,7 +890,6 @@ func (buffer *Buffer) IterHasContextClass(iter *gtk.TextIter, contextClass strin
 //
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (buffer *Buffer) JoinLines(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -950,7 +926,6 @@ func (buffer *Buffer) Redo() {
 //   - start: TextIter.
 //   - end: TextIter.
 //   - category (optional) to search for, or NULL.
-//
 func (buffer *Buffer) RemoveSourceMarks(start, end *gtk.TextIter, category string) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -980,7 +955,6 @@ func (buffer *Buffer) RemoveSourceMarks(start, end *gtk.TextIter, category strin
 // The function takes the following parameters:
 //
 //   - highlight: TRUE if you want matching brackets highlighted.
-//
 func (buffer *Buffer) SetHighlightMatchingBrackets(highlight bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -1008,7 +982,6 @@ func (buffer *Buffer) SetHighlightMatchingBrackets(highlight bool) {
 // The function takes the following parameters:
 //
 //   - highlight: TRUE to enable syntax highlighting, FALSE to disable it.
-//
 func (buffer *Buffer) SetHighlightSyntax(highlight bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -1042,7 +1015,6 @@ func (buffer *Buffer) SetHighlightSyntax(highlight bool) {
 // The function takes the following parameters:
 //
 //   - implicitTrailingNewline: new value.
-//
 func (buffer *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -1068,7 +1040,6 @@ func (buffer *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 // The function takes the following parameters:
 //
 //   - language (optional) to set, or NULL.
-//
 func (buffer *Buffer) SetLanguage(language *Language) {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _arg1 *C.GtkSourceLanguage // out
@@ -1094,7 +1065,6 @@ func (buffer *Buffer) SetLanguage(language *Language) {
 // The function takes the following parameters:
 //
 //   - maxUndoLevels: desired maximum number of undo levels.
-//
 func (buffer *Buffer) SetMaxUndoLevels(maxUndoLevels int) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gint             // out
@@ -1125,7 +1095,6 @@ func (buffer *Buffer) SetMaxUndoLevels(maxUndoLevels int) {
 // The function takes the following parameters:
 //
 //   - scheme (optional) or NULL.
-//
 func (buffer *Buffer) SetStyleScheme(scheme *StyleScheme) {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _arg1 *C.GtkSourceStyleScheme // out
@@ -1146,7 +1115,6 @@ func (buffer *Buffer) SetStyleScheme(scheme *StyleScheme) {
 // The function takes the following parameters:
 //
 //   - manager (optional) or NULL.
-//
 func (buffer *Buffer) SetUndoManager(manager UndoManagerer) {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _arg1 *C.GtkSourceUndoManager // out
@@ -1169,7 +1137,6 @@ func (buffer *Buffer) SetUndoManager(manager UndoManagerer) {
 //   - end: TextIter.
 //   - flags specifying how the sort should behave.
 //   - column: sort considering the text starting at the given column.
-//
 func (buffer *Buffer) SortLines(start, end *gtk.TextIter, flags SortFlags, column int) {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _arg1 *C.GtkTextIter       // out
@@ -1209,7 +1176,6 @@ func (buffer *Buffer) Undo() {
 //
 //   - iter
 //   - state
-//
 func (buffer *Buffer) bracketMatched(iter *gtk.TextIter, state BracketMatchType) {
 	gclass := (*C.GtkSourceBufferClass)(coreglib.PeekParentClass(buffer))
 	fnarg := gclass.bracket_matched

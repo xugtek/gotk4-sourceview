@@ -154,16 +154,12 @@ type ViewOverrides struct {
 	//
 	//   - iter
 	//   - event
-	//
 	LineMarkActivated func(iter *gtk.TextIter, event *gdk.Event)
 	// The function takes the following parameters:
 	//
 	//   - copy
 	//   - step
-	//
-	MoveLines func(copy bool, step int)
-	// The function takes the following parameters:
-	//
+	MoveLines      func(copy bool, step int)
 	MoveWords      func(step int)
 	Redo           func()
 	ShowCompletion func()
@@ -351,7 +347,6 @@ func (view *View) ConnectUndo(f func()) coreglib.SignalHandle {
 // The function returns the following values:
 //
 //   - view: new SourceView.
-//
 func NewView() *View {
 	var _cret *C.GtkWidget // in
 
@@ -374,7 +369,6 @@ func NewView() *View {
 // The function returns the following values:
 //
 //   - view: new SourceView.
-//
 func NewViewWithBuffer(buffer *Buffer) *View {
 	var _arg1 *C.GtkSourceBuffer // out
 	var _cret *C.GtkWidget       // in
@@ -396,7 +390,6 @@ func NewViewWithBuffer(buffer *Buffer) *View {
 // The function returns the following values:
 //
 //   - ok: TRUE if auto indentation is enabled.
-//
 func (view *View) AutoIndent() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -421,7 +414,6 @@ func (view *View) AutoIndent() bool {
 // The function returns the following values:
 //
 //   - backgroundPatternType: SourceBackgroundPatternType.
-//
 func (view *View) BackgroundPattern() BackgroundPatternType {
 	var _arg0 *C.GtkSourceView                 // out
 	var _cret C.GtkSourceBackgroundPatternType // in
@@ -445,7 +437,6 @@ func (view *View) BackgroundPattern() BackgroundPatternType {
 // The function returns the following values:
 //
 //   - completion associated with view.
-//
 func (view *View) Completion() *Completion {
 	var _arg0 *C.GtkSourceView       // out
 	var _cret *C.GtkSourceCompletion // in
@@ -470,7 +461,6 @@ func (view *View) Completion() *Completion {
 // The function returns the following values:
 //
 //   - drawSpacesFlags 0 if no spaces should be drawn.
-//
 func (view *View) DrawSpaces() DrawSpacesFlags {
 	var _arg0 *C.GtkSourceView           // out
 	var _cret C.GtkSourceDrawSpacesFlags // in
@@ -499,7 +489,6 @@ func (view *View) DrawSpaces() DrawSpacesFlags {
 // The function returns the following values:
 //
 //   - gutter: SourceGutter.
-//
 func (view *View) Gutter(windowType gtk.TextWindowType) *Gutter {
 	var _arg0 *C.GtkSourceView    // out
 	var _arg1 C.GtkTextWindowType // out
@@ -524,7 +513,6 @@ func (view *View) Gutter(windowType gtk.TextWindowType) *Gutter {
 // The function returns the following values:
 //
 //   - ok: TRUE if the current line is highlighted.
-//
 func (view *View) HighlightCurrentLine() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -549,7 +537,6 @@ func (view *View) HighlightCurrentLine() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if the selection is indented when tab is pressed.
-//
 func (view *View) IndentOnTab() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -574,7 +561,6 @@ func (view *View) IndentOnTab() bool {
 // The function returns the following values:
 //
 //   - gint: indent width.
-//
 func (view *View) IndentWidth() int {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gint           // in
@@ -597,7 +583,6 @@ func (view *View) IndentWidth() int {
 // The function returns the following values:
 //
 //   - ok: TRUE if spaces are inserted instead of tabs.
-//
 func (view *View) InsertSpacesInsteadOfTabs() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -627,7 +612,6 @@ func (view *View) InsertSpacesInsteadOfTabs() bool {
 //
 //   - markAttributes for the category. The object belongs to view, so it must
 //     not be unreffed.
-//
 func (view *View) MarkAttributes(category string, priority *int) *MarkAttributes {
 	var _arg0 *C.GtkSourceView           // out
 	var _arg1 *C.gchar                   // out
@@ -656,7 +640,6 @@ func (view *View) MarkAttributes(category string, priority *int) *MarkAttributes
 // The function returns the following values:
 //
 //   - guint: position of the right margin.
-//
 func (view *View) RightMarginPosition() uint {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.guint          // in
@@ -678,7 +661,6 @@ func (view *View) RightMarginPosition() uint {
 // The function returns the following values:
 //
 //   - ok: TRUE if the line marks are displayed.
-//
 func (view *View) ShowLineMarks() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -702,7 +684,6 @@ func (view *View) ShowLineMarks() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if the line numbers are displayed.
-//
 func (view *View) ShowLineNumbers() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -726,7 +707,6 @@ func (view *View) ShowLineNumbers() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if the right margin is shown.
-//
 func (view *View) ShowRightMargin() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -751,7 +731,6 @@ func (view *View) ShowRightMargin() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if smart Backspace handling is enabled.
-//
 func (view *View) SmartBackspace() bool {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.gboolean       // in
@@ -776,7 +755,6 @@ func (view *View) SmartBackspace() bool {
 // The function returns the following values:
 //
 //   - smartHomeEndType: SourceSmartHomeEndType value.
-//
 func (view *View) SmartHomeEnd() SmartHomeEndType {
 	var _arg0 *C.GtkSourceView            // out
 	var _cret C.GtkSourceSmartHomeEndType // in
@@ -800,7 +778,6 @@ func (view *View) SmartHomeEnd() SmartHomeEndType {
 // The function returns the following values:
 //
 //   - spaceDrawer associated with view.
-//
 func (view *View) SpaceDrawer() *SpaceDrawer {
 	var _arg0 *C.GtkSourceView        // out
 	var _cret *C.GtkSourceSpaceDrawer // in
@@ -822,7 +799,6 @@ func (view *View) SpaceDrawer() *SpaceDrawer {
 // The function returns the following values:
 //
 //   - guint: width of tab.
-//
 func (view *View) TabWidth() uint {
 	var _arg0 *C.GtkSourceView // out
 	var _cret C.guint          // in
@@ -849,7 +825,6 @@ func (view *View) TabWidth() uint {
 // The function returns the following values:
 //
 //   - guint: visual column at iter.
-//
 func (view *View) VisualColumn(iter *gtk.TextIter) uint {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 *C.GtkTextIter   // out
@@ -876,7 +851,6 @@ func (view *View) VisualColumn(iter *gtk.TextIter) uint {
 //
 //   - start of the first line to indent.
 //   - end of the last line to indent.
-//
 func (view *View) IndentLines(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 *C.GtkTextIter   // out
@@ -902,7 +876,6 @@ func (view *View) IndentLines(start, end *gtk.TextIter) {
 // The function takes the following parameters:
 //
 //   - enable: whether to enable auto indentation.
-//
 func (view *View) SetAutoIndent(enable bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -923,7 +896,6 @@ func (view *View) SetAutoIndent(enable bool) {
 // The function takes the following parameters:
 //
 //   - backgroundPattern: SourceBackgroundPatternType.
-//
 func (view *View) SetBackgroundPattern(backgroundPattern BackgroundPatternType) {
 	var _arg0 *C.GtkSourceView                 // out
 	var _arg1 C.GtkSourceBackgroundPatternType // out
@@ -947,7 +919,6 @@ func (view *View) SetBackgroundPattern(backgroundPattern BackgroundPatternType) 
 // The function takes the following parameters:
 //
 //   - flags specifing how white spaces should be displayed.
-//
 func (view *View) SetDrawSpaces(flags DrawSpacesFlags) {
 	var _arg0 *C.GtkSourceView           // out
 	var _arg1 C.GtkSourceDrawSpacesFlags // out
@@ -966,7 +937,6 @@ func (view *View) SetDrawSpaces(flags DrawSpacesFlags) {
 // The function takes the following parameters:
 //
 //   - highlight: whether to highlight the current line.
-//
 func (view *View) SetHighlightCurrentLine(highlight bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -994,7 +964,6 @@ func (view *View) SetHighlightCurrentLine(highlight bool) {
 // The function takes the following parameters:
 //
 //   - enable: whether to indent a block when tab is pressed.
-//
 func (view *View) SetIndentOnTab(enable bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1031,7 +1000,6 @@ func (view *View) SetIndentOnTab(enable bool) {
 // The function takes the following parameters:
 //
 //   - width: indent width in characters.
-//
 func (view *View) SetIndentWidth(width int) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gint           // out
@@ -1051,7 +1019,6 @@ func (view *View) SetIndentWidth(width int) {
 // The function takes the following parameters:
 //
 //   - enable: whether to insert spaces instead of tabs.
-//
 func (view *View) SetInsertSpacesInsteadOfTabs(enable bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1073,7 +1040,6 @@ func (view *View) SetInsertSpacesInsteadOfTabs(enable bool) {
 //   - category: category.
 //   - attributes: mark attributes.
 //   - priority of the category.
-//
 func (view *View) SetMarkAttributes(category string, attributes *MarkAttributes, priority int) {
 	var _arg0 *C.GtkSourceView           // out
 	var _arg1 *C.gchar                   // out
@@ -1099,7 +1065,6 @@ func (view *View) SetMarkAttributes(category string, attributes *MarkAttributes,
 // The function takes the following parameters:
 //
 //   - pos: width in characters where to position the right margin.
-//
 func (view *View) SetRightMarginPosition(pos uint) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.guint          // out
@@ -1117,7 +1082,6 @@ func (view *View) SetRightMarginPosition(pos uint) {
 // The function takes the following parameters:
 //
 //   - show: whether line marks should be displayed.
-//
 func (view *View) SetShowLineMarks(show bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1137,7 +1101,6 @@ func (view *View) SetShowLineMarks(show bool) {
 // The function takes the following parameters:
 //
 //   - show: whether line numbers should be displayed.
-//
 func (view *View) SetShowLineNumbers(show bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1157,7 +1120,6 @@ func (view *View) SetShowLineNumbers(show bool) {
 // The function takes the following parameters:
 //
 //   - show: whether to show a right margin.
-//
 func (view *View) SetShowRightMargin(show bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1178,7 +1140,6 @@ func (view *View) SetShowRightMargin(show bool) {
 // The function takes the following parameters:
 //
 //   - smartBackspace: whether to enable smart Backspace handling.
-//
 func (view *View) SetSmartBackspace(smartBackspace bool) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.gboolean       // out
@@ -1199,7 +1160,6 @@ func (view *View) SetSmartBackspace(smartBackspace bool) {
 // The function takes the following parameters:
 //
 //   - smartHomeEnd: desired behavior among SourceSmartHomeEndType.
-//
 func (view *View) SetSmartHomeEnd(smartHomeEnd SmartHomeEndType) {
 	var _arg0 *C.GtkSourceView            // out
 	var _arg1 C.GtkSourceSmartHomeEndType // out
@@ -1219,7 +1179,6 @@ func (view *View) SetSmartHomeEnd(smartHomeEnd SmartHomeEndType) {
 // The function takes the following parameters:
 //
 //   - width of tab in characters.
-//
 func (view *View) SetTabWidth(width uint) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 C.guint          // out
@@ -1239,7 +1198,6 @@ func (view *View) SetTabWidth(width uint) {
 //
 //   - start of the first line to indent.
 //   - end of the last line to indent.
-//
 func (view *View) UnindentLines(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceView // out
 	var _arg1 *C.GtkTextIter   // out
@@ -1259,7 +1217,6 @@ func (view *View) UnindentLines(start, end *gtk.TextIter) {
 //
 //   - iter
 //   - event
-//
 func (view *View) lineMarkActivated(iter *gtk.TextIter, event *gdk.Event) {
 	gclass := (*C.GtkSourceViewClass)(coreglib.PeekParentClass(view))
 	fnarg := gclass.line_mark_activated
@@ -1282,7 +1239,6 @@ func (view *View) lineMarkActivated(iter *gtk.TextIter, event *gdk.Event) {
 //
 //   - copy
 //   - step
-//
 func (view *View) moveLines(copy bool, step int) {
 	gclass := (*C.GtkSourceViewClass)(coreglib.PeekParentClass(view))
 	fnarg := gclass.move_lines
@@ -1303,8 +1259,6 @@ func (view *View) moveLines(copy bool, step int) {
 	runtime.KeepAlive(step)
 }
 
-// The function takes the following parameters:
-//
 func (view *View) moveWords(step int) {
 	gclass := (*C.GtkSourceViewClass)(coreglib.PeekParentClass(view))
 	fnarg := gclass.move_words

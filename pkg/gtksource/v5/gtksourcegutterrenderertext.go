@@ -94,7 +94,6 @@ func marshalGutterRendererText(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - gutterRendererText: SourceGutterRenderer.
-//
 func NewGutterRendererText() *GutterRendererText {
 	var _cret *C.GtkSourceGutterRenderer // in
 
@@ -120,7 +119,6 @@ func NewGutterRendererText() *GutterRendererText {
 //     or NULL.
 //   - height (optional): location to store the height of the text in pixels,
 //     or NULL.
-//
 func (renderer *GutterRendererText) Measure(text string) (width, height int) {
 	var _arg0 *C.GtkSourceGutterRendererText // out
 	var _arg1 *C.gchar                       // out
@@ -157,7 +155,6 @@ func (renderer *GutterRendererText) Measure(text string) (width, height int) {
 //     or NULL.
 //   - height (optional): location to store the height of the text in pixels,
 //     or NULL.
-//
 func (renderer *GutterRendererText) MeasureMarkup(markup string) (width, height int) {
 	var _arg0 *C.GtkSourceGutterRendererText // out
 	var _arg1 *C.gchar                       // out
@@ -181,46 +178,36 @@ func (renderer *GutterRendererText) MeasureMarkup(markup string) (width, height 
 	return _width, _height
 }
 
-// The function takes the following parameters:
-//
-//   - markup
-//   - length
-//
-func (renderer *GutterRendererText) SetMarkup(markup string, length int) {
+func (renderer *GutterRendererText) SetMarkup(markup string) {
 	var _arg0 *C.GtkSourceGutterRendererText // out
 	var _arg1 *C.gchar                       // out
-	var _arg2 C.gint                         // out
+	var _arg2 C.gint
 
 	_arg0 = (*C.GtkSourceGutterRendererText)(unsafe.Pointer(coreglib.InternObject(renderer).Native()))
-	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(markup)))
+	_arg2 = (C.gint)(len(markup))
+	_arg1 = (*C.gchar)(C.calloc(C.size_t((len(markup) + 1)), C.size_t(C.sizeof_gchar)))
+	copy(unsafe.Slice((*byte)(unsafe.Pointer(_arg1)), len(markup)), markup)
 	defer C.free(unsafe.Pointer(_arg1))
-	_arg2 = C.gint(length)
 
 	C.gtk_source_gutter_renderer_text_set_markup(_arg0, _arg1, _arg2)
 	runtime.KeepAlive(renderer)
 	runtime.KeepAlive(markup)
-	runtime.KeepAlive(length)
 }
 
-// The function takes the following parameters:
-//
-//   - text
-//   - length
-//
-func (renderer *GutterRendererText) SetText(text string, length int) {
+func (renderer *GutterRendererText) SetText(text string) {
 	var _arg0 *C.GtkSourceGutterRendererText // out
 	var _arg1 *C.gchar                       // out
-	var _arg2 C.gint                         // out
+	var _arg2 C.gint
 
 	_arg0 = (*C.GtkSourceGutterRendererText)(unsafe.Pointer(coreglib.InternObject(renderer).Native()))
-	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(text)))
+	_arg2 = (C.gint)(len(text))
+	_arg1 = (*C.gchar)(C.calloc(C.size_t((len(text) + 1)), C.size_t(C.sizeof_gchar)))
+	copy(unsafe.Slice((*byte)(unsafe.Pointer(_arg1)), len(text)), text)
 	defer C.free(unsafe.Pointer(_arg1))
-	_arg2 = C.gint(length)
 
 	C.gtk_source_gutter_renderer_text_set_text(_arg0, _arg1, _arg2)
 	runtime.KeepAlive(renderer)
 	runtime.KeepAlive(text)
-	runtime.KeepAlive(length)
 }
 
 // GutterRendererTextClass: instance of this type is always passed by reference.

@@ -101,9 +101,6 @@ func (self *CompletionContext) ConnectProviderModelChanged(f func(provider Compl
 }
 
 // Activation gets the mode for which the context was activated.
-//
-// The function returns the following values:
-//
 func (self *CompletionContext) Activation() CompletionActivation {
 	var _arg0 *C.GtkSourceCompletionContext   // out
 	var _cret C.GtkSourceCompletionActivation // in
@@ -135,7 +132,6 @@ func (self *CompletionContext) Activation() CompletionActivation {
 //   - begin (optional): TextIter.
 //   - end (optional): TextIter.
 //   - ok: TRUE if the marks are still valid and begin or end was set.
-//
 func (self *CompletionContext) Bounds() (begin, end *gtk.TextIter, ok bool) {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _arg1 C.GtkTextIter                 // in
@@ -168,7 +164,6 @@ func (self *CompletionContext) Bounds() (begin, end *gtk.TextIter, ok bool) {
 // The function returns the following values:
 //
 //   - buffer (optional) or NULL.
-//
 func (self *CompletionContext) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.GtkSourceBuffer            // in
@@ -194,7 +189,6 @@ func (self *CompletionContext) Buffer() *Buffer {
 // The function returns the following values:
 //
 //   - ok: TRUE if the context is busy.
-//
 func (self *CompletionContext) Busy() bool {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret C.gboolean                    // in
@@ -218,7 +212,6 @@ func (self *CompletionContext) Busy() bool {
 // The function returns the following values:
 //
 //   - completion (optional) or NULL.
-//
 func (self *CompletionContext) Completion() *Completion {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.GtkSourceCompletion        // in
@@ -244,7 +237,6 @@ func (self *CompletionContext) Completion() *Completion {
 // The function returns the following values:
 //
 //   - ok: TRUE if there are no proposals in the context.
-//
 func (self *CompletionContext) Empty() bool {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret C.gboolean                    // in
@@ -268,7 +260,6 @@ func (self *CompletionContext) Empty() bool {
 // The function returns the following values:
 //
 //   - language (optional) or NULL.
-//
 func (self *CompletionContext) Language() *Language {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.GtkSourceLanguage          // in
@@ -299,7 +290,6 @@ func (self *CompletionContext) Language() *Language {
 // The function returns the following values:
 //
 //   - listModel (optional) or NULL.
-//
 func (self *CompletionContext) ProposalsForProvider(provider CompletionProviderer) *gio.ListModel {
 	var _arg0 *C.GtkSourceCompletionContext  // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -331,7 +321,6 @@ func (self *CompletionContext) ProposalsForProvider(provider CompletionProvidere
 // The function returns the following values:
 //
 //   - view (optional) or NULL.
-//
 func (self *CompletionContext) View() *View {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.GtkSourceView              // in
@@ -356,7 +345,6 @@ func (self *CompletionContext) View() *View {
 // The function returns the following values:
 //
 //   - utf8: string containing the current word.
-//
 func (self *CompletionContext) Word() string {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.char                       // in
@@ -379,7 +367,6 @@ func (self *CompletionContext) Word() string {
 // The function returns the following values:
 //
 //   - listModel of SourceCompletionProvider.
-//
 func (self *CompletionContext) ListProviders() *gio.ListModel {
 	var _arg0 *C.GtkSourceCompletionContext // out
 	var _cret *C.GListModel                 // in
@@ -412,7 +399,6 @@ func (self *CompletionContext) ListProviders() *gio.ListModel {
 //
 //   - provider: SourceCompletionProvider.
 //   - results (optional) or NULL.
-//
 func (self *CompletionContext) SetProposalsForProvider(provider CompletionProviderer, results gio.ListModeller) {
 	var _arg0 *C.GtkSourceCompletionContext  // out
 	var _arg1 *C.GtkSourceCompletionProvider // out

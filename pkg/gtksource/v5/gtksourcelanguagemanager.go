@@ -86,7 +86,6 @@ func marshalLanguageManager(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - languageManager: new SourceLanguageManager.
-//
 func NewLanguageManager() *LanguageManager {
 	var _cret *C.GtkSourceLanguageManager // in
 
@@ -107,7 +106,6 @@ func NewLanguageManager() *LanguageManager {
 // The function takes the following parameters:
 //
 //   - path: directory or a filename.
-//
 func (lm *LanguageManager) AppendSearchPath(path string) {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _arg1 *C.gchar                    // out
@@ -132,7 +130,6 @@ func (lm *LanguageManager) AppendSearchPath(path string) {
 //
 //   - language (optional) or NULL if there is no language identified by the
 //     given id. Return value is owned by lm and should not be freed.
-//
 func (lm *LanguageManager) Language(id string) *Language {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _arg1 *C.gchar                    // out
@@ -163,7 +160,6 @@ func (lm *LanguageManager) Language(id string) *Language {
 //     ids of the available languages or NULL if no language is available.
 //     The array is sorted alphabetically according to the language name.
 //     The array is owned by lm and must not be modified.
-//
 func (lm *LanguageManager) LanguageIDs() []string {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _cret **C.gchar                   // in
@@ -200,7 +196,6 @@ func (lm *LanguageManager) LanguageIDs() []string {
 //
 //   - utf8s: NULL-terminated array containing a list of language files
 //     directories. The array is owned by lm and must not be modified.
-//
 func (lm *LanguageManager) SearchPath() []string {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _cret **C.gchar                   // in
@@ -235,31 +230,31 @@ func (lm *LanguageManager) SearchPath() []string {
 // Either filename or content_type may be NULL. This function can be used as
 // follows:
 //
-//    GtkSourceLanguage *lang;
-//    GtkSourceLanguageManager *manager;
-//    lm = gtk_source_language_manager_get_default ();
-//    lang = gtk_source_language_manager_guess_language (manager, filename, NULL);
-//    gtk_source_buffer_set_language (buffer, lang);
+//	GtkSourceLanguage *lang;
+//	GtkSourceLanguageManager *manager;
+//	lm = gtk_source_language_manager_get_default ();
+//	lang = gtk_source_language_manager_guess_language (manager, filename, NULL);
+//	gtk_source_buffer_set_language (buffer, lang);
 //
 // or
 //
-//    GtkSourceLanguage *lang = NULL;
-//    GtkSourceLanguageManager *manager;
-//    gboolean result_uncertain;
-//    gchar *content_type;
+//	GtkSourceLanguage *lang = NULL;
+//	GtkSourceLanguageManager *manager;
+//	gboolean result_uncertain;
+//	gchar *content_type;
 //
-//    content_type = g_content_type_guess (filename, NULL, 0, &result_uncertain);
-//    if (result_uncertain)
-//      {
-//        g_free (content_type);
-//        content_type = NULL;
-//      }
+//	content_type = g_content_type_guess (filename, NULL, 0, &result_uncertain);
+//	if (result_uncertain)
+//	  {
+//	    g_free (content_type);
+//	    content_type = NULL;
+//	  }
 //
-//    manager = gtk_source_language_manager_get_default ();
-//    lang = gtk_source_language_manager_guess_language (manager, filename, content_type);
-//    gtk_source_buffer_set_language (buffer, lang);
+//	manager = gtk_source_language_manager_get_default ();
+//	lang = gtk_source_language_manager_guess_language (manager, filename, content_type);
+//	gtk_source_buffer_set_language (buffer, lang);
 //
-//    g_free (content_type);
+//	g_free (content_type);
 //
 // etc. Use language.GetMIMETypes and language.GetGlobs if you need full control
 // over file -> language mapping.
@@ -274,7 +269,6 @@ func (lm *LanguageManager) SearchPath() []string {
 //   - language (optional) or NULL if there is no suitable language for given
 //     filename and/or content_type. Return value is owned by lm and should not
 //     be freed.
-//
 func (lm *LanguageManager) GuessLanguage(filename, contentType string) *Language {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _arg1 *C.gchar                    // out
@@ -313,7 +307,6 @@ func (lm *LanguageManager) GuessLanguage(filename, contentType string) *Language
 // The function takes the following parameters:
 //
 //   - path: directory or a filename.
-//
 func (lm *LanguageManager) PrependSearchPath(path string) {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _arg1 *C.gchar                    // out
@@ -344,7 +337,6 @@ func (lm *LanguageManager) PrependSearchPath(path string) {
 // The function takes the following parameters:
 //
 //   - dirs (optional): NULL-terminated array of strings or NULL.
-//
 func (lm *LanguageManager) SetSearchPath(dirs []string) {
 	var _arg0 *C.GtkSourceLanguageManager // out
 	var _arg1 **C.gchar                   // out
@@ -375,7 +367,6 @@ func (lm *LanguageManager) SetSearchPath(dirs []string) {
 //
 //   - languageManager value is owned by GtkSourceView library and must not be
 //     unref'ed.
-//
 func LanguageManagerGetDefault() *LanguageManager {
 	var _cret *C.GtkSourceLanguageManager // in
 

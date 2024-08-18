@@ -34,7 +34,6 @@ import "C"
 // The function returns the following values:
 //
 //   - utf8: escaped text.
-//
 func UtilsEscapeSearchText(text string) string {
 	var _arg1 *C.gchar // out
 	var _cret *C.gchar // in
@@ -70,7 +69,6 @@ func UtilsEscapeSearchText(text string) string {
 // The function returns the following values:
 //
 //   - utf8: unescaped text.
-//
 func UtilsUnescapeSearchText(text string) string {
 	var _arg1 *C.gchar // out
 	var _cret *C.gchar // in

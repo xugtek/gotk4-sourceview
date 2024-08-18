@@ -80,7 +80,6 @@ func marshalGutterRendererPixbuf(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - gutterRendererPixbuf: SourceGutterRenderer.
-//
 func NewGutterRendererPixbuf() *GutterRendererPixbuf {
 	var _cret *C.GtkSourceGutterRenderer // in
 
@@ -98,7 +97,6 @@ func NewGutterRendererPixbuf() *GutterRendererPixbuf {
 // The function returns the following values:
 //
 //   - icon: #GIcon.
-//
 func (renderer *GutterRendererPixbuf) GIcon() *gio.Icon {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _cret *C.GIcon                         // in
@@ -120,8 +118,6 @@ func (renderer *GutterRendererPixbuf) GIcon() *gio.Icon {
 	return _icon
 }
 
-// The function returns the following values:
-//
 func (renderer *GutterRendererPixbuf) IconName() string {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _cret *C.gchar                         // in
@@ -143,7 +139,6 @@ func (renderer *GutterRendererPixbuf) IconName() string {
 // The function returns the following values:
 //
 //   - pixbuf: Pixbuf.
-//
 func (renderer *GutterRendererPixbuf) Pixbuf() *gdkpixbuf.Pixbuf {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _cret *C.GdkPixbuf                     // in
@@ -173,7 +168,6 @@ func (renderer *GutterRendererPixbuf) Pixbuf() *gdkpixbuf.Pixbuf {
 // The function takes the following parameters:
 //
 //   - icon (optional): icon, or NULL.
-//
 func (renderer *GutterRendererPixbuf) SetGIcon(icon gio.Iconner) {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _arg1 *C.GIcon                         // out
@@ -191,7 +185,6 @@ func (renderer *GutterRendererPixbuf) SetGIcon(icon gio.Iconner) {
 // The function takes the following parameters:
 //
 //   - iconName (optional): icon name, or NULL.
-//
 func (renderer *GutterRendererPixbuf) SetIconName(iconName string) {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _arg1 *C.gchar                         // out
@@ -210,7 +203,6 @@ func (renderer *GutterRendererPixbuf) SetIconName(iconName string) {
 // The function takes the following parameters:
 //
 //   - pixbuf (optional): pixbuf, or NULL.
-//
 func (renderer *GutterRendererPixbuf) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	var _arg0 *C.GtkSourceGutterRendererPixbuf // out
 	var _arg1 *C.GdkPixbuf                     // out

@@ -92,7 +92,6 @@ func (attributes *MarkAttributes) ConnectQueryTooltipText(f func(mark *Mark) (ut
 // The function returns the following values:
 //
 //   - markAttributes: new source mark attributes.
-//
 func NewMarkAttributes() *MarkAttributes {
 	var _cret *C.GtkSourceMarkAttributes // in
 
@@ -111,7 +110,6 @@ func NewMarkAttributes() *MarkAttributes {
 //
 //   - background: RGBA.
 //   - ok: whether background color for attributes was set.
-//
 func (attributes *MarkAttributes) Background() (*gdk.RGBA, bool) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 C.GdkRGBA                  // in
@@ -139,7 +137,6 @@ func (attributes *MarkAttributes) Background() (*gdk.RGBA, bool) {
 // The function returns the following values:
 //
 //   - icon: icon. The icon belongs to attributes and should not be unreffed.
-//
 func (attributes *MarkAttributes) GIcon() *gio.Icon {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _cret *C.GIcon                   // in
@@ -168,7 +165,6 @@ func (attributes *MarkAttributes) GIcon() *gio.Icon {
 //
 //   - utf8: icon name. The string belongs to attributes and should not be
 //     freed.
-//
 func (attributes *MarkAttributes) IconName() string {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _cret *C.gchar                   // in
@@ -192,7 +188,6 @@ func (attributes *MarkAttributes) IconName() string {
 //
 //   - pixbuf: pixbuf. The pixbuf belongs to attributes and should not be
 //     unreffed.
-//
 func (attributes *MarkAttributes) Pixbuf() *gdkpixbuf.Pixbuf {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _cret *C.GdkPixbuf               // in
@@ -228,7 +223,6 @@ func (attributes *MarkAttributes) Pixbuf() *gdkpixbuf.Pixbuf {
 //
 //   - utf8: stock id. Returned string is owned by attributes and shouldn't be
 //     freed.
-//
 func (attributes *MarkAttributes) StockID() string {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _cret *C.gchar                   // in
@@ -257,7 +251,6 @@ func (attributes *MarkAttributes) StockID() string {
 //
 //   - utf8: tooltip. The returned string should be freed by using g_free() when
 //     done with it.
-//
 func (attributes *MarkAttributes) TooltipMarkup(mark *Mark) string {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GtkSourceMark           // out
@@ -289,7 +282,6 @@ func (attributes *MarkAttributes) TooltipMarkup(mark *Mark) string {
 //
 //   - utf8: tooltip. The returned string should be freed by using g_free() when
 //     done with it.
-//
 func (attributes *MarkAttributes) TooltipText(mark *Mark) string {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GtkSourceMark           // out
@@ -325,7 +317,6 @@ func (attributes *MarkAttributes) TooltipText(mark *Mark) string {
 //
 //   - pixbuf: rendered pixbuf. The pixbuf belongs to attributes and should not
 //     be unreffed.
-//
 func (attributes *MarkAttributes) RenderIcon(widget gtk.Widgetter, size int) *gdkpixbuf.Pixbuf {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GtkWidget               // out
@@ -363,7 +354,6 @@ func (attributes *MarkAttributes) RenderIcon(widget gtk.Widgetter, size int) *gd
 // The function takes the following parameters:
 //
 //   - background: RGBA.
-//
 func (attributes *MarkAttributes) SetBackground(background *gdk.RGBA) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GdkRGBA                 // out
@@ -381,7 +371,6 @@ func (attributes *MarkAttributes) SetBackground(background *gdk.RGBA) {
 // The function takes the following parameters:
 //
 //   - gicon to be used.
-//
 func (attributes *MarkAttributes) SetGIcon(gicon gio.Iconner) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GIcon                   // out
@@ -399,7 +388,6 @@ func (attributes *MarkAttributes) SetGIcon(gicon gio.Iconner) {
 // The function takes the following parameters:
 //
 //   - iconName: name of an icon to be used.
-//
 func (attributes *MarkAttributes) SetIconName(iconName string) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.gchar                   // out
@@ -418,7 +406,6 @@ func (attributes *MarkAttributes) SetIconName(iconName string) {
 // The function takes the following parameters:
 //
 //   - pixbuf to be used.
-//
 func (attributes *MarkAttributes) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.GdkPixbuf               // out
@@ -438,7 +425,6 @@ func (attributes *MarkAttributes) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 // The function takes the following parameters:
 //
 //   - stockId: stock id.
-//
 func (attributes *MarkAttributes) SetStockID(stockId string) {
 	var _arg0 *C.GtkSourceMarkAttributes // out
 	var _arg1 *C.gchar                   // out

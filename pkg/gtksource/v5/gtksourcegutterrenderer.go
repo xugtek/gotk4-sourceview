@@ -16,7 +16,7 @@ import (
 // #include <stdlib.h>
 // #include <glib-object.h>
 // #include <gtksourceview/gtksource.h>
-// extern void _gotk4_gtksource5_GutterRenderer_ConnectQueryData(gpointer, GObject, guint, guintptr);
+// extern void _gotk4_gtksource5_GutterRenderer_ConnectQueryData(gpointer, GObject*, guint, guintptr);
 // extern void _gotk4_gtksource5_GutterRenderer_ConnectActivate(gpointer, GtkTextIter*, GdkRectangle*, guint, GdkModifierType, gint, guintptr);
 // extern void _gotk4_gtksource5_GutterRendererClass_snapshot_line(GtkSourceGutterRenderer*, GtkSnapshot*, GtkSourceGutterLines*, guint);
 // extern void _gotk4_gtksource5_GutterRendererClass_query_data(GtkSourceGutterRenderer*, GtkSourceGutterLines*, guint);
@@ -109,24 +109,19 @@ type GutterRendererOverrides struct {
 	//   - button that was pressed.
 	//   - state: ModifierType.
 	//   - nPresses: number of button presses.
-	//
 	Activate func(iter *gtk.TextIter, area *gdk.Rectangle, button uint, state gdk.ModifierType, nPresses int)
-	// The function takes the following parameters:
-	//
-	Begin func(lines *GutterLines)
+	Begin    func(lines *GutterLines)
 	// ChangeBuffer: this is called when the text buffer changes for renderer.
 	//
 	// The function takes the following parameters:
 	//
 	//   - oldBuffer (optional): old TextBuffer.
-	//
 	ChangeBuffer func(oldBuffer *Buffer)
 	// ChangeView: this is called when the text view changes for renderer.
 	//
 	// The function takes the following parameters:
 	//
 	//   - oldView (optional): old TextView.
-	//
 	ChangeView func(oldView *View)
 	End        func()
 	// QueryActivatable: get whether the renderer is activatable at the location
@@ -141,20 +136,17 @@ type GutterRendererOverrides struct {
 	// The function returns the following values:
 	//
 	//   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-	//
 	QueryActivatable func(iter *gtk.TextIter, area *gdk.Rectangle) bool
 	// The function takes the following parameters:
 	//
 	//   - lines
 	//   - line
-	//
 	QueryData func(lines *GutterLines, line uint)
 	// The function takes the following parameters:
 	//
 	//   - snapshot
 	//   - lines
 	//   - line
-	//
 	SnapshotLine func(snapshot *gtk.Snapshot, lines *GutterLines, line uint)
 }
 
@@ -330,7 +322,6 @@ func (renderer *GutterRenderer) ConnectQueryData(f func(object *coreglib.Object,
 //   - button that was pressed.
 //   - state: ModifierType.
 //   - nPresses: number of button presses.
-//
 func (renderer *GutterRenderer) Activate(iter *gtk.TextIter, area *gdk.Rectangle, button uint, state gdk.ModifierType, nPresses int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GtkTextIter             // out
@@ -374,7 +365,6 @@ func (renderer *GutterRenderer) Activate(iter *gtk.TextIter, area *gdk.Rectangle
 //
 //   - x: x position to render the content.
 //   - y: y position to render the content.
-//
 func (renderer *GutterRenderer) AlignCell(line uint, width, height float32) (x, y float32) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.guint                    // out
@@ -411,7 +401,6 @@ func (renderer *GutterRenderer) AlignCell(line uint, width, height float32) (x, 
 // The function returns the following values:
 //
 //   - gutterRendererAlignmentMode: SourceGutterRendererAlignmentMode.
-//
 func (renderer *GutterRenderer) AlignmentMode() GutterRendererAlignmentMode {
 	var _arg0 *C.GtkSourceGutterRenderer             // out
 	var _cret C.GtkSourceGutterRendererAlignmentMode // in
@@ -433,7 +422,6 @@ func (renderer *GutterRenderer) AlignmentMode() GutterRendererAlignmentMode {
 // The function returns the following values:
 //
 //   - buffer (optional) or NULL.
-//
 func (renderer *GutterRenderer) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret *C.GtkSourceBuffer         // in
@@ -457,7 +445,6 @@ func (renderer *GutterRenderer) Buffer() *Buffer {
 // The function returns the following values:
 //
 //   - view: SourceView.
-//
 func (renderer *GutterRenderer) View() *View {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret *C.GtkSourceView           // in
@@ -478,9 +465,6 @@ func (renderer *GutterRenderer) View() *View {
 //
 // This may be used to adjust where within the cell rectangle the renderer will
 // draw.
-//
-// The function returns the following values:
-//
 func (renderer *GutterRenderer) XAlign() float32 {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gfloat                   // in
@@ -501,9 +485,6 @@ func (renderer *GutterRenderer) XAlign() float32 {
 //
 // This may be used to adjust the cell rectangle that the renderer will use to
 // draw.
-//
-// The function returns the following values:
-//
 func (renderer *GutterRenderer) Xpad() int {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gint                     // in
@@ -524,9 +505,6 @@ func (renderer *GutterRenderer) Xpad() int {
 //
 // This may be used to adjust where within the cell rectangle the renderer will
 // draw.
-//
-// The function returns the following values:
-//
 func (renderer *GutterRenderer) YAlign() float32 {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gfloat                   // in
@@ -547,9 +525,6 @@ func (renderer *GutterRenderer) YAlign() float32 {
 //
 // This may be used to adjust the cell rectangle that the renderer will use to
 // draw.
-//
-// The function returns the following values:
-//
 func (renderer *GutterRenderer) Ypad() int {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gint                     // in
@@ -578,7 +553,6 @@ func (renderer *GutterRenderer) Ypad() int {
 // The function returns the following values:
 //
 //   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-//
 func (renderer *GutterRenderer) QueryActivatable(iter *gtk.TextIter, area *gdk.Rectangle) bool {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GtkTextIter             // out
@@ -610,7 +584,6 @@ func (renderer *GutterRenderer) QueryActivatable(iter *gtk.TextIter, area *gdk.R
 // The function takes the following parameters:
 //
 //   - mode: SourceGutterRendererAlignmentMode.
-//
 func (renderer *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMode) {
 	var _arg0 *C.GtkSourceGutterRenderer             // out
 	var _arg1 C.GtkSourceGutterRendererAlignmentMode // out
@@ -631,7 +604,6 @@ func (renderer *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMod
 // The function takes the following parameters:
 //
 //   - xalign: y padding for the drawing cell.
-//
 func (renderer *GutterRenderer) SetXAlign(xalign float32) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gfloat                   // out
@@ -652,7 +624,6 @@ func (renderer *GutterRenderer) SetXAlign(xalign float32) {
 // The function takes the following parameters:
 //
 //   - xpad: y padding for the drawing cell.
-//
 func (renderer *GutterRenderer) SetXpad(xpad int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gint                     // out
@@ -673,7 +644,6 @@ func (renderer *GutterRenderer) SetXpad(xpad int) {
 // The function takes the following parameters:
 //
 //   - yalign: y padding for the drawing cell.
-//
 func (renderer *GutterRenderer) SetYAlign(yalign float32) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gfloat                   // out
@@ -694,7 +664,6 @@ func (renderer *GutterRenderer) SetYAlign(yalign float32) {
 // The function takes the following parameters:
 //
 //   - ypad: y padding for the drawing cell.
-//
 func (renderer *GutterRenderer) SetYpad(ypad int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gint                     // out
@@ -717,7 +686,6 @@ func (renderer *GutterRenderer) SetYpad(ypad int) {
 //   - button that was pressed.
 //   - state: ModifierType.
 //   - nPresses: number of button presses.
-//
 func (renderer *GutterRenderer) activate(iter *gtk.TextIter, area *gdk.Rectangle, button uint, state gdk.ModifierType, nPresses int) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.activate
@@ -745,8 +713,6 @@ func (renderer *GutterRenderer) activate(iter *gtk.TextIter, area *gdk.Rectangle
 	runtime.KeepAlive(nPresses)
 }
 
-// The function takes the following parameters:
-//
 func (renderer *GutterRenderer) begin(lines *GutterLines) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.begin
@@ -767,7 +733,6 @@ func (renderer *GutterRenderer) begin(lines *GutterLines) {
 // The function takes the following parameters:
 //
 //   - oldBuffer (optional): old TextBuffer.
-//
 func (renderer *GutterRenderer) changeBuffer(oldBuffer *Buffer) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.change_buffer
@@ -790,7 +755,6 @@ func (renderer *GutterRenderer) changeBuffer(oldBuffer *Buffer) {
 // The function takes the following parameters:
 //
 //   - oldView (optional): old TextView.
-//
 func (renderer *GutterRenderer) changeView(oldView *View) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.change_view
@@ -832,7 +796,6 @@ func (renderer *GutterRenderer) end() {
 // The function returns the following values:
 //
 //   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-//
 func (renderer *GutterRenderer) queryActivatable(iter *gtk.TextIter, area *gdk.Rectangle) bool {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.query_activatable
@@ -864,7 +827,6 @@ func (renderer *GutterRenderer) queryActivatable(iter *gtk.TextIter, area *gdk.R
 //
 //   - lines
 //   - line
-//
 func (renderer *GutterRenderer) queryData(lines *GutterLines, line uint) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.query_data
@@ -888,7 +850,6 @@ func (renderer *GutterRenderer) queryData(lines *GutterLines, line uint) {
 //   - snapshot
 //   - lines
 //   - line
-//
 func (renderer *GutterRenderer) snapshotLine(snapshot *gtk.Snapshot, lines *GutterLines, line uint) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.snapshot_line

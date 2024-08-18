@@ -89,7 +89,6 @@ func marshalMark(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - mark: new SourceMark that can be added using gtk_text_buffer_add_mark().
-//
 func NewMark(name, category string) *Mark {
 	var _arg1 *C.gchar         // out
 	var _arg2 *C.gchar         // out
@@ -116,7 +115,6 @@ func NewMark(name, category string) *Mark {
 // The function returns the following values:
 //
 //   - utf8: category of the SourceMark.
-//
 func (mark *Mark) Category() string {
 	var _arg0 *C.GtkSourceMark // out
 	var _cret *C.gchar         // in
@@ -145,7 +143,6 @@ func (mark *Mark) Category() string {
 // The function returns the following values:
 //
 //   - ret (optional): next SourceMark, or NULL.
-//
 func (mark *Mark) Next(category string) *Mark {
 	var _arg0 *C.GtkSourceMark // out
 	var _arg1 *C.gchar         // out
@@ -182,7 +179,6 @@ func (mark *Mark) Next(category string) *Mark {
 // The function returns the following values:
 //
 //   - ret (optional) previous SourceMark, or NULL.
-//
 func (mark *Mark) Prev(category string) *Mark {
 	var _arg0 *C.GtkSourceMark // out
 	var _arg1 *C.gchar         // out

@@ -98,7 +98,6 @@ func marshalStyleSchemeChooserWidget(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - styleSchemeChooserWidget: new SourceStyleSchemeChooserWidget.
-//
 func NewStyleSchemeChooserWidget() *StyleSchemeChooserWidget {
 	var _cret *C.GtkWidget // in
 

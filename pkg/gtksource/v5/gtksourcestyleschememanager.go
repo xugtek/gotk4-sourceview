@@ -78,7 +78,6 @@ func marshalStyleSchemeManager(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - styleSchemeManager: new SourceStyleSchemeManager.
-//
 func NewStyleSchemeManager() *StyleSchemeManager {
 	var _cret *C.GtkSourceStyleSchemeManager // in
 
@@ -99,7 +98,6 @@ func NewStyleSchemeManager() *StyleSchemeManager {
 // The function takes the following parameters:
 //
 //   - path: directory or a filename.
-//
 func (manager *StyleSchemeManager) AppendSearchPath(path string) {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _arg1 *C.gchar                       // out
@@ -137,7 +135,6 @@ func (manager *StyleSchemeManager) ForceRescan() {
 //
 //   - styleScheme (optional) object. The returned value is owned by manager and
 //     must not be unref'ed.
-//
 func (manager *StyleSchemeManager) Scheme(schemeId string) *StyleScheme {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _arg1 *C.gchar                       // out
@@ -168,7 +165,6 @@ func (manager *StyleSchemeManager) Scheme(schemeId string) *StyleScheme {
 //     of the available style schemes or NULL if no style scheme is available.
 //     The array is sorted alphabetically according to the scheme name.
 //     The array is owned by the manager and must not be modified.
-//
 func (manager *StyleSchemeManager) SchemeIDs() []string {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _cret **C.gchar                      // in
@@ -207,7 +203,6 @@ func (manager *StyleSchemeManager) SchemeIDs() []string {
 //
 //   - utf8s: NULL-terminated array of string containing the search path.
 //     The array is owned by the manager and must not be modified.
-//
 func (manager *StyleSchemeManager) SearchPath() []string {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _cret **C.gchar                      // in
@@ -244,7 +239,6 @@ func (manager *StyleSchemeManager) SearchPath() []string {
 // The function takes the following parameters:
 //
 //   - path: directory or a filename.
-//
 func (manager *StyleSchemeManager) PrependSearchPath(path string) {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _arg1 *C.gchar                       // out
@@ -266,7 +260,6 @@ func (manager *StyleSchemeManager) PrependSearchPath(path string) {
 // The function takes the following parameters:
 //
 //   - path (optional): NULL-terminated array of strings or NULL.
-//
 func (manager *StyleSchemeManager) SetSearchPath(path []string) {
 	var _arg0 *C.GtkSourceStyleSchemeManager // out
 	var _arg1 **C.gchar                      // out
@@ -298,7 +291,6 @@ func (manager *StyleSchemeManager) SetSearchPath(path []string) {
 //
 //   - styleSchemeManager Return value is owned by GtkSourceView library and
 //     must not be unref'ed.
-//
 func StyleSchemeManagerGetDefault() *StyleSchemeManager {
 	var _cret *C.GtkSourceStyleSchemeManager // in
 

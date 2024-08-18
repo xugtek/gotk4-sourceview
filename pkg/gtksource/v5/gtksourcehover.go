@@ -80,8 +80,6 @@ func marshalHover(p uintptr) (interface{}, error) {
 	return wrapHover(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// The function takes the following parameters:
-//
 func (self *Hover) AddProvider(provider HoverProviderer) {
 	var _arg0 *C.GtkSourceHover         // out
 	var _arg1 *C.GtkSourceHoverProvider // out
@@ -94,8 +92,6 @@ func (self *Hover) AddProvider(provider HoverProviderer) {
 	runtime.KeepAlive(provider)
 }
 
-// The function takes the following parameters:
-//
 func (self *Hover) RemoveProvider(provider HoverProviderer) {
 	var _arg0 *C.GtkSourceHover         // out
 	var _arg1 *C.GtkSourceHoverProvider // out

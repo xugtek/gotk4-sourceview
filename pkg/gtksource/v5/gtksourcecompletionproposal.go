@@ -79,7 +79,6 @@ func marshalCompletionProposal(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - utf8 (optional): newly allocated string, or NULL.
-//
 func (proposal *CompletionProposal) TypedText() string {
 	var _arg0 *C.GtkSourceCompletionProposal // out
 	var _cret *C.char                        // in
@@ -108,7 +107,6 @@ func (proposal *CompletionProposal) TypedText() string {
 // The function returns the following values:
 //
 //   - utf8 (optional): newly allocated string, or NULL.
-//
 func (proposal *CompletionProposal) typedText() string {
 	gclass := (*C.GtkSourceCompletionProposalInterface)(coreglib.PeekParentClass(proposal))
 	fnarg := gclass.get_typed_text

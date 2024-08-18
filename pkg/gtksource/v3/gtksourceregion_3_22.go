@@ -36,7 +36,6 @@ type regionIter struct {
 //   - end (optional): iterator to initialize with the subregion end, or NULL.
 //   - ok: TRUE if start and end have been set successfully (if non-NULL),
 //     or FALSE if iter is the end iterator or if the region is empty.
-//
 func (iter *RegionIter) Subregion() (start *gtk.TextIter, end *gtk.TextIter, ok bool) {
 	var _arg0 *C.GtkSourceRegionIter // out
 	var _arg1 C.GtkTextIter          // in
@@ -64,7 +63,6 @@ func (iter *RegionIter) Subregion() (start *gtk.TextIter, end *gtk.TextIter, ok 
 // The function returns the following values:
 //
 //   - ok: whether iter is the end iterator.
-//
 func (iter *RegionIter) IsEnd() bool {
 	var _arg0 *C.GtkSourceRegionIter // out
 	var _cret C.gboolean             // in
@@ -89,7 +87,6 @@ func (iter *RegionIter) IsEnd() bool {
 //
 //   - ok: TRUE if iter moved and is dereferenceable, or FALSE if iter has been
 //     set to the end iterator.
-//
 func (iter *RegionIter) Next() bool {
 	var _arg0 *C.GtkSourceRegionIter // out
 	var _cret C.gboolean             // in

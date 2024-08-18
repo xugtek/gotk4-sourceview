@@ -85,7 +85,6 @@ func marshalStyle(p uintptr) (interface{}, error) {
 // The function takes the following parameters:
 //
 //   - tag to apply styles to.
-//
 func (style *Style) Apply(tag *gtk.TextTag) {
 	var _arg0 *C.GtkSourceStyle // out
 	var _arg1 *C.GtkTextTag     // out
@@ -106,7 +105,6 @@ func (style *Style) Apply(tag *gtk.TextTag) {
 // The function returns the following values:
 //
 //   - ret: copy of style, call g_object_unref() when you are done with it.
-//
 func (style *Style) Copy() *Style {
 	var _arg0 *C.GtkSourceStyle // out
 	var _cret *C.GtkSourceStyle // in

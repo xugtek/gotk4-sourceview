@@ -180,7 +180,6 @@ func marshalFileSaver(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - fileSaver: new SourceFileSaver object.
-//
 func NewFileSaver(buffer *Buffer, file *File) *FileSaver {
 	var _arg1 *C.GtkSourceBuffer    // out
 	var _arg2 *C.GtkSourceFile      // out
@@ -219,7 +218,6 @@ func NewFileSaver(buffer *Buffer, file *File) *FileSaver {
 // The function returns the following values:
 //
 //   - fileSaver: new SourceFileSaver object.
-//
 func NewFileSaverWithTarget(buffer *Buffer, file *File, targetLocation gio.Filer) *FileSaver {
 	var _arg1 *C.GtkSourceBuffer    // out
 	var _arg2 *C.GtkSourceFile      // out
@@ -245,7 +243,6 @@ func NewFileSaverWithTarget(buffer *Buffer, file *File, targetLocation gio.Filer
 // The function returns the following values:
 //
 //   - buffer to save.
-//
 func (saver *FileSaver) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _cret *C.GtkSourceBuffer    // in
@@ -265,7 +262,6 @@ func (saver *FileSaver) Buffer() *Buffer {
 // The function returns the following values:
 //
 //   - compressionType: compression type.
-//
 func (saver *FileSaver) CompressionType() CompressionType {
 	var _arg0 *C.GtkSourceFileSaver      // out
 	var _cret C.GtkSourceCompressionType // in
@@ -285,7 +281,6 @@ func (saver *FileSaver) CompressionType() CompressionType {
 // The function returns the following values:
 //
 //   - encoding: encoding.
-//
 func (saver *FileSaver) Encoding() *Encoding {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _cret *C.GtkSourceEncoding  // in
@@ -305,7 +300,6 @@ func (saver *FileSaver) Encoding() *Encoding {
 // The function returns the following values:
 //
 //   - file: SourceFile.
-//
 func (saver *FileSaver) File() *File {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _cret *C.GtkSourceFile      // in
@@ -325,7 +319,6 @@ func (saver *FileSaver) File() *File {
 // The function returns the following values:
 //
 //   - fileSaverFlags: flags.
-//
 func (saver *FileSaver) Flags() FileSaverFlags {
 	var _arg0 *C.GtkSourceFileSaver     // out
 	var _cret C.GtkSourceFileSaverFlags // in
@@ -345,7 +338,6 @@ func (saver *FileSaver) Flags() FileSaverFlags {
 // The function returns the following values:
 //
 //   - file where to save the buffer to.
-//
 func (saver *FileSaver) Location() *gio.File {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _cret *C.GFile              // in
@@ -370,7 +362,6 @@ func (saver *FileSaver) Location() *gio.File {
 // The function returns the following values:
 //
 //   - newlineType: newline type.
-//
 func (saver *FileSaver) NewlineType() NewlineType {
 	var _arg0 *C.GtkSourceFileSaver  // out
 	var _cret C.GtkSourceNewlineType // in
@@ -399,7 +390,6 @@ func (saver *FileSaver) NewlineType() NewlineType {
 // The function takes the following parameters:
 //
 //   - result: Result.
-//
 func (saver *FileSaver) SaveFinish(result gio.AsyncResulter) error {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _arg1 *C.GAsyncResult       // out
@@ -427,7 +417,6 @@ func (saver *FileSaver) SaveFinish(result gio.AsyncResulter) error {
 // The function takes the following parameters:
 //
 //   - compressionType: new compression type.
-//
 func (saver *FileSaver) SetCompressionType(compressionType CompressionType) {
 	var _arg0 *C.GtkSourceFileSaver      // out
 	var _arg1 C.GtkSourceCompressionType // out
@@ -448,7 +437,6 @@ func (saver *FileSaver) SetCompressionType(compressionType CompressionType) {
 // The function takes the following parameters:
 //
 //   - encoding (optional): new encoding, or NULL for UTF-8.
-//
 func (saver *FileSaver) SetEncoding(encoding *Encoding) {
 	var _arg0 *C.GtkSourceFileSaver // out
 	var _arg1 *C.GtkSourceEncoding  // out
@@ -466,7 +454,6 @@ func (saver *FileSaver) SetEncoding(encoding *Encoding) {
 // The function takes the following parameters:
 //
 //   - flags: new flags.
-//
 func (saver *FileSaver) SetFlags(flags FileSaverFlags) {
 	var _arg0 *C.GtkSourceFileSaver     // out
 	var _arg1 C.GtkSourceFileSaverFlags // out
@@ -485,7 +472,6 @@ func (saver *FileSaver) SetFlags(flags FileSaverFlags) {
 // The function takes the following parameters:
 //
 //   - newlineType: new newline type.
-//
 func (saver *FileSaver) SetNewlineType(newlineType NewlineType) {
 	var _arg0 *C.GtkSourceFileSaver  // out
 	var _arg1 C.GtkSourceNewlineType // out

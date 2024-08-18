@@ -3,9 +3,12 @@
 package gtksource
 
 import (
+	"context"
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/gbox"
+	"github.com/diamondburned/gotk4/pkg/core/gcancel"
 	"github.com/diamondburned/gotk4/pkg/core/gerror"
 	"github.com/diamondburned/gotk4/pkg/core/gextras"
 	coreglib "github.com/diamondburned/gotk4/pkg/core/glib"
@@ -16,6 +19,8 @@ import (
 // #include <stdlib.h>
 // #include <glib-object.h>
 // #include <gtksourceview/gtksource.h>
+// extern void _gotk4_gtksource4_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
+// extern void _gotk4_gio2_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
 import "C"
 
 // GType values.
@@ -85,7 +90,6 @@ func marshalSearchContext(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - searchContext: new search context.
-//
 func NewSearchContext(buffer *Buffer, settings *SearchSettings) *SearchContext {
 	var _arg1 *C.GtkSourceBuffer         // out
 	var _arg2 *C.GtkSourceSearchSettings // out
@@ -130,7 +134,6 @@ func NewSearchContext(buffer *Buffer, settings *SearchSettings) *SearchContext {
 //   - hasWrappedAround (optional): return location to know whether the search
 //     has wrapped around, or NULL.
 //   - ok: whether a match was found.
-//
 func (search *SearchContext) Backward(iter *gtk.TextIter) (matchStart, matchEnd *gtk.TextIter, hasWrappedAround, ok bool) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GtkTextIter            // out
@@ -163,6 +166,48 @@ func (search *SearchContext) Backward(iter *gtk.TextIter) (matchStart, matchEnd 
 	return _matchStart, _matchEnd, _hasWrappedAround, _ok
 }
 
+// BackwardAsync asynchronous version of gtk_source_search_context_backward().
+//
+// See the documentation of gtk_source_search_context_backward() for more
+// details.
+//
+// See the Result documentation to know how to use this function.
+//
+// If the operation is cancelled, the callback will only be called if
+// cancellable was not NULL. gtk_source_search_context_backward_async() takes
+// ownership of cancellable, so you can unref it after calling this function.
+//
+// The function takes the following parameters:
+//
+//   - ctx (optional) or NULL.
+//   - iter: start of search.
+//   - callback (optional) to call when the operation is finished.
+func (search *SearchContext) BackwardAsync(ctx context.Context, iter *gtk.TextIter, callback gio.AsyncReadyCallback) {
+	var _arg0 *C.GtkSourceSearchContext // out
+	var _arg2 *C.GCancellable           // out
+	var _arg1 *C.GtkTextIter            // out
+	var _arg3 C.GAsyncReadyCallback     // out
+	var _arg4 C.gpointer
+
+	_arg0 = (*C.GtkSourceSearchContext)(unsafe.Pointer(coreglib.InternObject(search).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg2 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkTextIter)(gextras.StructNative(unsafe.Pointer(iter)))
+	if callback != nil {
+		_arg3 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg4 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C.gtk_source_search_context_backward_async(_arg0, _arg1, _arg2, _arg3, _arg4)
+	runtime.KeepAlive(search)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(iter)
+	runtime.KeepAlive(callback)
+}
+
 // BackwardFinish finishes a backward search started with
 // gtk_source_search_context_backward_async().
 //
@@ -179,7 +224,6 @@ func (search *SearchContext) Backward(iter *gtk.TextIter) (matchStart, matchEnd 
 //   - matchEnd (optional): return location for end of match, or NULL.
 //   - hasWrappedAround (optional): return location to know whether the search
 //     has wrapped around, or NULL.
-//
 func (search *SearchContext) BackwardFinish(result gio.AsyncResulter) (matchStart, matchEnd *gtk.TextIter, hasWrappedAround bool, goerr error) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GAsyncResult           // out
@@ -234,7 +278,6 @@ func (search *SearchContext) BackwardFinish(result gio.AsyncResulter) (matchStar
 //   - hasWrappedAround (optional): return location to know whether the search
 //     has wrapped around, or NULL.
 //   - ok: whether a match was found.
-//
 func (search *SearchContext) Forward(iter *gtk.TextIter) (matchStart, matchEnd *gtk.TextIter, hasWrappedAround, ok bool) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GtkTextIter            // out
@@ -267,6 +310,48 @@ func (search *SearchContext) Forward(iter *gtk.TextIter) (matchStart, matchEnd *
 	return _matchStart, _matchEnd, _hasWrappedAround, _ok
 }
 
+// ForwardAsync asynchronous version of gtk_source_search_context_forward().
+//
+// See the documentation of gtk_source_search_context_forward() for more
+// details.
+//
+// See the Result documentation to know how to use this function.
+//
+// If the operation is cancelled, the callback will only be called if
+// cancellable was not NULL. gtk_source_search_context_forward_async() takes
+// ownership of cancellable, so you can unref it after calling this function.
+//
+// The function takes the following parameters:
+//
+//   - ctx (optional) or NULL.
+//   - iter: start of search.
+//   - callback (optional) to call when the operation is finished.
+func (search *SearchContext) ForwardAsync(ctx context.Context, iter *gtk.TextIter, callback gio.AsyncReadyCallback) {
+	var _arg0 *C.GtkSourceSearchContext // out
+	var _arg2 *C.GCancellable           // out
+	var _arg1 *C.GtkTextIter            // out
+	var _arg3 C.GAsyncReadyCallback     // out
+	var _arg4 C.gpointer
+
+	_arg0 = (*C.GtkSourceSearchContext)(unsafe.Pointer(coreglib.InternObject(search).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg2 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkTextIter)(gextras.StructNative(unsafe.Pointer(iter)))
+	if callback != nil {
+		_arg3 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg4 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C.gtk_source_search_context_forward_async(_arg0, _arg1, _arg2, _arg3, _arg4)
+	runtime.KeepAlive(search)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(iter)
+	runtime.KeepAlive(callback)
+}
+
 // ForwardFinish finishes a forward search started with
 // gtk_source_search_context_forward_async().
 //
@@ -283,7 +368,6 @@ func (search *SearchContext) Forward(iter *gtk.TextIter) (matchStart, matchEnd *
 //   - matchEnd (optional): return location for end of match, or NULL.
 //   - hasWrappedAround (optional): return location to know whether the search
 //     has wrapped around, or NULL.
-//
 func (search *SearchContext) ForwardFinish(result gio.AsyncResulter) (matchStart, matchEnd *gtk.TextIter, hasWrappedAround bool, goerr error) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GAsyncResult           // out
@@ -319,7 +403,6 @@ func (search *SearchContext) ForwardFinish(result gio.AsyncResulter) (matchStart
 // The function returns the following values:
 //
 //   - buffer: associated buffer.
-//
 func (search *SearchContext) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _cret *C.GtkSourceBuffer        // in
@@ -339,7 +422,6 @@ func (search *SearchContext) Buffer() *Buffer {
 // The function returns the following values:
 //
 //   - ok: whether to highlight the search occurrences.
-//
 func (search *SearchContext) Highlight() bool {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _cret C.gboolean                // in
@@ -361,7 +443,6 @@ func (search *SearchContext) Highlight() bool {
 // The function returns the following values:
 //
 //   - style to apply on search matches.
-//
 func (search *SearchContext) MatchStyle() *Style {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _cret *C.GtkSourceStyle         // in
@@ -393,7 +474,6 @@ func (search *SearchContext) MatchStyle() *Style {
 //   - gint: position of the search occurrence. The first occurrence has the
 //     position 1 (not 0). Returns 0 if match_start and match_end don't delimit
 //     an occurrence. Returns -1 if the position is not yet known.
-//
 func (search *SearchContext) OccurrencePosition(matchStart, matchEnd *gtk.TextIter) int {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GtkTextIter            // out
@@ -423,7 +503,6 @@ func (search *SearchContext) OccurrencePosition(matchStart, matchEnd *gtk.TextIt
 // The function returns the following values:
 //
 //   - gint: total number of search occurrences, or -1 if unknown.
-//
 func (search *SearchContext) OccurrencesCount() int {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _cret C.gint                    // in
@@ -449,7 +528,6 @@ func (search *SearchContext) OccurrencesCount() int {
 // The function returns the following values:
 //
 //   - err (optional) or NULL if the pattern is valid.
-//
 func (search *SearchContext) RegexError() error {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _cret *C.GError                 // in
@@ -471,7 +549,6 @@ func (search *SearchContext) RegexError() error {
 // The function returns the following values:
 //
 //   - searchSettings: search settings.
-//
 func (search *SearchContext) Settings() *SearchSettings {
 	var _arg0 *C.GtkSourceSearchContext  // out
 	var _cret *C.GtkSourceSearchSettings // in
@@ -504,7 +581,6 @@ func (search *SearchContext) Settings() *SearchSettings {
 //   - matchEnd: end of the match to replace.
 //   - replace: replacement text.
 //   - replaceLength: length of replace in bytes, or -1.
-//
 func (search *SearchContext) Replace(matchStart, matchEnd *gtk.TextIter, replace string, replaceLength int) error {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GtkTextIter            // out
@@ -551,7 +627,6 @@ func (search *SearchContext) Replace(matchStart, matchEnd *gtk.TextIter, replace
 // The function returns the following values:
 //
 //   - guint: number of replaced matches.
-//
 func (search *SearchContext) ReplaceAll(replace string, replaceLength int) (uint, error) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.gchar                  // out
@@ -585,7 +660,6 @@ func (search *SearchContext) ReplaceAll(replace string, replaceLength int) (uint
 // The function takes the following parameters:
 //
 //   - highlight: setting.
-//
 func (search *SearchContext) SetHighlight(highlight bool) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 C.gboolean                // out
@@ -607,7 +681,6 @@ func (search *SearchContext) SetHighlight(highlight bool) {
 // The function takes the following parameters:
 //
 //   - matchStyle (optional) or NULL.
-//
 func (search *SearchContext) SetMatchStyle(matchStyle *Style) {
 	var _arg0 *C.GtkSourceSearchContext // out
 	var _arg1 *C.GtkSourceStyle         // out

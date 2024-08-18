@@ -103,7 +103,6 @@ func marshalGutter(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - view: associated SourceView.
-//
 func (gutter *Gutter) View() *View {
 	var _arg0 *C.GtkSourceGutter // out
 	var _cret *C.GtkSourceView   // in
@@ -132,7 +131,6 @@ func (gutter *Gutter) View() *View {
 // The function returns the following values:
 //
 //   - ok: TRUE if operation succeeded. Otherwise FALSE.
-//
 func (gutter *Gutter) Insert(renderer GutterRendererer, position int) bool {
 	var _arg0 *C.GtkSourceGutter         // out
 	var _arg1 *C.GtkSourceGutterRenderer // out
@@ -157,8 +155,6 @@ func (gutter *Gutter) Insert(renderer GutterRendererer, position int) bool {
 	return _ok
 }
 
-// The function takes the following parameters:
-//
 func (gutter *Gutter) Remove(renderer GutterRendererer) {
 	var _arg0 *C.GtkSourceGutter         // out
 	var _arg1 *C.GtkSourceGutterRenderer // out
@@ -177,7 +173,6 @@ func (gutter *Gutter) Remove(renderer GutterRendererer) {
 //
 //   - renderer: CellRenderer.
 //   - position: new renderer position.
-//
 func (gutter *Gutter) Reorder(renderer GutterRendererer, position int) {
 	var _arg0 *C.GtkSourceGutter         // out
 	var _arg1 *C.GtkSourceGutterRenderer // out

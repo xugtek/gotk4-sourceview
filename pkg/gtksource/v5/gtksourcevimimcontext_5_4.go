@@ -67,21 +67,21 @@ func defaultVimIMContextOverrides(v *VimIMContext) VimIMContextOverrides {
 // implementations such as IBus by querying the gtk.TextView before processing
 // the command in states which support it (notably Insert and Replace modes).
 //
-//    GtkEventController *key;
-//    GtkIMContext *im_context;
-//    GtkWidget *view;
+//	GtkEventController *key;
+//	GtkIMContext *im_context;
+//	GtkWidget *view;
 //
-//    view = gtk_source_view_new ();
-//    im_context = gtk_source_vim_im_context_new ();
-//    key = gtk_event_controller_key_new ();
+//	view = gtk_source_view_new ();
+//	im_context = gtk_source_vim_im_context_new ();
+//	key = gtk_event_controller_key_new ();
 //
-//    gtk_event_controller_key_set_im_context (GTK_EVENT_CONTROLLER_KEY (key), im_context);
-//    gtk_event_controller_set_propagation_phase (key, GTK_PHASE_CAPTURE);
-//    gtk_widget_add_controller (view, key);
-//    gtk_im_context_set_client_widget (im_context, view);
+//	gtk_event_controller_key_set_im_context (GTK_EVENT_CONTROLLER_KEY (key), im_context);
+//	gtk_event_controller_set_propagation_phase (key, GTK_PHASE_CAPTURE);
+//	gtk_widget_add_controller (view, key);
+//	gtk_im_context_set_client_widget (im_context, view);
 //
-//    g_object_bind_property (im_context, "command-bar-text", command_bar_label, "label", 0);
-//    g_object_bind_property (im_context, "command-text", command_label, "label", 0);.
+//	g_object_bind_property (im_context, "command-bar-text", command_bar_label, "label", 0);
+//	g_object_bind_property (im_context, "command-text", command_label, "label", 0);.
 type VimIMContext struct {
 	_ [0]func() // equal guard
 	gtk.IMContext
@@ -153,8 +153,6 @@ func (self *VimIMContext) ConnectWrite(f func(view *View, path string)) coreglib
 	return coreglib.ConnectGeneratedClosure(self, "write", false, unsafe.Pointer(C._gotk4_gtksource5_VimIMContext_ConnectWrite), f)
 }
 
-// The function returns the following values:
-//
 func NewVimIMContext() *VimIMContext {
 	var _cret *C.GtkIMContext // in
 
@@ -174,7 +172,6 @@ func NewVimIMContext() *VimIMContext {
 // The function takes the following parameters:
 //
 //   - command text.
-//
 func (self *VimIMContext) ExecuteCommand(command string) {
 	var _arg0 *C.GtkSourceVimIMContext // out
 	var _arg1 *C.char                  // out
@@ -194,7 +191,6 @@ func (self *VimIMContext) ExecuteCommand(command string) {
 // The function returns the following values:
 //
 //   - utf8: string containing the command-bar text.
-//
 func (self *VimIMContext) CommandBarText() string {
 	var _arg0 *C.GtkSourceVimIMContext // out
 	var _cret *C.char                  // in
@@ -216,7 +212,6 @@ func (self *VimIMContext) CommandBarText() string {
 // The function returns the following values:
 //
 //   - utf8: string containing the command text.
-//
 func (self *VimIMContext) CommandText() string {
 	var _arg0 *C.GtkSourceVimIMContext // out
 	var _cret *C.char                  // in

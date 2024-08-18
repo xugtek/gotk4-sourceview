@@ -101,8 +101,6 @@ func marshalCompletionCell(p uintptr) (interface{}, error) {
 	return wrapCompletionCell(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// The function returns the following values:
-//
 func (self *CompletionCell) Column() CompletionColumn {
 	var _arg0 *C.GtkSourceCompletionCell  // out
 	var _cret C.GtkSourceCompletionColumn // in
@@ -124,7 +122,6 @@ func (self *CompletionCell) Column() CompletionColumn {
 // The function returns the following values:
 //
 //   - widget (optional) or NULL.
-//
 func (self *CompletionCell) GetWidget() gtk.Widgetter {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _cret *C.GtkWidget               // in
@@ -156,8 +153,6 @@ func (self *CompletionCell) GetWidget() gtk.Widgetter {
 	return _widget
 }
 
-// The function takes the following parameters:
-//
 func (self *CompletionCell) SetGIcon(gicon gio.Iconner) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.GIcon                   // out
@@ -170,8 +165,6 @@ func (self *CompletionCell) SetGIcon(gicon gio.Iconner) {
 	runtime.KeepAlive(gicon)
 }
 
-// The function takes the following parameters:
-//
 func (self *CompletionCell) SetIconName(iconName string) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.char                    // out
@@ -185,8 +178,6 @@ func (self *CompletionCell) SetIconName(iconName string) {
 	runtime.KeepAlive(iconName)
 }
 
-// The function takes the following parameters:
-//
 func (self *CompletionCell) SetMarkup(markup string) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.char                    // out
@@ -200,8 +191,6 @@ func (self *CompletionCell) SetMarkup(markup string) {
 	runtime.KeepAlive(markup)
 }
 
-// The function takes the following parameters:
-//
 func (self *CompletionCell) SetPaintable(paintable gdk.Paintabler) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.GdkPaintable            // out
@@ -219,7 +208,6 @@ func (self *CompletionCell) SetPaintable(paintable gdk.Paintabler) {
 // The function takes the following parameters:
 //
 //   - text (optional) to set or NULL.
-//
 func (self *CompletionCell) SetText(text string) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.char                    // out
@@ -239,7 +227,6 @@ func (self *CompletionCell) SetText(text string) {
 //
 //   - text
 //   - attrs
-//
 func (self *CompletionCell) SetTextWithAttributes(text string, attrs *pango.AttrList) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.char                    // out
@@ -256,8 +243,6 @@ func (self *CompletionCell) SetTextWithAttributes(text string, attrs *pango.Attr
 	runtime.KeepAlive(attrs)
 }
 
-// The function takes the following parameters:
-//
 func (self *CompletionCell) SetWidget(child gtk.Widgetter) {
 	var _arg0 *C.GtkSourceCompletionCell // out
 	var _arg1 *C.GtkWidget               // out

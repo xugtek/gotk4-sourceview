@@ -78,7 +78,6 @@ func marshalSearchSettings(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - searchSettings: new search settings object.
-//
 func NewSearchSettings() *SearchSettings {
 	var _cret *C.GtkSourceSearchSettings // in
 
@@ -94,7 +93,6 @@ func NewSearchSettings() *SearchSettings {
 // The function returns the following values:
 //
 //   - ok: whether to search at word boundaries.
-//
 func (settings *SearchSettings) AtWordBoundaries() bool {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _cret C.gboolean                 // in
@@ -116,7 +114,6 @@ func (settings *SearchSettings) AtWordBoundaries() bool {
 // The function returns the following values:
 //
 //   - ok: whether the search is case sensitive.
-//
 func (settings *SearchSettings) CaseSensitive() bool {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _cret C.gboolean                 // in
@@ -138,7 +135,6 @@ func (settings *SearchSettings) CaseSensitive() bool {
 // The function returns the following values:
 //
 //   - ok: whether to search by regular expressions.
-//
 func (settings *SearchSettings) RegexEnabled() bool {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _cret C.gboolean                 // in
@@ -166,7 +162,6 @@ func (settings *SearchSettings) RegexEnabled() bool {
 // The function returns the following values:
 //
 //   - utf8 (optional): text to search, or NULL if the search is disabled.
-//
 func (settings *SearchSettings) SearchText() string {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _cret *C.gchar                   // in
@@ -187,8 +182,28 @@ func (settings *SearchSettings) SearchText() string {
 
 // The function returns the following values:
 //
-//   - ok: whether to wrap around the search.
+//   - ok: whether to exclude invisible text from the search.
+func (settings *SearchSettings) VisibleOnly() bool {
+	var _arg0 *C.GtkSourceSearchSettings // out
+	var _cret C.gboolean                 // in
+
+	_arg0 = (*C.GtkSourceSearchSettings)(unsafe.Pointer(coreglib.InternObject(settings).Native()))
+
+	_cret = C.gtk_source_search_settings_get_visible_only(_arg0)
+	runtime.KeepAlive(settings)
+
+	var _ok bool // out
+
+	if _cret != 0 {
+		_ok = true
+	}
+
+	return _ok
+}
+
+// The function returns the following values:
 //
+//   - ok: whether to wrap around the search.
 func (settings *SearchSettings) WrapAround() bool {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _cret C.gboolean                 // in
@@ -216,7 +231,6 @@ func (settings *SearchSettings) WrapAround() bool {
 // The function takes the following parameters:
 //
 //   - atWordBoundaries: setting.
-//
 func (settings *SearchSettings) SetAtWordBoundaries(atWordBoundaries bool) {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _arg1 C.gboolean                 // out
@@ -236,7 +250,6 @@ func (settings *SearchSettings) SetAtWordBoundaries(atWordBoundaries bool) {
 // The function takes the following parameters:
 //
 //   - caseSensitive: setting.
-//
 func (settings *SearchSettings) SetCaseSensitive(caseSensitive bool) {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _arg1 C.gboolean                 // out
@@ -264,7 +277,6 @@ func (settings *SearchSettings) SetCaseSensitive(caseSensitive bool) {
 // The function takes the following parameters:
 //
 //   - regexEnabled: setting.
-//
 func (settings *SearchSettings) SetRegexEnabled(regexEnabled bool) {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _arg1 C.gboolean                 // out
@@ -292,7 +304,6 @@ func (settings *SearchSettings) SetRegexEnabled(regexEnabled bool) {
 //
 //   - searchText (optional): nul-terminated text to search, or NULL to disable
 //     the search.
-//
 func (settings *SearchSettings) SetSearchText(searchText string) {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _arg1 *C.gchar                   // out
@@ -308,6 +319,29 @@ func (settings *SearchSettings) SetSearchText(searchText string) {
 	runtime.KeepAlive(searchText)
 }
 
+// SetVisibleOnly enables or disables whether to exclude invisible text from the
+// search.
+//
+// If enabled, only visible text will be searched. A search match may have
+// invisible text interspersed.
+//
+// The function takes the following parameters:
+//
+//   - visibleOnly: setting.
+func (settings *SearchSettings) SetVisibleOnly(visibleOnly bool) {
+	var _arg0 *C.GtkSourceSearchSettings // out
+	var _arg1 C.gboolean                 // out
+
+	_arg0 = (*C.GtkSourceSearchSettings)(unsafe.Pointer(coreglib.InternObject(settings).Native()))
+	if visibleOnly {
+		_arg1 = C.TRUE
+	}
+
+	C.gtk_source_search_settings_set_visible_only(_arg0, _arg1)
+	runtime.KeepAlive(settings)
+	runtime.KeepAlive(visibleOnly)
+}
+
 // SetWrapAround enables or disables the wrap around search.
 //
 // If wrap_around is TRUE, the forward search continues at the beginning of the
@@ -317,7 +351,6 @@ func (settings *SearchSettings) SetSearchText(searchText string) {
 // The function takes the following parameters:
 //
 //   - wrapAround: setting.
-//
 func (settings *SearchSettings) SetWrapAround(wrapAround bool) {
 	var _arg0 *C.GtkSourceSearchSettings // out
 	var _arg1 C.gboolean                 // out

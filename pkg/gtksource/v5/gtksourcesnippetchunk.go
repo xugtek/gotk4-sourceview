@@ -76,9 +76,6 @@ func marshalSnippetChunk(p uintptr) (interface{}, error) {
 
 // NewSnippetChunk: create a new GtkSourceSnippetChunk that can be added to a
 // snippet.
-//
-// The function returns the following values:
-//
 func NewSnippetChunk() *SnippetChunk {
 	var _cret *C.GtkSourceSnippetChunk // in
 
@@ -96,7 +93,6 @@ func NewSnippetChunk() *SnippetChunk {
 // The function returns the following values:
 //
 //   - snippetChunk: SourceSnippetChunk.
-//
 func (chunk *SnippetChunk) Copy() *SnippetChunk {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret *C.GtkSourceSnippetChunk // in
@@ -118,7 +114,6 @@ func (chunk *SnippetChunk) Copy() *SnippetChunk {
 // The function returns the following values:
 //
 //   - snippetContext: SourceSnippetContext.
-//
 func (chunk *SnippetChunk) Context() *SnippetContext {
 	var _arg0 *C.GtkSourceSnippetChunk   // out
 	var _cret *C.GtkSourceSnippetContext // in
@@ -148,7 +143,6 @@ func (chunk *SnippetChunk) Context() *SnippetContext {
 // The function returns the following values:
 //
 //   - gint: focus-position.
-//
 func (chunk *SnippetChunk) FocusPosition() int {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret C.gint                   // in
@@ -174,7 +168,6 @@ func (chunk *SnippetChunk) FocusPosition() int {
 // The function returns the following values:
 //
 //   - utf8 (optional): specification, if any.
-//
 func (chunk *SnippetChunk) Spec() string {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret *C.gchar                 // in
@@ -201,7 +194,6 @@ func (chunk *SnippetChunk) Spec() string {
 // The function returns the following values:
 //
 //   - utf8: text of the chunk.
-//
 func (chunk *SnippetChunk) Text() string {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret *C.gchar                 // in
@@ -221,9 +213,6 @@ func (chunk *SnippetChunk) Text() string {
 // TextSet gets the snippetchunk:text-set property.
 //
 // This is typically set when the user has edited a snippet chunk.
-//
-// The function returns the following values:
-//
 func (chunk *SnippetChunk) TextSet() bool {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret C.gboolean               // in
@@ -242,8 +231,6 @@ func (chunk *SnippetChunk) TextSet() bool {
 	return _ok
 }
 
-// The function returns the following values:
-//
 func (chunk *SnippetChunk) TooltipText() string {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _cret *C.char                  // in
@@ -260,8 +247,6 @@ func (chunk *SnippetChunk) TooltipText() string {
 	return _utf8
 }
 
-// The function takes the following parameters:
-//
 func (chunk *SnippetChunk) SetContext(context *SnippetContext) {
 	var _arg0 *C.GtkSourceSnippetChunk   // out
 	var _arg1 *C.GtkSourceSnippetContext // out
@@ -287,7 +272,6 @@ func (chunk *SnippetChunk) SetContext(context *SnippetContext) {
 // The function takes the following parameters:
 //
 //   - focusPosition: focus-position.
-//
 func (chunk *SnippetChunk) SetFocusPosition(focusPosition int) {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _arg1 C.gint                   // out
@@ -309,7 +293,6 @@ func (chunk *SnippetChunk) SetFocusPosition(focusPosition int) {
 // The function takes the following parameters:
 //
 //   - spec: new specification for the chunk.
-//
 func (chunk *SnippetChunk) SetSpec(spec string) {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _arg1 *C.gchar                 // out
@@ -331,7 +314,6 @@ func (chunk *SnippetChunk) SetSpec(spec string) {
 // The function takes the following parameters:
 //
 //   - text of the property.
-//
 func (chunk *SnippetChunk) SetText(text string) {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _arg1 *C.gchar                 // out
@@ -353,7 +335,6 @@ func (chunk *SnippetChunk) SetText(text string) {
 // The function takes the following parameters:
 //
 //   - textSet: property value.
-//
 func (chunk *SnippetChunk) SetTextSet(textSet bool) {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _arg1 C.gboolean               // out
@@ -368,8 +349,6 @@ func (chunk *SnippetChunk) SetTextSet(textSet bool) {
 	runtime.KeepAlive(textSet)
 }
 
-// The function takes the following parameters:
-//
 func (chunk *SnippetChunk) SetTooltipText(tooltipText string) {
 	var _arg0 *C.GtkSourceSnippetChunk // out
 	var _arg1 *C.char                  // out

@@ -91,7 +91,6 @@ func marshalSnippet(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - snippet: new SourceSnippet.
-//
 func NewSnippet(trigger, languageId string) *Snippet {
 	var _arg1 *C.gchar            // out
 	var _arg2 *C.gchar            // out
@@ -128,7 +127,6 @@ func NewSnippet(trigger, languageId string) *Snippet {
 //
 //   - snippet: newly parsed SourceSnippet, or NULL upon failure and error is
 //     set.
-//
 func NewSnippetParsed(text string) (*Snippet, error) {
 	var _arg1 *C.char             // out
 	var _cret *C.GtkSourceSnippet // in
@@ -158,7 +156,6 @@ func NewSnippetParsed(text string) (*Snippet, error) {
 // The function takes the following parameters:
 //
 //   - chunk: SourceSnippetChunk.
-//
 func (snippet *Snippet) AddChunk(chunk *SnippetChunk) {
 	var _arg0 *C.GtkSourceSnippet      // out
 	var _arg1 *C.GtkSourceSnippetChunk // out
@@ -176,7 +173,6 @@ func (snippet *Snippet) AddChunk(chunk *SnippetChunk) {
 // The function returns the following values:
 //
 //   - ret: new SourceSnippet.
-//
 func (snippet *Snippet) Copy() *Snippet {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret *C.GtkSourceSnippet // in
@@ -198,7 +194,6 @@ func (snippet *Snippet) Copy() *Snippet {
 // The function returns the following values:
 //
 //   - snippetContext (optional): SourceSnippetContext.
-//
 func (snippet *Snippet) Context() *SnippetContext {
 	var _arg0 *C.GtkSourceSnippet        // out
 	var _cret *C.GtkSourceSnippetContext // in
@@ -218,9 +213,6 @@ func (snippet *Snippet) Context() *SnippetContext {
 }
 
 // Description gets the description for the snippet.
-//
-// The function returns the following values:
-//
 func (snippet *Snippet) Description() string {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret *C.gchar            // in
@@ -244,7 +236,6 @@ func (snippet *Snippet) Description() string {
 // The function returns the following values:
 //
 //   - gint focus position, or -1 if unset.
-//
 func (snippet *Snippet) FocusPosition() int {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret C.gint              // in
@@ -269,7 +260,6 @@ func (snippet *Snippet) FocusPosition() int {
 // The function returns the following values:
 //
 //   - utf8: language identifier.
-//
 func (snippet *Snippet) LanguageID() string {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret *C.gchar            // in
@@ -293,7 +283,6 @@ func (snippet *Snippet) LanguageID() string {
 // The function returns the following values:
 //
 //   - guint: number of chunks.
-//
 func (snippet *Snippet) NChunks() uint {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret C.guint             // in
@@ -311,9 +300,6 @@ func (snippet *Snippet) NChunks() uint {
 }
 
 // Name gets the name for the snippet.
-//
-// The function returns the following values:
-//
 func (snippet *Snippet) Name() string {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret *C.gchar            // in
@@ -339,7 +325,6 @@ func (snippet *Snippet) Name() string {
 // The function returns the following values:
 //
 //   - snippetChunk: SourceSnippetChunk.
-//
 func (snippet *Snippet) NthChunk(nth uint) *SnippetChunk {
 	var _arg0 *C.GtkSourceSnippet      // out
 	var _arg1 C.guint                  // out
@@ -367,7 +352,6 @@ func (snippet *Snippet) NthChunk(nth uint) *SnippetChunk {
 // The function returns the following values:
 //
 //   - utf8 (optional): string or NULL.
-//
 func (snippet *Snippet) Trigger() string {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _cret *C.gchar            // in
@@ -391,7 +375,6 @@ func (snippet *Snippet) Trigger() string {
 // The function takes the following parameters:
 //
 //   - description: snippet description.
-//
 func (snippet *Snippet) SetDescription(description string) {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _arg1 *C.gchar            // out
@@ -412,7 +395,6 @@ func (snippet *Snippet) SetDescription(description string) {
 // The function takes the following parameters:
 //
 //   - languageId: language identifier for the snippet.
-//
 func (snippet *Snippet) SetLanguageID(languageId string) {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _arg1 *C.gchar            // out
@@ -431,7 +413,6 @@ func (snippet *Snippet) SetLanguageID(languageId string) {
 // The function takes the following parameters:
 //
 //   - name: snippet name.
-//
 func (snippet *Snippet) SetName(name string) {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _arg1 *C.gchar            // out
@@ -450,7 +431,6 @@ func (snippet *Snippet) SetName(name string) {
 // The function takes the following parameters:
 //
 //   - trigger word.
-//
 func (snippet *Snippet) SetTrigger(trigger string) {
 	var _arg0 *C.GtkSourceSnippet // out
 	var _arg1 *C.gchar            // out

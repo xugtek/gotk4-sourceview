@@ -77,7 +77,6 @@ func marshalRegion(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - region: new SourceRegion object for buffer.
-//
 func NewRegion(buffer *gtk.TextBuffer) *Region {
 	var _arg1 *C.GtkTextBuffer   // out
 	var _cret *C.GtkSourceRegion // in
@@ -99,7 +98,6 @@ func NewRegion(buffer *gtk.TextBuffer) *Region {
 // The function takes the following parameters:
 //
 //   - regionToAdd (optional) to add to region, or NULL.
-//
 func (region *Region) AddRegion(regionToAdd *Region) {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkSourceRegion // out
@@ -120,7 +118,6 @@ func (region *Region) AddRegion(regionToAdd *Region) {
 //
 //   - Start: start of the subregion.
 //   - End: end of the subregion.
-//
 func (region *Region) AddSubregion(Start, End *gtk.TextIter) {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkTextIter     // out
@@ -145,7 +142,6 @@ func (region *Region) AddSubregion(Start, End *gtk.TextIter) {
 //   - end (optional): iterator to initialize with the end of region, or NULL.
 //   - ok: TRUE if start and end have been set successfully (if non-NULL),
 //     or FALSE if the region is empty.
-//
 func (region *Region) Bounds() (start, end *gtk.TextIter, ok bool) {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 C.GtkTextIter      // in
@@ -173,7 +169,6 @@ func (region *Region) Bounds() (start, end *gtk.TextIter, ok bool) {
 // The function returns the following values:
 //
 //   - textBuffer (optional): TextBuffer.
-//
 func (region *Region) Buffer() *gtk.TextBuffer {
 	var _arg0 *C.GtkSourceRegion // out
 	var _cret *C.GtkTextBuffer   // in
@@ -203,7 +198,6 @@ func (region *Region) Buffer() *gtk.TextBuffer {
 // The function returns the following values:
 //
 //   - iter: iterator to initialize to the first subregion.
-//
 func (region *Region) StartRegionIter() *RegionIter {
 	var _arg0 *C.GtkSourceRegion    // out
 	var _arg1 C.GtkSourceRegionIter // in
@@ -230,7 +224,6 @@ func (region *Region) StartRegionIter() *RegionIter {
 // The function returns the following values:
 //
 //   - region (optional): intersection as a SourceRegion object.
-//
 func (region1 *Region) IntersectRegion(region2 *Region) *Region {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkSourceRegion // out
@@ -267,7 +260,6 @@ func (region1 *Region) IntersectRegion(region2 *Region) *Region {
 // The function returns the following values:
 //
 //   - ret (optional): intersection as a new SourceRegion.
-//
 func (region *Region) IntersectSubregion(Start, End *gtk.TextIter) *Region {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkTextIter     // out
@@ -298,7 +290,6 @@ func (region *Region) IntersectSubregion(Start, End *gtk.TextIter) *Region {
 // The function returns the following values:
 //
 //   - ok: whether the region is empty.
-//
 func (region *Region) IsEmpty() bool {
 	var _arg0 *C.GtkSourceRegion // out
 	var _cret C.gboolean         // in
@@ -325,7 +316,6 @@ func (region *Region) IsEmpty() bool {
 // The function takes the following parameters:
 //
 //   - regionToSubtract (optional) to subtract from region, or NULL.
-//
 func (region *Region) SubtractRegion(regionToSubtract *Region) {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkSourceRegion // out
@@ -347,7 +337,6 @@ func (region *Region) SubtractRegion(regionToSubtract *Region) {
 //
 //   - Start: start of the subregion.
 //   - End: end of the subregion.
-//
 func (region *Region) SubtractSubregion(Start, End *gtk.TextIter) {
 	var _arg0 *C.GtkSourceRegion // out
 	var _arg1 *C.GtkTextIter     // out
@@ -372,7 +361,6 @@ func (region *Region) SubtractSubregion(Start, End *gtk.TextIter) {
 //
 //   - utf8 (optional): string represention of region. Free with g_free() when
 //     no longer needed.
-//
 func (region *Region) String() string {
 	var _arg0 *C.GtkSourceRegion // out
 	var _cret *C.gchar           // in

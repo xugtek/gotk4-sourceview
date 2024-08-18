@@ -103,24 +103,17 @@ type CompletionOverrides struct {
 	//
 	//   - step
 	//   - num
-	//
 	MoveCursor func(step gtk.ScrollStep, num int)
 	// The function takes the following parameters:
 	//
 	//   - step
 	//   - num
-	//
-	MovePage func(step gtk.ScrollStep, num int)
-	// The function takes the following parameters:
-	//
+	MovePage        func(step gtk.ScrollStep, num int)
 	PopulateContext func(context *CompletionContext)
 	// The function takes the following parameters:
 	//
 	//   - provider
 	//   - proposal
-	//
-	// The function returns the following values:
-	//
 	ProposalActivated func(provider CompletionProviderer, proposal CompletionProposaller) bool
 	Show              func()
 }
@@ -282,7 +275,6 @@ func (completion *Completion) ConnectShow(f func()) coreglib.SignalHandle {
 // The function takes the following parameters:
 //
 //   - provider: SourceCompletionProvider.
-//
 func (completion *Completion) AddProvider(provider CompletionProviderer) error {
 	var _arg0 *C.GtkSourceCompletion         // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -336,7 +328,6 @@ func (completion *Completion) BlockInteractive() {
 //     being returned is a 'floating' reference, so if you invoke
 //     gtk_source_completion_start() with this context you don't need to unref
 //     it.
-//
 func (completion *Completion) CreateContext(position *gtk.TextIter) *CompletionContext {
 	var _arg0 *C.GtkSourceCompletion        // out
 	var _arg1 *C.GtkTextIter                // out
@@ -364,7 +355,6 @@ func (completion *Completion) CreateContext(position *gtk.TextIter) *CompletionC
 // The function returns the following values:
 //
 //   - completionInfo window associated with completion.
-//
 func (completion *Completion) InfoWindow() *CompletionInfo {
 	var _arg0 *C.GtkSourceCompletion     // out
 	var _cret *C.GtkSourceCompletionInfo // in
@@ -387,7 +377,6 @@ func (completion *Completion) InfoWindow() *CompletionInfo {
 // The function returns the following values:
 //
 //   - list of SourceCompletionProvider.
-//
 func (completion *Completion) Providers() []*CompletionProvider {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _cret *C.GList               // in
@@ -415,7 +404,6 @@ func (completion *Completion) Providers() []*CompletionProvider {
 // The function returns the following values:
 //
 //   - view (optional) associated with completion, or NULL.
-//
 func (completion *Completion) View() *View {
 	var _arg0 *C.GtkSourceCompletion // out
 	var _cret *C.GtkSourceView       // in
@@ -449,7 +437,6 @@ func (completion *Completion) Hide() {
 // The function takes the following parameters:
 //
 //   - provider: SourceCompletionProvider.
-//
 func (completion *Completion) RemoveProvider(provider CompletionProviderer) error {
 	var _arg0 *C.GtkSourceCompletion         // out
 	var _arg1 *C.GtkSourceCompletionProvider // out
@@ -489,7 +476,6 @@ func (completion *Completion) RemoveProvider(provider CompletionProviderer) erro
 // The function returns the following values:
 //
 //   - ok: TRUE if it was possible to the show completion window.
-//
 func (completion *Completion) Start(providers []CompletionProviderer, context *CompletionContext) bool {
 	var _arg0 *C.GtkSourceCompletion        // out
 	var _arg1 *C.GList                      // out
@@ -563,7 +549,6 @@ func (completion *Completion) hide() {
 //
 //   - step
 //   - num
-//
 func (completion *Completion) moveCursor(step gtk.ScrollStep, num int) {
 	gclass := (*C.GtkSourceCompletionClass)(coreglib.PeekParentClass(completion))
 	fnarg := gclass.move_cursor
@@ -586,7 +571,6 @@ func (completion *Completion) moveCursor(step gtk.ScrollStep, num int) {
 //
 //   - step
 //   - num
-//
 func (completion *Completion) movePage(step gtk.ScrollStep, num int) {
 	gclass := (*C.GtkSourceCompletionClass)(coreglib.PeekParentClass(completion))
 	fnarg := gclass.move_page
@@ -605,8 +589,6 @@ func (completion *Completion) movePage(step gtk.ScrollStep, num int) {
 	runtime.KeepAlive(num)
 }
 
-// The function takes the following parameters:
-//
 func (completion *Completion) populateContext(context *CompletionContext) {
 	gclass := (*C.GtkSourceCompletionClass)(coreglib.PeekParentClass(completion))
 	fnarg := gclass.populate_context
@@ -626,9 +608,6 @@ func (completion *Completion) populateContext(context *CompletionContext) {
 //
 //   - provider
 //   - proposal
-//
-// The function returns the following values:
-//
 func (completion *Completion) proposalActivated(provider CompletionProviderer, proposal CompletionProposaller) bool {
 	gclass := (*C.GtkSourceCompletionClass)(coreglib.PeekParentClass(completion))
 	fnarg := gclass.proposal_activated

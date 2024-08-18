@@ -3,9 +3,12 @@
 package gtksource
 
 import (
+	"context"
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/gbox"
+	"github.com/diamondburned/gotk4/pkg/core/gcancel"
 	"github.com/diamondburned/gotk4/pkg/core/gerror"
 	coreglib "github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
@@ -14,11 +17,16 @@ import (
 // #include <stdlib.h>
 // #include <glib-object.h>
 // #include <gtksourceview/gtksource.h>
+// extern void _gotk4_gtksource5_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
+// extern void _gotk4_gio2_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
 // gboolean _gotk4_gtksource5_HoverProvider_virtual_populate(void* fnptr, GtkSourceHoverProvider* arg0, GtkSourceHoverContext* arg1, GtkSourceHoverDisplay* arg2, GError** arg3) {
 //   return ((gboolean (*)(GtkSourceHoverProvider*, GtkSourceHoverContext*, GtkSourceHoverDisplay*, GError**))(fnptr))(arg0, arg1, arg2, arg3);
 // };
 // gboolean _gotk4_gtksource5_HoverProvider_virtual_populate_finish(void* fnptr, GtkSourceHoverProvider* arg0, GAsyncResult* arg1, GError** arg2) {
 //   return ((gboolean (*)(GtkSourceHoverProvider*, GAsyncResult*, GError**))(fnptr))(arg0, arg1, arg2);
+// };
+// void _gotk4_gtksource5_HoverProvider_virtual_populate_async(void* fnptr, GtkSourceHoverProvider* arg0, GtkSourceHoverContext* arg1, GtkSourceHoverDisplay* arg2, GCancellable* arg3, GAsyncReadyCallback arg4, gpointer arg5) {
+//   ((void (*)(GtkSourceHoverProvider*, GtkSourceHoverContext*, GtkSourceHoverDisplay*, GCancellable*, GAsyncReadyCallback, gpointer))(fnptr))(arg0, arg1, arg2, arg3, arg4, arg5);
 // };
 import "C"
 
@@ -59,6 +67,7 @@ var (
 type HoverProviderer interface {
 	coreglib.Objector
 
+	PopulateAsync(ctx context.Context, context *HoverContext, display *HoverDisplay, callback gio.AsyncReadyCallback)
 	PopulateFinish(result gio.AsyncResulter) error
 }
 
@@ -76,6 +85,39 @@ func marshalHoverProvider(p uintptr) (interface{}, error) {
 
 // The function takes the following parameters:
 //
+//   - ctx (optional)
+//   - context
+//   - display
+//   - callback (optional)
+func (self *HoverProvider) PopulateAsync(ctx context.Context, context *HoverContext, display *HoverDisplay, callback gio.AsyncReadyCallback) {
+	var _arg0 *C.GtkSourceHoverProvider // out
+	var _arg3 *C.GCancellable           // out
+	var _arg1 *C.GtkSourceHoverContext  // out
+	var _arg2 *C.GtkSourceHoverDisplay  // out
+	var _arg4 C.GAsyncReadyCallback     // out
+	var _arg5 C.gpointer
+
+	_arg0 = (*C.GtkSourceHoverProvider)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg3 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkSourceHoverContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg2 = (*C.GtkSourceHoverDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	if callback != nil {
+		_arg4 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg5 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C.gtk_source_hover_provider_populate_async(_arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(context)
+	runtime.KeepAlive(display)
+	runtime.KeepAlive(callback)
+}
+
 func (self *HoverProvider) PopulateFinish(result gio.AsyncResulter) error {
 	var _arg0 *C.GtkSourceHoverProvider // out
 	var _arg1 *C.GAsyncResult           // out
@@ -101,7 +143,6 @@ func (self *HoverProvider) PopulateFinish(result gio.AsyncResulter) error {
 //
 //   - context
 //   - display
-//
 func (self *HoverProvider) populate(context *HoverContext, display *HoverDisplay) error {
 	gclass := (*C.GtkSourceHoverProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.populate
@@ -131,6 +172,42 @@ func (self *HoverProvider) populate(context *HoverContext, display *HoverDisplay
 
 // The function takes the following parameters:
 //
+//   - ctx (optional)
+//   - context
+//   - display
+//   - callback (optional)
+func (self *HoverProvider) populateAsync(ctx context.Context, context *HoverContext, display *HoverDisplay, callback gio.AsyncReadyCallback) {
+	gclass := (*C.GtkSourceHoverProviderInterface)(coreglib.PeekParentClass(self))
+	fnarg := gclass.populate_async
+
+	var _arg0 *C.GtkSourceHoverProvider // out
+	var _arg3 *C.GCancellable           // out
+	var _arg1 *C.GtkSourceHoverContext  // out
+	var _arg2 *C.GtkSourceHoverDisplay  // out
+	var _arg4 C.GAsyncReadyCallback     // out
+	var _arg5 C.gpointer
+
+	_arg0 = (*C.GtkSourceHoverProvider)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg3 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkSourceHoverContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg2 = (*C.GtkSourceHoverDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	if callback != nil {
+		_arg4 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg5 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C._gotk4_gtksource5_HoverProvider_virtual_populate_async(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2, _arg3, _arg4, _arg5)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(context)
+	runtime.KeepAlive(display)
+	runtime.KeepAlive(callback)
+}
+
 func (self *HoverProvider) populateFinish(result gio.AsyncResulter) error {
 	gclass := (*C.GtkSourceHoverProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.populate_finish

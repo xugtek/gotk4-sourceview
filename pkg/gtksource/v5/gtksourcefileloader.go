@@ -139,7 +139,6 @@ func marshalFileLoader(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - fileLoader: new SourceFileLoader object.
-//
 func NewFileLoader(buffer *Buffer, file *File) *FileLoader {
 	var _arg1 *C.GtkSourceBuffer     // out
 	var _arg2 *C.GtkSourceFile       // out
@@ -171,7 +170,6 @@ func NewFileLoader(buffer *Buffer, file *File) *FileLoader {
 // The function returns the following values:
 //
 //   - fileLoader: new SourceFileLoader object.
-//
 func NewFileLoaderFromStream(buffer *Buffer, file *File, stream gio.InputStreamer) *FileLoader {
 	var _arg1 *C.GtkSourceBuffer     // out
 	var _arg2 *C.GtkSourceFile       // out
@@ -197,7 +195,6 @@ func NewFileLoaderFromStream(buffer *Buffer, file *File, stream gio.InputStreame
 // The function returns the following values:
 //
 //   - buffer to load the contents into.
-//
 func (loader *FileLoader) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret *C.GtkSourceBuffer     // in
@@ -217,7 +214,6 @@ func (loader *FileLoader) Buffer() *Buffer {
 // The function returns the following values:
 //
 //   - compressionType: detected compression type.
-//
 func (loader *FileLoader) CompressionType() CompressionType {
 	var _arg0 *C.GtkSourceFileLoader     // out
 	var _cret C.GtkSourceCompressionType // in
@@ -237,7 +233,6 @@ func (loader *FileLoader) CompressionType() CompressionType {
 // The function returns the following values:
 //
 //   - encoding: detected file encoding.
-//
 func (loader *FileLoader) Encoding() *Encoding {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret *C.GtkSourceEncoding   // in
@@ -257,7 +252,6 @@ func (loader *FileLoader) Encoding() *Encoding {
 // The function returns the following values:
 //
 //   - file: SourceFile.
-//
 func (loader *FileLoader) File() *File {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret *C.GtkSourceFile       // in
@@ -277,7 +271,6 @@ func (loader *FileLoader) File() *File {
 // The function returns the following values:
 //
 //   - inputStream (optional) to load, or NULL if a #GFile is used.
-//
 func (loader *FileLoader) InputStream() gio.InputStreamer {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret *C.GInputStream        // in
@@ -312,7 +305,6 @@ func (loader *FileLoader) InputStream() gio.InputStreamer {
 // The function returns the following values:
 //
 //   - file (optional) to load, or NULL if an input stream is used.
-//
 func (loader *FileLoader) Location() *gio.File {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret *C.GFile               // in
@@ -339,7 +331,6 @@ func (loader *FileLoader) Location() *gio.File {
 // The function returns the following values:
 //
 //   - newlineType: detected newline type.
-//
 func (loader *FileLoader) NewlineType() NewlineType {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _cret C.GtkSourceNewlineType // in
@@ -365,7 +356,6 @@ func (loader *FileLoader) NewlineType() NewlineType {
 // The function takes the following parameters:
 //
 //   - result: Result.
-//
 func (loader *FileLoader) LoadFinish(result gio.AsyncResulter) error {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _arg1 *C.GAsyncResult        // out
@@ -402,7 +392,6 @@ func (loader *FileLoader) LoadFinish(result gio.AsyncResulter) error {
 // The function takes the following parameters:
 //
 //   - candidateEncodings: list of SourceEncoding<!-- -->s.
-//
 func (loader *FileLoader) SetCandidateEncodings(candidateEncodings []*Encoding) {
 	var _arg0 *C.GtkSourceFileLoader // out
 	var _arg1 *C.GSList              // out

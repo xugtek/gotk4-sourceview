@@ -103,7 +103,6 @@ func marshalMark(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - mark: new SourceMark that can be added using gtk.TextBuffer.AddMark().
-//
 func NewMark(name, category string) *Mark {
 	var _arg1 *C.gchar         // out
 	var _arg2 *C.gchar         // out
@@ -132,7 +131,6 @@ func NewMark(name, category string) *Mark {
 // The function returns the following values:
 //
 //   - utf8: category of the SourceMark.
-//
 func (mark *Mark) Category() string {
 	var _arg0 *C.GtkSourceMark // out
 	var _cret *C.gchar         // in
@@ -152,7 +150,7 @@ func (mark *Mark) Category() string {
 // Next returns the next GtkSourceMark in the buffer or NULL if the mark was not
 // added to a buffer.
 //
-//    If there is no next mark, NULL will be returned.
+//	If there is no next mark, NULL will be returned.
 //
 // If category is NULL, looks for marks of any category.
 //
@@ -163,7 +161,6 @@ func (mark *Mark) Category() string {
 // The function returns the following values:
 //
 //   - ret (optional): next SourceMark, or NULL.
-//
 func (mark *Mark) Next(category string) *Mark {
 	var _arg0 *C.GtkSourceMark // out
 	var _arg1 *C.gchar         // out
@@ -197,20 +194,21 @@ func (mark *Mark) Next(category string) *Mark {
 //
 // The function takes the following parameters:
 //
-//   - category: string specifying the mark category, or NULL.
+//   - category (optional): string specifying the mark category, or NULL.
 //
 // The function returns the following values:
 //
 //   - ret (optional) previous SourceMark, or NULL.
-//
 func (mark *Mark) Prev(category string) *Mark {
 	var _arg0 *C.GtkSourceMark // out
 	var _arg1 *C.gchar         // out
 	var _cret *C.GtkSourceMark // in
 
 	_arg0 = (*C.GtkSourceMark)(unsafe.Pointer(coreglib.InternObject(mark).Native()))
-	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(category)))
-	defer C.free(unsafe.Pointer(_arg1))
+	if category != "" {
+		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(category)))
+		defer C.free(unsafe.Pointer(_arg1))
+	}
 
 	_cret = C.gtk_source_mark_prev(_arg0, _arg1)
 	runtime.KeepAlive(mark)

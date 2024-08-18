@@ -125,7 +125,6 @@ func marshalStyleSchemeChooserButton(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - styleSchemeChooserButton: new SourceStyleSchemeChooserButton.
-//
 func NewStyleSchemeChooserButton() *StyleSchemeChooserButton {
 	var _cret *C.GtkWidget // in
 

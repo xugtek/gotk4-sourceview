@@ -78,8 +78,6 @@ func marshalCompletionSnippets(p uintptr) (interface{}, error) {
 	return wrapCompletionSnippets(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// The function returns the following values:
-//
 func NewCompletionSnippets() *CompletionSnippets {
 	var _cret *C.GtkSourceCompletionSnippets // in
 

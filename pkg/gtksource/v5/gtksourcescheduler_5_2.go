@@ -27,9 +27,6 @@ type SchedulerCallback func(deadline int64) (ok bool)
 // The function takes the following parameters:
 //
 //   - callback to execute.
-//
-// The function returns the following values:
-//
 func SchedulerAdd(callback SchedulerCallback) uint {
 	var _arg1 C.GtkSourceSchedulerCallback // out
 	var _arg2 C.gpointer
@@ -62,9 +59,6 @@ func SchedulerAdd(callback SchedulerCallback) uint {
 // The function takes the following parameters:
 //
 //   - callback to execute.
-//
-// The function returns the following values:
-//
 func SchedulerAddFull(callback SchedulerCallback) uint {
 	var _arg1 C.GtkSourceSchedulerCallback // out
 	var _arg2 C.gpointer
@@ -91,7 +85,6 @@ func SchedulerAddFull(callback SchedulerCallback) uint {
 // The function takes the following parameters:
 //
 //   - handlerId: handler id.
-//
 func SchedulerRemove(handlerId uint) {
 	var _arg1 C.gsize // out
 

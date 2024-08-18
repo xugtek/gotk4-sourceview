@@ -85,7 +85,6 @@ func marshalTag(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - tag: new SourceTag.
-//
 func NewTag(name string) *Tag {
 	var _arg1 *C.gchar      // out
 	var _cret *C.GtkTextTag // in

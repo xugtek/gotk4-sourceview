@@ -41,7 +41,6 @@ type BufferOverrides struct {
 	//
 	//   - iter
 	//   - state
-	//
 	BracketMatched func(iter *gtk.TextIter, state BracketMatchType)
 }
 
@@ -92,11 +91,11 @@ func defaultBufferOverrides(v *Buffer) BufferOverrides {
 // gtksourceview:context-classes:<name>. For example to retrieve the gtk.TextTag
 // for the string context class, one can write:
 //
-//    GtkTextTagTable *tag_table;
-//    GtkTextTag *tag;
+//	GtkTextTagTable *tag_table;
+//	GtkTextTag *tag;
 //
-//    tag_table = gtk_text_buffer_get_tag_table (buffer);
-//    tag = gtk_text_tag_table_lookup (tag_table, "gtksourceview:context-classes:string");
+//	tag_table = gtk_text_buffer_get_tag_table (buffer);
+//	tag = gtk_text_tag_table_lookup (tag_table, "gtksourceview:context-classes:string");
 //
 // The tag must be used for read-only purposes.
 //
@@ -195,7 +194,6 @@ func (buffer *Buffer) ConnectSourceMarkUpdated(f func(mark *gtk.TextMark)) coreg
 // The function returns the following values:
 //
 //   - buffer: new source buffer.
-//
 func NewBuffer(table *gtk.TextTagTable) *Buffer {
 	var _arg1 *C.GtkTextTagTable // out
 	var _cret *C.GtkSourceBuffer // in
@@ -228,7 +226,6 @@ func NewBuffer(table *gtk.TextTagTable) *Buffer {
 //
 //   - buffer: new source buffer which will highlight text according to the
 //     highlighting patterns in language.
-//
 func NewBufferWithLanguage(language *Language) *Buffer {
 	var _arg1 *C.GtkSourceLanguage // out
 	var _cret *C.GtkSourceBuffer   // in
@@ -255,7 +252,6 @@ func NewBufferWithLanguage(language *Language) *Buffer {
 //   - caseType: how to change the case.
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (buffer *Buffer) ChangeCase(caseType ChangeCaseType, start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer        // out
 	var _arg1 C.GtkSourceChangeCaseType // out
@@ -298,7 +294,6 @@ func (buffer *Buffer) ChangeCase(caseType ChangeCaseType, start, end *gtk.TextIt
 // The function returns the following values:
 //
 //   - mark: new mark, owned by the buffer.
-//
 func (buffer *Buffer) CreateSourceMark(name, category string, where *gtk.TextIter) *Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.gchar           // out
@@ -341,7 +336,6 @@ func (buffer *Buffer) CreateSourceMark(name, category string, where *gtk.TextIte
 //
 //   - start of the area to highlight.
 //   - end of the area to highlight.
-//
 func (buffer *Buffer) EnsureHighlight(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -369,7 +363,6 @@ func (buffer *Buffer) EnsureHighlight(start, end *gtk.TextIter) {
 //
 //   - utf8s: new NULL terminated array of context class names. Use g_strfreev()
 //     to free the array if it is no longer needed.
-//
 func (buffer *Buffer) ContextClassesAtIter(iter *gtk.TextIter) []string {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -409,7 +402,6 @@ func (buffer *Buffer) ContextClassesAtIter(iter *gtk.TextIter) []string {
 // The function returns the following values:
 //
 //   - ok: TRUE if the source buffer will highlight matching brackets.
-//
 func (buffer *Buffer) HighlightMatchingBrackets() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -434,7 +426,6 @@ func (buffer *Buffer) HighlightMatchingBrackets() bool {
 // The function returns the following values:
 //
 //   - ok: TRUE if syntax highlighting is enabled, FALSE otherwise.
-//
 func (buffer *Buffer) HighlightSyntax() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -456,7 +447,6 @@ func (buffer *Buffer) HighlightSyntax() bool {
 // The function returns the following values:
 //
 //   - ok: whether the buffer has an implicit trailing newline.
-//
 func (buffer *Buffer) ImplicitTrailingNewline() bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _cret C.gboolean         // in
@@ -483,7 +473,6 @@ func (buffer *Buffer) ImplicitTrailingNewline() bool {
 // The function returns the following values:
 //
 //   - language (optional): language associated with the buffer, or NULL.
-//
 func (buffer *Buffer) Language() *Language {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _cret *C.GtkSourceLanguage // in
@@ -502,6 +491,24 @@ func (buffer *Buffer) Language() *Language {
 	return _language
 }
 
+func (buffer *Buffer) Loading() bool {
+	var _arg0 *C.GtkSourceBuffer // out
+	var _cret C.gboolean         // in
+
+	_arg0 = (*C.GtkSourceBuffer)(unsafe.Pointer(coreglib.InternObject(buffer).Native()))
+
+	_cret = C.gtk_source_buffer_get_loading(_arg0)
+	runtime.KeepAlive(buffer)
+
+	var _ok bool // out
+
+	if _cret != 0 {
+		_ok = true
+	}
+
+	return _ok
+}
+
 // SourceMarksAtIter returns the list of marks of the given category at iter.
 //
 // If category is NULL it returns all marks at iter.
@@ -514,7 +521,6 @@ func (buffer *Buffer) Language() *Language {
 // The function returns the following values:
 //
 //   - sList: a newly allocated List.
-//
 func (buffer *Buffer) SourceMarksAtIter(iter *gtk.TextIter, category string) []*Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -558,7 +564,6 @@ func (buffer *Buffer) SourceMarksAtIter(iter *gtk.TextIter, category string) []*
 // The function returns the following values:
 //
 //   - sList: a newly allocated List.
-//
 func (buffer *Buffer) SourceMarksAtLine(line int, category string) []*Mark {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gint             // out
@@ -598,7 +603,6 @@ func (buffer *Buffer) SourceMarksAtLine(line int, category string) []*Mark {
 // The function returns the following values:
 //
 //   - styleScheme (optional): stylescheme associated with the buffer, or NULL.
-//
 func (buffer *Buffer) StyleScheme() *StyleScheme {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _cret *C.GtkSourceStyleScheme // in
@@ -629,7 +633,6 @@ func (buffer *Buffer) StyleScheme() *StyleScheme {
 // The function returns the following values:
 //
 //   - ok: whether iter has the context class.
-//
 func (buffer *Buffer) IterHasContextClass(iter *gtk.TextIter, contextClass string) bool {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -661,7 +664,6 @@ func (buffer *Buffer) IterHasContextClass(iter *gtk.TextIter, contextClass strin
 //
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (buffer *Buffer) JoinLines(start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -687,7 +689,6 @@ func (buffer *Buffer) JoinLines(start, end *gtk.TextIter) {
 //   - start: TextIter.
 //   - end: TextIter.
 //   - category (optional) to search for, or NULL.
-//
 func (buffer *Buffer) RemoveSourceMarks(start, end *gtk.TextIter, category string) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 *C.GtkTextIter     // out
@@ -719,7 +720,6 @@ func (buffer *Buffer) RemoveSourceMarks(start, end *gtk.TextIter, category strin
 // The function takes the following parameters:
 //
 //   - highlight: TRUE if you want matching brackets highlighted.
-//
 func (buffer *Buffer) SetHighlightMatchingBrackets(highlight bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -746,7 +746,6 @@ func (buffer *Buffer) SetHighlightMatchingBrackets(highlight bool) {
 // The function takes the following parameters:
 //
 //   - highlight: TRUE to enable syntax highlighting, FALSE to disable it.
-//
 func (buffer *Buffer) SetHighlightSyntax(highlight bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -779,7 +778,6 @@ func (buffer *Buffer) SetHighlightSyntax(highlight bool) {
 // The function takes the following parameters:
 //
 //   - implicitTrailingNewline: new value.
-//
 func (buffer *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 	var _arg0 *C.GtkSourceBuffer // out
 	var _arg1 C.gboolean         // out
@@ -805,7 +803,6 @@ func (buffer *Buffer) SetImplicitTrailingNewline(implicitTrailingNewline bool) {
 // The function takes the following parameters:
 //
 //   - language (optional) to set, or NULL.
-//
 func (buffer *Buffer) SetLanguage(language *Language) {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _arg1 *C.GtkSourceLanguage // out
@@ -836,7 +833,6 @@ func (buffer *Buffer) SetLanguage(language *Language) {
 // The function takes the following parameters:
 //
 //   - scheme (optional) or NULL.
-//
 func (buffer *Buffer) SetStyleScheme(scheme *StyleScheme) {
 	var _arg0 *C.GtkSourceBuffer      // out
 	var _arg1 *C.GtkSourceStyleScheme // out
@@ -859,7 +855,6 @@ func (buffer *Buffer) SetStyleScheme(scheme *StyleScheme) {
 //   - end: TextIter.
 //   - flags specifying how the sort should behave.
 //   - column: sort considering the text starting at the given column.
-//
 func (buffer *Buffer) SortLines(start, end *gtk.TextIter, flags SortFlags, column int) {
 	var _arg0 *C.GtkSourceBuffer   // out
 	var _arg1 *C.GtkTextIter       // out
@@ -885,7 +880,6 @@ func (buffer *Buffer) SortLines(start, end *gtk.TextIter, flags SortFlags, colum
 //
 //   - iter
 //   - state
-//
 func (buffer *Buffer) bracketMatched(iter *gtk.TextIter, state BracketMatchType) {
 	gclass := (*C.GtkSourceBufferClass)(coreglib.PeekParentClass(buffer))
 	fnarg := gclass.bracket_matched

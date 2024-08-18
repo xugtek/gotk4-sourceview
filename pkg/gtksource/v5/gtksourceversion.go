@@ -18,12 +18,12 @@ const MAJOR_VERSION = 5
 // MICRO_VERSION: like gtk_source_get_micro_version(), but from the headers used
 // at application compile time, rather than from the library linked against at
 // application run time.
-const MICRO_VERSION = 0
+const MICRO_VERSION = 1
 
 // MINOR_VERSION: like gtk_source_get_minor_version(), but from the headers used
 // at application compile time, rather than from the library linked against at
 // application run time.
-const MINOR_VERSION = 8
+const MINOR_VERSION = 12
 
 // CheckVersion: like GTK_SOURCE_CHECK_VERSION, but the check for
 // gtk_source_check_version is at runtime instead of compile time. This is
@@ -40,7 +40,6 @@ const MINOR_VERSION = 8
 //
 //   - ok: TRUE if the version of the GtkSourceView currently loaded is the same
 //     as or newer than the passed-in version.
-//
 func CheckVersion(major, minor, micro uint) bool {
 	var _arg1 C.guint    // out
 	var _arg2 C.guint    // out
@@ -76,7 +75,6 @@ func CheckVersion(major, minor, micro uint) bool {
 // The function returns the following values:
 //
 //   - guint: major version number of the GtkSourceView library.
-//
 func GetMajorVersion() uint {
 	var _cret C.guint // in
 
@@ -100,7 +98,6 @@ func GetMajorVersion() uint {
 // The function returns the following values:
 //
 //   - guint: micro version number of the GtkSourceView library.
-//
 func GetMicroVersion() uint {
 	var _cret C.guint // in
 
@@ -124,7 +121,6 @@ func GetMicroVersion() uint {
 // The function returns the following values:
 //
 //   - guint: minor version number of the GtkSourceView library.
-//
 func GetMinorVersion() uint {
 	var _cret C.guint // in
 

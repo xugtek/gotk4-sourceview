@@ -73,7 +73,6 @@ func marshalFile(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - file: new SourceFile object.
-//
 func NewFile() *File {
 	var _cret *C.GtkSourceFile // in
 
@@ -108,7 +107,6 @@ func (file *File) CheckFileOnDisk() {
 // The function returns the following values:
 //
 //   - compressionType: compression type.
-//
 func (file *File) CompressionType() CompressionType {
 	var _arg0 *C.GtkSourceFile           // out
 	var _cret C.GtkSourceCompressionType // in
@@ -131,7 +129,6 @@ func (file *File) CompressionType() CompressionType {
 // The function returns the following values:
 //
 //   - encoding: character encoding.
-//
 func (file *File) Encoding() *Encoding {
 	var _arg0 *C.GtkSourceFile     // out
 	var _cret *C.GtkSourceEncoding // in
@@ -151,7 +148,6 @@ func (file *File) Encoding() *Encoding {
 // The function returns the following values:
 //
 //   - ret: #GFile.
-//
 func (file *File) Location() *gio.File {
 	var _arg0 *C.GtkSourceFile // out
 	var _cret *C.GFile         // in
@@ -176,7 +172,6 @@ func (file *File) Location() *gio.File {
 // The function returns the following values:
 //
 //   - newlineType: newline type.
-//
 func (file *File) NewlineType() NewlineType {
 	var _arg0 *C.GtkSourceFile       // out
 	var _cret C.GtkSourceNewlineType // in
@@ -202,7 +197,6 @@ func (file *File) NewlineType() NewlineType {
 // The function returns the following values:
 //
 //   - ok: whether the file has been deleted.
-//
 func (file *File) IsDeleted() bool {
 	var _arg0 *C.GtkSourceFile // out
 	var _cret C.gboolean       // in
@@ -230,7 +224,6 @@ func (file *File) IsDeleted() bool {
 // The function returns the following values:
 //
 //   - ok: whether the file is externally modified.
-//
 func (file *File) IsExternallyModified() bool {
 	var _arg0 *C.GtkSourceFile // out
 	var _cret C.gboolean       // in
@@ -255,7 +248,6 @@ func (file *File) IsExternallyModified() bool {
 // The function returns the following values:
 //
 //   - ok: whether the file is local.
-//
 func (file *File) IsLocal() bool {
 	var _arg0 *C.GtkSourceFile // out
 	var _cret C.gboolean       // in
@@ -283,7 +275,6 @@ func (file *File) IsLocal() bool {
 // The function returns the following values:
 //
 //   - ok: whether the file is read-only.
-//
 func (file *File) IsReadonly() bool {
 	var _arg0 *C.GtkSourceFile // out
 	var _cret C.gboolean       // in
@@ -307,7 +298,6 @@ func (file *File) IsReadonly() bool {
 // The function takes the following parameters:
 //
 //   - location (optional): new #GFile, or NULL.
-//
 func (file *File) SetLocation(location gio.Filer) {
 	var _arg0 *C.GtkSourceFile // out
 	var _arg1 *C.GFile         // out

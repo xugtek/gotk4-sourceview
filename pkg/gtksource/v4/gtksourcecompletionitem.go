@@ -82,7 +82,6 @@ func marshalCompletionItem(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - completionItem: new SourceCompletionItem.
-//
 func NewCompletionItem() *CompletionItem {
 	var _cret *C.GtkSourceCompletionItem // in
 
@@ -98,7 +97,6 @@ func NewCompletionItem() *CompletionItem {
 // The function takes the following parameters:
 //
 //   - gicon (optional) or NULL.
-//
 func (item *CompletionItem) SetGIcon(gicon gio.Iconner) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.GIcon                   // out
@@ -116,7 +114,6 @@ func (item *CompletionItem) SetGIcon(gicon gio.Iconner) {
 // The function takes the following parameters:
 //
 //   - icon (optional) or NULL.
-//
 func (item *CompletionItem) SetIcon(icon *gdkpixbuf.Pixbuf) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.GdkPixbuf               // out
@@ -134,7 +131,6 @@ func (item *CompletionItem) SetIcon(icon *gdkpixbuf.Pixbuf) {
 // The function takes the following parameters:
 //
 //   - iconName (optional): icon name, or NULL.
-//
 func (item *CompletionItem) SetIconName(iconName string) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.gchar                   // out
@@ -153,7 +149,6 @@ func (item *CompletionItem) SetIconName(iconName string) {
 // The function takes the following parameters:
 //
 //   - info (optional): info, or NULL.
-//
 func (item *CompletionItem) SetInfo(info string) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.gchar                   // out
@@ -172,7 +167,6 @@ func (item *CompletionItem) SetInfo(info string) {
 // The function takes the following parameters:
 //
 //   - label (optional): label, or NULL.
-//
 func (item *CompletionItem) SetLabel(label string) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.gchar                   // out
@@ -191,7 +185,6 @@ func (item *CompletionItem) SetLabel(label string) {
 // The function takes the following parameters:
 //
 //   - markup (optional): markup, or NULL.
-//
 func (item *CompletionItem) SetMarkup(markup string) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.gchar                   // out
@@ -210,7 +203,6 @@ func (item *CompletionItem) SetMarkup(markup string) {
 // The function takes the following parameters:
 //
 //   - text (optional): text, or NULL.
-//
 func (item *CompletionItem) SetText(text string) {
 	var _arg0 *C.GtkSourceCompletionItem // out
 	var _arg1 *C.gchar                   // out

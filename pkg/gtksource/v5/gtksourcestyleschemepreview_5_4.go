@@ -127,7 +127,6 @@ func (self *StyleSchemePreview) ConnectActivate(f func()) coreglib.SignalHandle 
 // The function returns the following values:
 //
 //   - styleSchemePreview: Widget.
-//
 func NewStyleSchemePreview(scheme *StyleScheme) *StyleSchemePreview {
 	var _arg1 *C.GtkSourceStyleScheme // out
 	var _cret *C.GtkWidget            // in
@@ -139,7 +138,7 @@ func NewStyleSchemePreview(scheme *StyleScheme) *StyleSchemePreview {
 
 	var _styleSchemePreview *StyleSchemePreview // out
 
-	_styleSchemePreview = wrapStyleSchemePreview(coreglib.AssumeOwnership(unsafe.Pointer(_cret)))
+	_styleSchemePreview = wrapStyleSchemePreview(coreglib.Take(unsafe.Pointer(_cret)))
 
 	return _styleSchemePreview
 }
@@ -149,7 +148,6 @@ func NewStyleSchemePreview(scheme *StyleScheme) *StyleSchemePreview {
 // The function returns the following values:
 //
 //   - styleScheme: SourceStyleScheme.
-//
 func (self *StyleSchemePreview) Scheme() *StyleScheme {
 	var _arg0 *C.GtkSourceStyleSchemePreview // out
 	var _cret *C.GtkSourceStyleScheme        // in
@@ -166,8 +164,6 @@ func (self *StyleSchemePreview) Scheme() *StyleScheme {
 	return _styleScheme
 }
 
-// The function returns the following values:
-//
 func (self *StyleSchemePreview) Selected() bool {
 	var _arg0 *C.GtkSourceStyleSchemePreview // out
 	var _cret C.gboolean                     // in
@@ -186,8 +182,6 @@ func (self *StyleSchemePreview) Selected() bool {
 	return _ok
 }
 
-// The function takes the following parameters:
-//
 func (self *StyleSchemePreview) SetSelected(selected bool) {
 	var _arg0 *C.GtkSourceStyleSchemePreview // out
 	var _arg1 C.gboolean                     // out

@@ -150,7 +150,6 @@ func marshalCompletionProvider(p uintptr) (interface{}, error) {
 //
 //   - ok: TRUE to indicate that the proposal activation has been handled,
 //     FALSE otherwise.
-//
 func (provider *CompletionProvider) ActivateProposal(proposal CompletionProposaller, iter *gtk.TextIter) bool {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionProposal // out
@@ -181,7 +180,6 @@ func (provider *CompletionProvider) ActivateProposal(proposal CompletionProposal
 // The function returns the following values:
 //
 //   - completionActivation: combination of SourceCompletionActivation.
-//
 func (provider *CompletionProvider) Activation() CompletionActivation {
 	var _arg0 *C.GtkSourceCompletionProvider  // out
 	var _cret C.GtkSourceCompletionActivation // in
@@ -204,7 +202,6 @@ func (provider *CompletionProvider) Activation() CompletionActivation {
 //
 //   - icon (optional) to be used for the provider, or NULL if the provider does
 //     not have a special icon.
-//
 func (provider *CompletionProvider) GIcon() *gio.Icon {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret *C.GIcon                       // in
@@ -234,7 +231,6 @@ func (provider *CompletionProvider) GIcon() *gio.Icon {
 //
 //   - pixbuf (optional): icon to be used for the provider, or NULL if the
 //     provider does not have a special icon.
-//
 func (provider *CompletionProvider) Icon() *gdkpixbuf.Pixbuf {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret *C.GdkPixbuf                   // in
@@ -269,7 +265,6 @@ func (provider *CompletionProvider) Icon() *gdkpixbuf.Pixbuf {
 //
 //   - utf8 (optional): icon name to be used for the provider, or NULL if the
 //     provider does not have a special icon.
-//
 func (provider *CompletionProvider) IconName() string {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret *C.gchar                       // in
@@ -308,7 +303,6 @@ func (provider *CompletionProvider) IconName() string {
 //
 //   - widget (optional): custom Widget to show extra information about
 //     proposal, or NULL if the provider does not have a special info widget.
-//
 func (provider *CompletionProvider) InfoWidget(proposal CompletionProposaller) gtk.Widgetter {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionProposal // out
@@ -350,7 +344,6 @@ func (provider *CompletionProvider) InfoWidget(proposal CompletionProposaller) g
 // The function returns the following values:
 //
 //   - gint: interactive delay in milliseconds.
-//
 func (provider *CompletionProvider) InteractiveDelay() int {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret C.gint                         // in
@@ -374,7 +367,6 @@ func (provider *CompletionProvider) InteractiveDelay() int {
 // The function returns the following values:
 //
 //   - utf8: new string containing the name of the provider.
-//
 func (provider *CompletionProvider) Name() string {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret *C.gchar                       // in
@@ -399,7 +391,6 @@ func (provider *CompletionProvider) Name() string {
 // The function returns the following values:
 //
 //   - gint: provider priority.
-//
 func (provider *CompletionProvider) Priority() int {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret C.gint                         // in
@@ -438,7 +429,6 @@ func (provider *CompletionProvider) Priority() int {
 //
 //   - iter: TextIter.
 //   - ok: TRUE if iter was set for proposal, FALSE otherwise.
-//
 func (provider *CompletionProvider) StartIter(context *CompletionContext, proposal CompletionProposaller) (*gtk.TextIter, bool) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -476,7 +466,6 @@ func (provider *CompletionProvider) StartIter(context *CompletionContext, propos
 // The function returns the following values:
 //
 //   - ok: TRUE if provider matches the completion context, FALSE otherwise.
-//
 func (provider *CompletionProvider) Match(context *CompletionContext) bool {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -504,7 +493,6 @@ func (provider *CompletionProvider) Match(context *CompletionContext) bool {
 // The function takes the following parameters:
 //
 //   - context: SourceCompletionContext.
-//
 func (provider *CompletionProvider) Populate(context *CompletionContext) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -527,7 +515,6 @@ func (provider *CompletionProvider) Populate(context *CompletionContext) {
 //
 //   - proposal: SourceCompletionProposal.
 //   - info: SourceCompletionInfo.
-//
 func (provider *CompletionProvider) UpdateInfo(proposal CompletionProposaller, info *CompletionInfo) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionProposal // out
@@ -564,7 +551,6 @@ func (provider *CompletionProvider) UpdateInfo(proposal CompletionProposaller, i
 //
 //   - ok: TRUE to indicate that the proposal activation has been handled,
 //     FALSE otherwise.
-//
 func (provider *CompletionProvider) activateProposal(proposal CompletionProposaller, iter *gtk.TextIter) bool {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.activate_proposal
@@ -598,7 +584,6 @@ func (provider *CompletionProvider) activateProposal(proposal CompletionProposal
 // The function returns the following values:
 //
 //   - completionActivation: combination of SourceCompletionActivation.
-//
 func (provider *CompletionProvider) activation() CompletionActivation {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_activation
@@ -624,7 +609,6 @@ func (provider *CompletionProvider) activation() CompletionActivation {
 //
 //   - icon (optional) to be used for the provider, or NULL if the provider does
 //     not have a special icon.
-//
 func (provider *CompletionProvider) gIcon() *gio.Icon {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_gicon
@@ -657,7 +641,6 @@ func (provider *CompletionProvider) gIcon() *gio.Icon {
 //
 //   - pixbuf (optional): icon to be used for the provider, or NULL if the
 //     provider does not have a special icon.
-//
 func (provider *CompletionProvider) icon() *gdkpixbuf.Pixbuf {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_icon
@@ -695,7 +678,6 @@ func (provider *CompletionProvider) icon() *gdkpixbuf.Pixbuf {
 //
 //   - utf8 (optional): icon name to be used for the provider, or NULL if the
 //     provider does not have a special icon.
-//
 func (provider *CompletionProvider) iconName() string {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_icon_name
@@ -737,7 +719,6 @@ func (provider *CompletionProvider) iconName() string {
 //
 //   - widget (optional): custom Widget to show extra information about
 //     proposal, or NULL if the provider does not have a special info widget.
-//
 func (provider *CompletionProvider) infoWidget(proposal CompletionProposaller) gtk.Widgetter {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_info_widget
@@ -782,7 +763,6 @@ func (provider *CompletionProvider) infoWidget(proposal CompletionProposaller) g
 // The function returns the following values:
 //
 //   - gint: interactive delay in milliseconds.
-//
 func (provider *CompletionProvider) interactiveDelay() int {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_interactive_delay
@@ -809,7 +789,6 @@ func (provider *CompletionProvider) interactiveDelay() int {
 // The function returns the following values:
 //
 //   - utf8: new string containing the name of the provider.
-//
 func (provider *CompletionProvider) name() string {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_name
@@ -837,7 +816,6 @@ func (provider *CompletionProvider) name() string {
 // The function returns the following values:
 //
 //   - gint: provider priority.
-//
 func (provider *CompletionProvider) priority() int {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_priority
@@ -879,7 +857,6 @@ func (provider *CompletionProvider) priority() int {
 //
 //   - iter: TextIter.
 //   - ok: TRUE if iter was set for proposal, FALSE otherwise.
-//
 func (provider *CompletionProvider) startIter(context *CompletionContext, proposal CompletionProposaller) (*gtk.TextIter, bool) {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.get_start_iter
@@ -920,7 +897,6 @@ func (provider *CompletionProvider) startIter(context *CompletionContext, propos
 // The function returns the following values:
 //
 //   - ok: TRUE if provider matches the completion context, FALSE otherwise.
-//
 func (provider *CompletionProvider) match(context *CompletionContext) bool {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.match
@@ -951,7 +927,6 @@ func (provider *CompletionProvider) match(context *CompletionContext) bool {
 // The function takes the following parameters:
 //
 //   - context: SourceCompletionContext.
-//
 func (provider *CompletionProvider) populate(context *CompletionContext) {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.populate
@@ -977,7 +952,6 @@ func (provider *CompletionProvider) populate(context *CompletionContext) {
 //
 //   - proposal: SourceCompletionProposal.
 //   - info: SourceCompletionInfo.
-//
 func (provider *CompletionProvider) updateInfo(proposal CompletionProposaller, info *CompletionInfo) {
 	gclass := (*C.GtkSourceCompletionProviderIface)(coreglib.PeekParentClass(provider))
 	fnarg := gclass.update_info

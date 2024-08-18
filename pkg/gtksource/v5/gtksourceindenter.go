@@ -110,7 +110,6 @@ func marshalIndenter(p uintptr) (interface{}, error) {
 //
 //   - ok: TRUE if indentation should be automatically triggered; otherwise
 //     FALSE and no indentation will be performed.
-//
 func (self *Indenter) IsTrigger(view *View, location *gtk.TextIter, state gdk.ModifierType, keyval uint) bool {
 	var _arg0 *C.GtkSourceIndenter // out
 	var _arg1 *C.GtkSourceView     // out
@@ -161,7 +160,6 @@ func (self *Indenter) IsTrigger(view *View, location *gtk.TextIter, state gdk.Mo
 //
 //   - ok: TRUE if indentation should be automatically triggered; otherwise
 //     FALSE and no indentation will be performed.
-//
 func (self *Indenter) isTrigger(view *View, location *gtk.TextIter, state gdk.ModifierType, keyval uint) bool {
 	gclass := (*C.GtkSourceIndenterInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.is_trigger

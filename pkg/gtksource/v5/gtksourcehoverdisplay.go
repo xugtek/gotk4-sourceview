@@ -92,8 +92,6 @@ func marshalHoverDisplay(p uintptr) (interface{}, error) {
 	return wrapHoverDisplay(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// The function takes the following parameters:
-//
 func (self *HoverDisplay) Append(child gtk.Widgetter) {
 	var _arg0 *C.GtkSourceHoverDisplay // out
 	var _arg1 *C.GtkWidget             // out
@@ -110,7 +108,6 @@ func (self *HoverDisplay) Append(child gtk.Widgetter) {
 //
 //   - child
 //   - sibling
-//
 func (self *HoverDisplay) InsertAfter(child, sibling gtk.Widgetter) {
 	var _arg0 *C.GtkSourceHoverDisplay // out
 	var _arg1 *C.GtkWidget             // out
@@ -126,8 +123,6 @@ func (self *HoverDisplay) InsertAfter(child, sibling gtk.Widgetter) {
 	runtime.KeepAlive(sibling)
 }
 
-// The function takes the following parameters:
-//
 func (self *HoverDisplay) Prepend(child gtk.Widgetter) {
 	var _arg0 *C.GtkSourceHoverDisplay // out
 	var _arg1 *C.GtkWidget             // out
@@ -140,8 +135,6 @@ func (self *HoverDisplay) Prepend(child gtk.Widgetter) {
 	runtime.KeepAlive(child)
 }
 
-// The function takes the following parameters:
-//
 func (self *HoverDisplay) Remove(child gtk.Widgetter) {
 	var _arg0 *C.GtkSourceHoverDisplay // out
 	var _arg1 *C.GtkWidget             // out

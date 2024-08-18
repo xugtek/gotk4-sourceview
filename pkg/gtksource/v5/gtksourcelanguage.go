@@ -87,7 +87,6 @@ func marshalLanguage(p uintptr) (interface{}, error) {
 //   - utf8s (optional): a newly-allocated NULL terminated array containing the
 //     globs or NULL if no globs are found. The returned array must be freed
 //     with g_strfreev().
-//
 func (language *Language) Globs() []string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret **C.gchar            // in
@@ -125,7 +124,6 @@ func (language *Language) Globs() []string {
 // The function returns the following values:
 //
 //   - ok: TRUE if the language should be hidden, FALSE otherwise.
-//
 func (language *Language) Hidden() bool {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret C.gboolean           // in
@@ -152,7 +150,6 @@ func (language *Language) Hidden() bool {
 // The function returns the following values:
 //
 //   - utf8: ID of language.
-//
 func (language *Language) ID() string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret *C.gchar             // in
@@ -179,7 +176,6 @@ func (language *Language) ID() string {
 //     language or NULL if language does not contain the specified metadata
 //     property. The returned string is owned by language and should not be
 //     freed or modified.
-//
 func (language *Language) Metadata(name string) string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _arg1 *C.gchar             // out
@@ -212,7 +208,6 @@ func (language *Language) Metadata(name string) string {
 //   - utf8s (optional): a newly-allocated NULL terminated array containing the
 //     mime types or NULL if no mime types are found. The returned array must be
 //     freed with g_strfreev().
-//
 func (language *Language) MIMETypes() []string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret **C.gchar            // in
@@ -252,7 +247,6 @@ func (language *Language) MIMETypes() []string {
 // The function returns the following values:
 //
 //   - utf8: name of language.
-//
 func (language *Language) Name() string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret *C.gchar             // in
@@ -277,7 +271,6 @@ func (language *Language) Name() string {
 // The function returns the following values:
 //
 //   - utf8: section of language.
-//
 func (language *Language) Section() string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret *C.gchar             // in
@@ -307,7 +300,6 @@ func (language *Language) Section() string {
 //     present in the current style scheme or NULL if the style has no fallback
 //     defined. The returned string is owned by the language and must not be
 //     modified.
-//
 func (language *Language) StyleFallback(styleId string) string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _arg1 *C.gchar             // out
@@ -337,7 +329,6 @@ func (language *Language) StyleFallback(styleId string) string {
 //   - utf8s (optional): a newly-allocated NULL terminated array containing ids
 //     of the styles defined by this language or NULL if no style is defined.
 //     The returned array must be freed with g_strfreev().
-//
 func (language *Language) StyleIDs() []string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _cret **C.gchar            // in
@@ -383,7 +374,6 @@ func (language *Language) StyleIDs() []string {
 //     language or NULL if the style has no name or there is no style with ID
 //     style_id defined by this language. The returned string is owned by the
 //     language and must not be modified.
-//
 func (language *Language) StyleName(styleId string) string {
 	var _arg0 *C.GtkSourceLanguage // out
 	var _arg1 *C.gchar             // out

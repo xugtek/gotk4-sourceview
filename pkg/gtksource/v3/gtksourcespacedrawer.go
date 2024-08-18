@@ -77,7 +77,6 @@ func marshalSpaceDrawer(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - spaceDrawer: new SourceSpaceDrawer.
-//
 func NewSpaceDrawer() *SpaceDrawer {
 	var _cret *C.GtkSourceSpaceDrawer // in
 
@@ -106,7 +105,6 @@ func NewSpaceDrawer() *SpaceDrawer {
 //   - settings #GSettings object.
 //   - key settings key to bind.
 //   - flags for the binding.
-//
 func (drawer *SpaceDrawer) BindMatrixSetting(settings *gio.Settings, key string, flags gio.SettingsBindFlags) {
 	var _arg0 *C.GtkSourceSpaceDrawer // out
 	var _arg1 *C.GSettings            // out
@@ -129,7 +127,6 @@ func (drawer *SpaceDrawer) BindMatrixSetting(settings *gio.Settings, key string,
 // The function returns the following values:
 //
 //   - ok: whether the SourceSpaceDrawer:matrix property is enabled.
-//
 func (drawer *SpaceDrawer) EnableMatrix() bool {
 	var _arg0 *C.GtkSourceSpaceDrawer // out
 	var _cret C.gboolean              // in
@@ -158,7 +155,6 @@ func (drawer *SpaceDrawer) EnableMatrix() bool {
 // The function returns the following values:
 //
 //   - variant value as a new floating #GVariant instance.
-//
 func (drawer *SpaceDrawer) Matrix() *glib.Variant {
 	var _arg0 *C.GtkSourceSpaceDrawer // out
 	var _cret *C.GVariant             // in
@@ -197,7 +193,6 @@ func (drawer *SpaceDrawer) Matrix() *glib.Variant {
 // The function returns the following values:
 //
 //   - spaceTypeFlags: combination of SourceSpaceTypeFlags.
-//
 func (drawer *SpaceDrawer) TypesForLocations(locations SpaceLocationFlags) SpaceTypeFlags {
 	var _arg0 *C.GtkSourceSpaceDrawer       // out
 	var _arg1 C.GtkSourceSpaceLocationFlags // out
@@ -223,7 +218,6 @@ func (drawer *SpaceDrawer) TypesForLocations(locations SpaceLocationFlags) Space
 // The function takes the following parameters:
 //
 //   - enableMatrix: new value.
-//
 func (drawer *SpaceDrawer) SetEnableMatrix(enableMatrix bool) {
 	var _arg0 *C.GtkSourceSpaceDrawer // out
 	var _arg1 C.gboolean              // out
@@ -249,7 +243,6 @@ func (drawer *SpaceDrawer) SetEnableMatrix(enableMatrix bool) {
 // The function takes the following parameters:
 //
 //   - matrix (optional): new matrix value, or NULL.
-//
 func (drawer *SpaceDrawer) SetMatrix(matrix *glib.Variant) {
 	var _arg0 *C.GtkSourceSpaceDrawer // out
 	var _arg1 *C.GVariant             // out
@@ -271,7 +264,6 @@ func (drawer *SpaceDrawer) SetMatrix(matrix *glib.Variant) {
 //
 //   - locations: one or several SourceSpaceLocationFlags.
 //   - types: combination of SourceSpaceTypeFlags.
-//
 func (drawer *SpaceDrawer) SetTypesForLocations(locations SpaceLocationFlags, types SpaceTypeFlags) {
 	var _arg0 *C.GtkSourceSpaceDrawer       // out
 	var _arg1 C.GtkSourceSpaceLocationFlags // out

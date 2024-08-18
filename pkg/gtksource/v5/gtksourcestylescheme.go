@@ -85,7 +85,6 @@ func marshalStyleScheme(p uintptr) (interface{}, error) {
 //
 //   - utf8s (optional): a NULL-terminated array containing the scheme authors
 //     or NULL if no author is specified by the style scheme.
-//
 func (scheme *StyleScheme) Authors() []string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _cret **C.gchar               // in
@@ -119,7 +118,6 @@ func (scheme *StyleScheme) Authors() []string {
 // The function returns the following values:
 //
 //   - utf8 (optional): scheme description (if defined), or NULL.
-//
 func (scheme *StyleScheme) Description() string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _cret *C.gchar                // in
@@ -142,7 +140,6 @@ func (scheme *StyleScheme) Description() string {
 //
 //   - utf8 (optional): scheme file name if the scheme was created parsing a
 //     style scheme file or NULL in the other cases.
-//
 func (scheme *StyleScheme) Filename() string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _cret *C.gchar                // in
@@ -164,7 +161,6 @@ func (scheme *StyleScheme) Filename() string {
 // The function returns the following values:
 //
 //   - utf8: scheme id.
-//
 func (scheme *StyleScheme) ID() string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _cret *C.gchar                // in
@@ -191,7 +187,6 @@ func (scheme *StyleScheme) ID() string {
 //
 //   - utf8 (optional): value of property name stored in the metadata of scheme
 //     or NULL if scheme does not contain the specified metadata property.
-//
 func (scheme *StyleScheme) Metadata(name string) string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _arg1 *C.char                 // out
@@ -217,7 +212,6 @@ func (scheme *StyleScheme) Metadata(name string) string {
 // The function returns the following values:
 //
 //   - utf8: scheme name.
-//
 func (scheme *StyleScheme) Name() string {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _cret *C.gchar                // in
@@ -243,7 +237,6 @@ func (scheme *StyleScheme) Name() string {
 //   - style (optional) which corresponds to style_id in the scheme, or NULL
 //     when no style with this name found. It is owned by scheme and may not be
 //     unref'ed.
-//
 func (scheme *StyleScheme) Style(styleId string) *Style {
 	var _arg0 *C.GtkSourceStyleScheme // out
 	var _arg1 *C.gchar                // out

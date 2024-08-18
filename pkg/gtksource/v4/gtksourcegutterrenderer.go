@@ -120,7 +120,6 @@ type GutterRendererOverrides struct {
 	//   - iter at the start of the line where the renderer is activated.
 	//   - area of the cell area where the renderer is activated.
 	//   - event that triggered the activation.
-	//
 	Activate func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event)
 	// Begin: called when drawing a region begins. The region to be drawn is
 	// indicated by start and end. The purpose is to allow the implementation to
@@ -133,21 +132,18 @@ type GutterRendererOverrides struct {
 	//   - cellArea: Rectangle.
 	//   - start: TextIter.
 	//   - end: TextIter.
-	//
 	Begin func(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter)
 	// ChangeBuffer: this is called when the text buffer changes for renderer.
 	//
 	// The function takes the following parameters:
 	//
 	//   - oldBuffer (optional): old TextBuffer.
-	//
 	ChangeBuffer func(oldBuffer *gtk.TextBuffer)
 	// ChangeView: this is called when the text view changes for renderer.
 	//
 	// The function takes the following parameters:
 	//
 	//   - oldView (optional): old TextView.
-	//
 	ChangeView func(oldView *gtk.TextView)
 	// Draw: main renderering method. Implementations should implement this
 	// method to draw onto the cairo context. The background_area indicates
@@ -171,7 +167,6 @@ type GutterRendererOverrides struct {
 	//   - start: TextIter.
 	//   - end: TextIter.
 	//   - state: SourceGutterRendererState.
-	//
 	Draw func(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter, state GutterRendererState)
 	// End: called when drawing a region of lines has ended.
 	End func()
@@ -188,7 +183,6 @@ type GutterRendererOverrides struct {
 	// The function returns the following values:
 	//
 	//   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-	//
 	QueryActivatable func(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool
 	// QueryData: emit the SourceGutterRenderer::query-data signal.
 	// This function is called to query for data just before rendering a cell.
@@ -201,7 +195,6 @@ type GutterRendererOverrides struct {
 	//   - start: TextIter.
 	//   - end: TextIter.
 	//   - state: SourceGutterRendererState.
-	//
 	QueryData func(start, end *gtk.TextIter, state GutterRendererState)
 	// QueryTooltip emits the SourceGutterRenderer::query-tooltip signal.
 	// This function is called from SourceGutter. Implementations can override
@@ -218,7 +211,6 @@ type GutterRendererOverrides struct {
 	// The function returns the following values:
 	//
 	//   - ok: TRUE if the tooltip has been set, FALSE otherwise.
-	//
 	QueryTooltip func(iter *gtk.TextIter, area *gdk.Rectangle, x, y int, tooltip *gtk.Tooltip) bool
 	// QueueDraw emits the SourceGutterRenderer::queue-draw signal of the
 	// renderer. Call this from an implementation to inform that the renderer
@@ -376,7 +368,6 @@ func (renderer *GutterRenderer) ConnectQueueDraw(f func()) coreglib.SignalHandle
 //   - iter at the start of the line where the renderer is activated.
 //   - area of the cell area where the renderer is activated.
 //   - event that triggered the activation.
-//
 func (renderer *GutterRenderer) Activate(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GtkTextIter             // out
@@ -406,7 +397,6 @@ func (renderer *GutterRenderer) Activate(iter *gtk.TextIter, area *gdk.Rectangle
 //   - cellArea: Rectangle.
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (renderer *GutterRenderer) Begin(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.cairo_t                 // out
@@ -453,7 +443,6 @@ func (renderer *GutterRenderer) Begin(cr *cairo.Context, backgroundArea, cellAre
 //   - start: TextIter.
 //   - end: TextIter.
 //   - state: SourceGutterRendererState.
-//
 func (renderer *GutterRenderer) Draw(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter, state GutterRendererState) {
 	var _arg0 *C.GtkSourceGutterRenderer     // out
 	var _arg1 *C.cairo_t                     // out
@@ -499,7 +488,6 @@ func (renderer *GutterRenderer) End() {
 //     ignore.
 //   - yalign (optional): return location for the y-alignment, or NULL to
 //     ignore.
-//
 func (renderer *GutterRenderer) Alignment() (xalign, yalign float32) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gfloat                   // in
@@ -525,7 +513,6 @@ func (renderer *GutterRenderer) Alignment() (xalign, yalign float32) {
 // The function returns the following values:
 //
 //   - gutterRendererAlignmentMode: SourceGutterRendererAlignmentMode.
-//
 func (renderer *GutterRenderer) AlignmentMode() GutterRendererAlignmentMode {
 	var _arg0 *C.GtkSourceGutterRenderer             // out
 	var _cret C.GtkSourceGutterRendererAlignmentMode // in
@@ -548,7 +535,6 @@ func (renderer *GutterRenderer) AlignmentMode() GutterRendererAlignmentMode {
 //
 //   - color (optional): return value for a RGBA.
 //   - ok: TRUE if the background color is set, FALSE otherwise.
-//
 func (renderer *GutterRenderer) Background() (*gdk.RGBA, bool) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.GdkRGBA                  // in
@@ -576,7 +562,6 @@ func (renderer *GutterRenderer) Background() (*gdk.RGBA, bool) {
 //
 //   - xpad (optional): return location for the x-padding, or NULL to ignore.
 //   - ypad (optional): return location for the y-padding, or NULL to ignore.
-//
 func (renderer *GutterRenderer) Padding() (xpad, ypad int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gint                     // in
@@ -601,7 +586,6 @@ func (renderer *GutterRenderer) Padding() (xpad, ypad int) {
 // The function returns the following values:
 //
 //   - gint: size of the renderer.
-//
 func (renderer *GutterRenderer) Size() int {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gint                     // in
@@ -623,7 +607,6 @@ func (renderer *GutterRenderer) Size() int {
 // The function returns the following values:
 //
 //   - textView: TextView.
-//
 func (renderer *GutterRenderer) View() *gtk.TextView {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret *C.GtkTextView             // in
@@ -667,7 +650,6 @@ func (renderer *GutterRenderer) View() *gtk.TextView {
 // The function returns the following values:
 //
 //   - ok: TRUE if the renderer is visible, FALSE otherwise.
-//
 func (renderer *GutterRenderer) Visible() bool {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.gboolean                 // in
@@ -691,7 +673,6 @@ func (renderer *GutterRenderer) Visible() bool {
 // The function returns the following values:
 //
 //   - textWindowType: TextWindowType.
-//
 func (renderer *GutterRenderer) WindowType() gtk.TextWindowType {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _cret C.GtkTextWindowType        // in
@@ -721,7 +702,6 @@ func (renderer *GutterRenderer) WindowType() gtk.TextWindowType {
 // The function returns the following values:
 //
 //   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-//
 func (renderer *GutterRenderer) QueryActivatable(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GtkTextIter             // out
@@ -760,7 +740,6 @@ func (renderer *GutterRenderer) QueryActivatable(iter *gtk.TextIter, area *gdk.R
 //   - start: TextIter.
 //   - end: TextIter.
 //   - state: SourceGutterRendererState.
-//
 func (renderer *GutterRenderer) QueryData(start, end *gtk.TextIter, state GutterRendererState) {
 	var _arg0 *C.GtkSourceGutterRenderer     // out
 	var _arg1 *C.GtkTextIter                 // out
@@ -794,7 +773,6 @@ func (renderer *GutterRenderer) QueryData(start, end *gtk.TextIter, state Gutter
 // The function returns the following values:
 //
 //   - ok: TRUE if the tooltip has been set, FALSE otherwise.
-//
 func (renderer *GutterRenderer) QueryTooltip(iter *gtk.TextIter, area *gdk.Rectangle, x, y int, tooltip *gtk.Tooltip) bool {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GtkTextIter             // out
@@ -852,7 +830,6 @@ func (renderer *GutterRenderer) QueueDraw() {
 //
 //   - xalign: x-alignment.
 //   - yalign: y-alignment.
-//
 func (renderer *GutterRenderer) SetAlignment(xalign, yalign float32) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gfloat                   // out
@@ -874,7 +851,6 @@ func (renderer *GutterRenderer) SetAlignment(xalign, yalign float32) {
 // The function takes the following parameters:
 //
 //   - mode: SourceGutterRendererAlignmentMode.
-//
 func (renderer *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMode) {
 	var _arg0 *C.GtkSourceGutterRenderer             // out
 	var _arg1 C.GtkSourceGutterRendererAlignmentMode // out
@@ -893,7 +869,6 @@ func (renderer *GutterRenderer) SetAlignmentMode(mode GutterRendererAlignmentMod
 // The function takes the following parameters:
 //
 //   - color (optional) or NULL.
-//
 func (renderer *GutterRenderer) SetBackground(color *gdk.RGBA) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 *C.GdkRGBA                 // out
@@ -918,7 +893,6 @@ func (renderer *GutterRenderer) SetBackground(color *gdk.RGBA) {
 //
 //   - xpad: x-padding.
 //   - ypad: y-padding.
-//
 func (renderer *GutterRenderer) SetPadding(xpad, ypad int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gint                     // out
@@ -940,7 +914,6 @@ func (renderer *GutterRenderer) SetPadding(xpad, ypad int) {
 // The function takes the following parameters:
 //
 //   - size: size.
-//
 func (renderer *GutterRenderer) SetSize(size int) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gint                     // out
@@ -958,7 +931,6 @@ func (renderer *GutterRenderer) SetSize(size int) {
 // The function takes the following parameters:
 //
 //   - visible: visibility.
-//
 func (renderer *GutterRenderer) SetVisible(visible bool) {
 	var _arg0 *C.GtkSourceGutterRenderer // out
 	var _arg1 C.gboolean                 // out
@@ -981,7 +953,6 @@ func (renderer *GutterRenderer) SetVisible(visible bool) {
 //   - iter at the start of the line where the renderer is activated.
 //   - area of the cell area where the renderer is activated.
 //   - event that triggered the activation.
-//
 func (renderer *GutterRenderer) activate(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.activate
@@ -1014,7 +985,6 @@ func (renderer *GutterRenderer) activate(iter *gtk.TextIter, area *gdk.Rectangle
 //   - cellArea: Rectangle.
 //   - start: TextIter.
 //   - end: TextIter.
-//
 func (renderer *GutterRenderer) begin(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.begin
@@ -1047,7 +1017,6 @@ func (renderer *GutterRenderer) begin(cr *cairo.Context, backgroundArea, cellAre
 // The function takes the following parameters:
 //
 //   - oldBuffer (optional): old TextBuffer.
-//
 func (renderer *GutterRenderer) changeBuffer(oldBuffer *gtk.TextBuffer) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.change_buffer
@@ -1070,7 +1039,6 @@ func (renderer *GutterRenderer) changeBuffer(oldBuffer *gtk.TextBuffer) {
 // The function takes the following parameters:
 //
 //   - oldView (optional): old TextView.
-//
 func (renderer *GutterRenderer) changeView(oldView *gtk.TextView) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.change_view
@@ -1110,7 +1078,6 @@ func (renderer *GutterRenderer) changeView(oldView *gtk.TextView) {
 //   - start: TextIter.
 //   - end: TextIter.
 //   - state: SourceGutterRendererState.
-//
 func (renderer *GutterRenderer) draw(cr *cairo.Context, backgroundArea, cellArea *gdk.Rectangle, start, end *gtk.TextIter, state GutterRendererState) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.draw
@@ -1167,7 +1134,6 @@ func (renderer *GutterRenderer) end() {
 // The function returns the following values:
 //
 //   - ok: TRUE if the renderer can be activated, FALSE otherwise.
-//
 func (renderer *GutterRenderer) queryActivatable(iter *gtk.TextIter, area *gdk.Rectangle, event *gdk.Event) bool {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.query_activatable
@@ -1209,7 +1175,6 @@ func (renderer *GutterRenderer) queryActivatable(iter *gtk.TextIter, area *gdk.R
 //   - start: TextIter.
 //   - end: TextIter.
 //   - state: SourceGutterRendererState.
-//
 func (renderer *GutterRenderer) queryData(start, end *gtk.TextIter, state GutterRendererState) {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.query_data
@@ -1246,7 +1211,6 @@ func (renderer *GutterRenderer) queryData(start, end *gtk.TextIter, state Gutter
 // The function returns the following values:
 //
 //   - ok: TRUE if the tooltip has been set, FALSE otherwise.
-//
 func (renderer *GutterRenderer) queryTooltip(iter *gtk.TextIter, area *gdk.Rectangle, x, y int, tooltip *gtk.Tooltip) bool {
 	gclass := (*C.GtkSourceGutterRendererClass)(coreglib.PeekParentClass(renderer))
 	fnarg := gclass.query_tooltip

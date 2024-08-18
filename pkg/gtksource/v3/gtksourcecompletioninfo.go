@@ -112,7 +112,6 @@ func (info *CompletionInfo) ConnectBeforeShow(f func()) coreglib.SignalHandle {
 // The function returns the following values:
 //
 //   - completionInfo: new GtkSourceCompletionInfo.
-//
 func NewCompletionInfo() *CompletionInfo {
 	var _cret *C.GtkSourceCompletionInfo // in
 
@@ -132,7 +131,6 @@ func NewCompletionInfo() *CompletionInfo {
 // The function returns the following values:
 //
 //   - widget: current content widget.
-//
 func (info *CompletionInfo) Widget() gtk.Widgetter {
 	var _arg0 *C.GtkSourceCompletionInfo // out
 	var _cret *C.GtkWidget               // in
@@ -173,7 +171,6 @@ func (info *CompletionInfo) Widget() gtk.Widgetter {
 //
 //   - view on which the info window should be positioned.
 //   - iter (optional): TextIter.
-//
 func (info *CompletionInfo) MoveToIter(view *gtk.TextView, iter *gtk.TextIter) {
 	var _arg0 *C.GtkSourceCompletionInfo // out
 	var _arg1 *C.GtkTextView             // out
@@ -201,7 +198,6 @@ func (info *CompletionInfo) MoveToIter(view *gtk.TextView, iter *gtk.TextIter) {
 // The function takes the following parameters:
 //
 //   - widget (optional): Widget.
-//
 func (info *CompletionInfo) SetWidget(widget gtk.Widgetter) {
 	var _arg0 *C.GtkSourceCompletionInfo // out
 	var _arg1 *C.GtkWidget               // out

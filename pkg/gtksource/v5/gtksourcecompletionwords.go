@@ -87,7 +87,6 @@ func marshalCompletionWords(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - completionWords: new SourceCompletionWords provider.
-//
 func NewCompletionWords(title string) *CompletionWords {
 	var _arg1 *C.gchar                    // out
 	var _cret *C.GtkSourceCompletionWords // in
@@ -112,7 +111,6 @@ func NewCompletionWords(title string) *CompletionWords {
 // The function takes the following parameters:
 //
 //   - buffer: TextBuffer.
-//
 func (words *CompletionWords) Register(buffer *gtk.TextBuffer) {
 	var _arg0 *C.GtkSourceCompletionWords // out
 	var _arg1 *C.GtkTextBuffer            // out
@@ -130,7 +128,6 @@ func (words *CompletionWords) Register(buffer *gtk.TextBuffer) {
 // The function takes the following parameters:
 //
 //   - buffer: TextBuffer.
-//
 func (words *CompletionWords) Unregister(buffer *gtk.TextBuffer) {
 	var _arg0 *C.GtkSourceCompletionWords // out
 	var _arg1 *C.GtkTextBuffer            // out

@@ -93,7 +93,6 @@ func (self *SnippetContext) ConnectChanged(f func()) coreglib.SignalHandle {
 // The function returns the following values:
 //
 //   - snippetContext: SourceSnippetContext.
-//
 func NewSnippetContext() *SnippetContext {
 	var _cret *C.GtkSourceSnippetContext // in
 
@@ -116,10 +115,6 @@ func (self *SnippetContext) ClearVariables() {
 	runtime.KeepAlive(self)
 }
 
-// The function takes the following parameters:
-//
-// The function returns the following values:
-//
 func (self *SnippetContext) Expand(input string) string {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 *C.gchar                   // out
@@ -150,7 +145,6 @@ func (self *SnippetContext) Expand(input string) string {
 // The function returns the following values:
 //
 //   - utf8 (optional): value for the variable, or NULL.
-//
 func (self *SnippetContext) Variable(key string) string {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 *C.gchar                   // out
@@ -184,7 +178,6 @@ func (self *SnippetContext) Variable(key string) string {
 //
 //   - key: constant name.
 //   - value of the constant.
-//
 func (self *SnippetContext) SetConstant(key, value string) {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 *C.gchar                   // out
@@ -202,8 +195,6 @@ func (self *SnippetContext) SetConstant(key, value string) {
 	runtime.KeepAlive(value)
 }
 
-// The function takes the following parameters:
-//
 func (self *SnippetContext) SetLinePrefix(linePrefix string) {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 *C.gchar                   // out
@@ -217,8 +208,6 @@ func (self *SnippetContext) SetLinePrefix(linePrefix string) {
 	runtime.KeepAlive(linePrefix)
 }
 
-// The function takes the following parameters:
-//
 func (self *SnippetContext) SetTabWidth(tabWidth int) {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 C.gint                     // out
@@ -231,8 +220,6 @@ func (self *SnippetContext) SetTabWidth(tabWidth int) {
 	runtime.KeepAlive(tabWidth)
 }
 
-// The function takes the following parameters:
-//
 func (self *SnippetContext) SetUseSpaces(useSpaces bool) {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 C.gboolean                 // out
@@ -255,7 +242,6 @@ func (self *SnippetContext) SetUseSpaces(useSpaces bool) {
 //
 //   - key: variable name.
 //   - value for the variable.
-//
 func (self *SnippetContext) SetVariable(key, value string) {
 	var _arg0 *C.GtkSourceSnippetContext // out
 	var _arg1 *C.gchar                   // out

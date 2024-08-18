@@ -94,7 +94,6 @@ func marshalHoverContext(p uintptr) (interface{}, error) {
 //   - begin (optional): TextIter.
 //   - end (optional): TextIter.
 //   - ok: TRUE if the marks are still valid and begin or end was set.
-//
 func (self *HoverContext) Bounds() (begin, end *gtk.TextIter, ok bool) {
 	var _arg0 *C.GtkSourceHoverContext // out
 	var _arg1 C.GtkTextIter            // in
@@ -124,7 +123,6 @@ func (self *HoverContext) Bounds() (begin, end *gtk.TextIter, ok bool) {
 // The function returns the following values:
 //
 //   - buffer for the view.
-//
 func (self *HoverContext) Buffer() *Buffer {
 	var _arg0 *C.GtkSourceHoverContext // out
 	var _cret *C.GtkSourceBuffer       // in
@@ -141,10 +139,6 @@ func (self *HoverContext) Buffer() *Buffer {
 	return _buffer
 }
 
-// The function takes the following parameters:
-//
-// The function returns the following values:
-//
 func (self *HoverContext) Iter(iter *gtk.TextIter) bool {
 	var _arg0 *C.GtkSourceHoverContext // out
 	var _arg1 *C.GtkTextIter           // out
@@ -169,7 +163,6 @@ func (self *HoverContext) Iter(iter *gtk.TextIter) bool {
 // The function returns the following values:
 //
 //   - view that owns the context.
-//
 func (self *HoverContext) View() *View {
 	var _arg0 *C.GtkSourceHoverContext // out
 	var _cret *C.GtkSourceView         // in

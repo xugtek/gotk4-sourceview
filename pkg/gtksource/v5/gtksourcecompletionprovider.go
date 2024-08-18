@@ -3,9 +3,12 @@
 package gtksource
 
 import (
+	"context"
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/gbox"
+	"github.com/diamondburned/gotk4/pkg/core/gcancel"
 	"github.com/diamondburned/gotk4/pkg/core/gerror"
 	"github.com/diamondburned/gotk4/pkg/core/gextras"
 	coreglib "github.com/diamondburned/gotk4/pkg/core/glib"
@@ -17,6 +20,8 @@ import (
 // #include <stdlib.h>
 // #include <glib-object.h>
 // #include <gtksourceview/gtksource.h>
+// extern void _gotk4_gtksource5_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
+// extern void _gotk4_gio2_AsyncReadyCallback(GObject*, GAsyncResult*, gpointer);
 // GListModel* _gotk4_gtksource5_CompletionProvider_virtual_populate_finish(void* fnptr, GtkSourceCompletionProvider* arg0, GAsyncResult* arg1, GError** arg2) {
 //   return ((GListModel* (*)(GtkSourceCompletionProvider*, GAsyncResult*, GError**))(fnptr))(arg0, arg1, arg2);
 // };
@@ -37,6 +42,9 @@ import (
 // };
 // void _gotk4_gtksource5_CompletionProvider_virtual_display(void* fnptr, GtkSourceCompletionProvider* arg0, GtkSourceCompletionContext* arg1, GtkSourceCompletionProposal* arg2, GtkSourceCompletionCell* arg3) {
 //   ((void (*)(GtkSourceCompletionProvider*, GtkSourceCompletionContext*, GtkSourceCompletionProposal*, GtkSourceCompletionCell*))(fnptr))(arg0, arg1, arg2, arg3);
+// };
+// void _gotk4_gtksource5_CompletionProvider_virtual_populate_async(void* fnptr, GtkSourceCompletionProvider* arg0, GtkSourceCompletionContext* arg1, GCancellable* arg2, GAsyncReadyCallback arg3, gpointer arg4) {
+//   ((void (*)(GtkSourceCompletionProvider*, GtkSourceCompletionContext*, GCancellable*, GAsyncReadyCallback, gpointer))(fnptr))(arg0, arg1, arg2, arg3, arg4);
 // };
 // void _gotk4_gtksource5_CompletionProvider_virtual_refilter(void* fnptr, GtkSourceCompletionProvider* arg0, GtkSourceCompletionContext* arg1, GListModel* arg2) {
 //   ((void (*)(GtkSourceCompletionProvider*, GtkSourceCompletionContext*, GListModel*))(fnptr))(arg0, arg1, arg2);
@@ -95,6 +103,9 @@ type CompletionProviderer interface {
 	// user should activate proposal (resulting in committing the text to the
 	// editor).
 	KeyActivates(context *CompletionContext, proposal CompletionProposaller, keyval uint, state gdk.ModifierType) bool
+	// PopulateAsync: asynchronously requests that the provider populates the
+	// completion results for context.
+	PopulateAsync(ctx context.Context, context *CompletionContext, callback gio.AsyncReadyCallback)
 	// PopulateFinish completes an asynchronous operation to populate a
 	// completion provider.
 	PopulateFinish(result gio.AsyncResulter) (*gio.ListModel, error)
@@ -128,7 +139,6 @@ func marshalCompletionProvider(p uintptr) (interface{}, error) {
 //
 //   - context: SourceCompletionContext.
 //   - proposal: SourceCompletionProposal.
-//
 func (self *CompletionProvider) Activate(context *CompletionContext, proposal CompletionProposaller) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -158,7 +168,6 @@ func (self *CompletionProvider) Activate(context *CompletionContext, proposal Co
 //   - context: SourceCompletionContext.
 //   - proposal: SourceCompletionProposal.
 //   - cell: SourceCompletionCell.
-//
 func (self *CompletionProvider) Display(context *CompletionContext, proposal CompletionProposaller, cell *CompletionCell) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -188,9 +197,6 @@ func (self *CompletionProvider) Display(context *CompletionContext, proposal Com
 // The function takes the following parameters:
 //
 //   - context: SourceCompletionContext.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) Priority(context *CompletionContext) int {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -218,7 +224,6 @@ func (self *CompletionProvider) Priority(context *CompletionContext) int {
 // The function returns the following values:
 //
 //   - utf8 (optional): title for the provider or NULL.
-//
 func (self *CompletionProvider) Title() string {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _cret *C.char                        // in
@@ -252,9 +257,6 @@ func (self *CompletionProvider) Title() string {
 //
 //   - iter: TextIter.
 //   - ch of the character inserted.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) IsTrigger(iter *gtk.TextIter, ch uint32) bool {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkTextIter                 // out
@@ -292,9 +294,6 @@ func (self *CompletionProvider) IsTrigger(iter *gtk.TextIter, ch uint32) bool {
 //   - proposal: SourceCompletionProposal.
 //   - keyval such as gdk.KEYPeriod.
 //   - state or 0.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) KeyActivates(context *CompletionContext, proposal CompletionProposaller, keyval uint, state gdk.ModifierType) bool {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -325,6 +324,44 @@ func (self *CompletionProvider) KeyActivates(context *CompletionContext, proposa
 	return _ok
 }
 
+// PopulateAsync: asynchronously requests that the provider populates the
+// completion results for context.
+//
+// For providers that would like to populate a gio.ListModel while those results
+// are displayed to the user, completioncontext.SetProposalsForProvider may be
+// used to reduce latency until the user sees results.
+//
+// The function takes the following parameters:
+//
+//   - ctx (optional) or NULL.
+//   - context: SourceCompletionContext.
+//   - callback (optional) to execute upon completion.
+func (self *CompletionProvider) PopulateAsync(ctx context.Context, context *CompletionContext, callback gio.AsyncReadyCallback) {
+	var _arg0 *C.GtkSourceCompletionProvider // out
+	var _arg2 *C.GCancellable                // out
+	var _arg1 *C.GtkSourceCompletionContext  // out
+	var _arg3 C.GAsyncReadyCallback          // out
+	var _arg4 C.gpointer
+
+	_arg0 = (*C.GtkSourceCompletionProvider)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg2 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkSourceCompletionContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	if callback != nil {
+		_arg3 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg4 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C.gtk_source_completion_provider_populate_async(_arg0, _arg1, _arg2, _arg3, _arg4)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(context)
+	runtime.KeepAlive(callback)
+}
+
 // PopulateFinish completes an asynchronous operation to populate a completion
 // provider.
 //
@@ -335,7 +372,6 @@ func (self *CompletionProvider) KeyActivates(context *CompletionContext, proposa
 // The function returns the following values:
 //
 //   - listModel of SourceCompletionProposal.
-//
 func (self *CompletionProvider) PopulateFinish(result gio.AsyncResulter) (*gio.ListModel, error) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GAsyncResult                // out
@@ -376,7 +412,6 @@ func (self *CompletionProvider) PopulateFinish(result gio.AsyncResulter) (*gio.L
 //
 //   - context: SourceCompletionContext.
 //   - model: Model.
-//
 func (self *CompletionProvider) Refilter(context *CompletionContext, model gio.ListModeller) {
 	var _arg0 *C.GtkSourceCompletionProvider // out
 	var _arg1 *C.GtkSourceCompletionContext  // out
@@ -405,7 +440,6 @@ func (self *CompletionProvider) Refilter(context *CompletionContext, model gio.L
 //
 //   - context: SourceCompletionContext.
 //   - proposal: SourceCompletionProposal.
-//
 func (self *CompletionProvider) activate(context *CompletionContext, proposal CompletionProposaller) {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.activate
@@ -438,7 +472,6 @@ func (self *CompletionProvider) activate(context *CompletionContext, proposal Co
 //   - context: SourceCompletionContext.
 //   - proposal: SourceCompletionProposal.
 //   - cell: SourceCompletionCell.
-//
 func (self *CompletionProvider) display(context *CompletionContext, proposal CompletionProposaller, cell *CompletionCell) {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.display
@@ -471,9 +504,6 @@ func (self *CompletionProvider) display(context *CompletionContext, proposal Com
 // The function takes the following parameters:
 //
 //   - context: SourceCompletionContext.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) priority(context *CompletionContext) int {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.get_priority
@@ -504,7 +534,6 @@ func (self *CompletionProvider) priority(context *CompletionContext) int {
 // The function returns the following values:
 //
 //   - utf8 (optional): title for the provider or NULL.
-//
 func (self *CompletionProvider) title() string {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.get_title
@@ -541,9 +570,6 @@ func (self *CompletionProvider) title() string {
 //
 //   - iter: TextIter.
 //   - ch of the character inserted.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) isTrigger(iter *gtk.TextIter, ch uint32) bool {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.is_trigger
@@ -584,9 +610,6 @@ func (self *CompletionProvider) isTrigger(iter *gtk.TextIter, ch uint32) bool {
 //   - proposal: SourceCompletionProposal.
 //   - keyval such as gdk.KEYPeriod.
 //   - state or 0.
-//
-// The function returns the following values:
-//
 func (self *CompletionProvider) keyActivates(context *CompletionContext, proposal CompletionProposaller, keyval uint, state gdk.ModifierType) bool {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.key_activates
@@ -620,6 +643,47 @@ func (self *CompletionProvider) keyActivates(context *CompletionContext, proposa
 	return _ok
 }
 
+// populateAsync: asynchronously requests that the provider populates the
+// completion results for context.
+//
+// For providers that would like to populate a gio.ListModel while those results
+// are displayed to the user, completioncontext.SetProposalsForProvider may be
+// used to reduce latency until the user sees results.
+//
+// The function takes the following parameters:
+//
+//   - ctx (optional) or NULL.
+//   - context: SourceCompletionContext.
+//   - callback (optional) to execute upon completion.
+func (self *CompletionProvider) populateAsync(ctx context.Context, context *CompletionContext, callback gio.AsyncReadyCallback) {
+	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
+	fnarg := gclass.populate_async
+
+	var _arg0 *C.GtkSourceCompletionProvider // out
+	var _arg2 *C.GCancellable                // out
+	var _arg1 *C.GtkSourceCompletionContext  // out
+	var _arg3 C.GAsyncReadyCallback          // out
+	var _arg4 C.gpointer
+
+	_arg0 = (*C.GtkSourceCompletionProvider)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	{
+		cancellable := gcancel.GCancellableFromContext(ctx)
+		defer runtime.KeepAlive(cancellable)
+		_arg2 = (*C.GCancellable)(unsafe.Pointer(cancellable.Native()))
+	}
+	_arg1 = (*C.GtkSourceCompletionContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	if callback != nil {
+		_arg3 = (*[0]byte)(C._gotk4_gio2_AsyncReadyCallback)
+		_arg4 = C.gpointer(gbox.AssignOnce(callback))
+	}
+
+	C._gotk4_gtksource5_CompletionProvider_virtual_populate_async(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2, _arg3, _arg4)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(ctx)
+	runtime.KeepAlive(context)
+	runtime.KeepAlive(callback)
+}
+
 // populateFinish completes an asynchronous operation to populate a completion
 // provider.
 //
@@ -630,7 +694,6 @@ func (self *CompletionProvider) keyActivates(context *CompletionContext, proposa
 // The function returns the following values:
 //
 //   - listModel of SourceCompletionProposal.
-//
 func (self *CompletionProvider) populateFinish(result gio.AsyncResulter) (*gio.ListModel, error) {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.populate_finish
@@ -674,7 +737,6 @@ func (self *CompletionProvider) populateFinish(result gio.AsyncResulter) (*gio.L
 //
 //   - context: SourceCompletionContext.
 //   - model: Model.
-//
 func (self *CompletionProvider) refilter(context *CompletionContext, model gio.ListModeller) {
 	gclass := (*C.GtkSourceCompletionProviderInterface)(coreglib.PeekParentClass(self))
 	fnarg := gclass.refilter

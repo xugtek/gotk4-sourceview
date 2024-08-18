@@ -102,6 +102,14 @@ func wrapMap(obj *coreglib.Object) *Map {
 					},
 				},
 				Object: obj,
+				Accessible: gtk.Accessible{
+					Object: obj,
+				},
+				AccessibleText: gtk.AccessibleText{
+					Accessible: gtk.Accessible{
+						Object: obj,
+					},
+				},
 				Scrollable: gtk.Scrollable{
 					Object: obj,
 				},
@@ -119,7 +127,6 @@ func marshalMap(p uintptr) (interface{}, error) {
 // The function returns the following values:
 //
 //   - _map: new SourceMap.
-//
 func NewMap() *Map {
 	var _cret *C.GtkWidget // in
 
@@ -137,7 +144,6 @@ func NewMap() *Map {
 // The function returns the following values:
 //
 //   - view (optional) or NULL.
-//
 func (_map *Map) GetView() *View {
 	var _arg0 *C.GtkSourceMap  // out
 	var _cret *C.GtkSourceView // in
@@ -161,7 +167,6 @@ func (_map *Map) GetView() *View {
 // The function takes the following parameters:
 //
 //   - view: SourceView.
-//
 func (_map *Map) SetView(view *View) {
 	var _arg0 *C.GtkSourceMap  // out
 	var _arg1 *C.GtkSourceView // out

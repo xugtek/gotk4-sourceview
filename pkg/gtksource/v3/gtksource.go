@@ -140,8 +140,6 @@ func (c ChangeCaseType) String() string {
 	}
 }
 
-// The function returns the following values:
-//
 func CompletionErrorQuark() glib.Quark {
 	var _cret C.GQuark // in
 
@@ -149,9 +147,7 @@ func CompletionErrorQuark() glib.Quark {
 
 	var _quark glib.Quark // out
 
-	_quark = uint32(_cret)
-	type _ = glib.Quark
-	type _ = uint32
+	_quark = glib.Quark(_cret)
 
 	return _quark
 }
@@ -181,8 +177,6 @@ func (c CompressionType) String() string {
 	}
 }
 
-// The function returns the following values:
-//
 func FileLoaderErrorQuark() glib.Quark {
 	var _cret C.GQuark // in
 
@@ -190,15 +184,11 @@ func FileLoaderErrorQuark() glib.Quark {
 
 	var _quark glib.Quark // out
 
-	_quark = uint32(_cret)
-	type _ = glib.Quark
-	type _ = uint32
+	_quark = glib.Quark(_cret)
 
 	return _quark
 }
 
-// The function returns the following values:
-//
 func FileSaverErrorQuark() glib.Quark {
 	var _cret C.GQuark // in
 
@@ -206,9 +196,7 @@ func FileSaverErrorQuark() glib.Quark {
 
 	var _quark glib.Quark // out
 
-	_quark = uint32(_cret)
-	type _ = glib.Quark
-	type _ = uint32
+	_quark = glib.Quark(_cret)
 
 	return _quark
 }

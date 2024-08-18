@@ -23,7 +23,6 @@ import "C"
 // The function returns the following values:
 //
 //   - sList: list of default candidate encodings. Free with g_slist_free().
-//
 func EncodingGetDefaultCandidates() []*Encoding {
 	var _cret *C.GSList // in
 
